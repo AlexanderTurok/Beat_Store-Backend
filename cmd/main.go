@@ -6,6 +6,7 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/internal/service"
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 )
 
 func main() {
@@ -23,4 +24,11 @@ func main() {
 	if err := server.Run("8000", handler.InitRoutes()); err != nil {
 		logrus.Fatalf("error while running the server: %s", err)
 	}
+}
+
+func initConfigs() error {
+	viper.AddConfigPath("configs")
+	viper.SetConfigFile("config")
+
+	return viper.ReadInConfig()
 }
