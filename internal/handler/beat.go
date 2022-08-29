@@ -1,6 +1,11 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+)
 
 func (h *Handler) addBeat(c *gin.Context) {
 	// if err := h.service.CreateBeat(ctx.Body); err != nil {
@@ -11,7 +16,19 @@ func (h *Handler) addBeat(c *gin.Context) {
 }
 
 func (h *Handler) getBeatById(c *gin.Context) {
+	beatId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid list id param")
+		return
+	}
 
+	beat, err := h.service.Beat.GetById(beatId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beat)
 }
 
 func (h *Handler) getAllBeats(c *gin.Context) {
