@@ -5,6 +5,10 @@ type Beat struct {
 	Bpm   int     `json:"bpm"`
 	Key   string  `json:"key"`
 	Path  string  `json:"path"`
-	Tags  string  `json:"tags"`
+	Tags  []Tag   `json:"tags"`
 	Price float32 `json:"price"`
+}
+
+type Tag struct {
+	Name string `json:"name"`
 }
