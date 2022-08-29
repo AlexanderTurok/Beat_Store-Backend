@@ -1,17 +1,34 @@
 package main
 
 import (
+	"os"
+
 	"github.com/AlexanderTurok/beat-store-backend/internal/handler"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 	"github.com/AlexanderTurok/beat-store-backend/internal/service"
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
 
 func main() {
+	if err := godotenv.Load(); err != nil {
+		logrus.Fatalf("error while loading enviroment variables: %s", err)
+	}
 
-	db, err := repository.NewPostgresDB(repository.Config{})
+	if err := initConfigs(); err != nil {
+		logrus.Fatalf("error while initializing configs: %s", err)
+	}
+
+	db, err := repository.NewPostgresDB(repository.Config{
+		Host:     viper.GetString("db.host"),
+		Port:     viper.GetString("db.port"),
+		Username: viper.GetString("db.username"),
+		Password: os.Getenv("DB_Password"),
+		DBName:   viper.GetString("db.dbname"),
+		SSLMode:  viper.GetString("db.sslmode"),
+	})
 	if err != nil {
 		logrus.Fatalf("error while starting postgres: s", err)
 	}
