@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/AlexanderTurok/beat-store-backend/internal/handler"
+	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 	"github.com/AlexanderTurok/beat-store-backend/internal/service"
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/sirupsen/logrus"
@@ -9,6 +10,12 @@ import (
 
 func main() {
 
+	db, err := repository.NewPostgresDB(repository.Config{})
+	if err != nil {
+		logrus.Fatalf("error while starting postgres: s", err)
+	}
+
+	repository := repository.NewRepository(db)
 	service := service.NewService()
 	handler := handler.NewHandler(service)
 
