@@ -12,6 +12,7 @@ CREATE TABLE beat (
   key VARCHAR(16) NOT NULL,
   path VARCHAR(255) NOT NULL,
   tags [] VARCHAR(255),
+  price FLOAT NOT NULL,
 );
 
 CREATE TABLE users_beat (
