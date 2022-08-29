@@ -1,5 +1,7 @@
 package service
 
+import "github.com/AlexanderTurok/beat-store-backend/internal/repository"
+
 type Authorization interface {
 }
 
@@ -11,6 +13,6 @@ type Service struct {
 	Beat
 }
 
-func NewService() *Service {
+func NewService(repos *repository.Repository) *Service {
 	return &Service{}
 }

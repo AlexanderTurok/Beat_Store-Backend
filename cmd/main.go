@@ -16,7 +16,7 @@ func main() {
 	}
 
 	repository := repository.NewRepository(db)
-	service := service.NewService()
+	service := service.NewService(repository)
 	handler := handler.NewHandler(service)
 
 	server := new(beatstore.Server)
