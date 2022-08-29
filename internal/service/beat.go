@@ -18,3 +18,7 @@ func NewBeatService(repos repository.Beat) *BeatService {
 func (s *BeatService) GetById(id int) (beatstore.Beat, error) {
 	return s.repos.GetById(id)
 }
+
+func (s *BeatService) GetAll() ([]beatstore.Beat, error) {
+	return s.repos.GetAll()
+}
