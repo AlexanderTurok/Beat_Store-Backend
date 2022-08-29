@@ -32,7 +32,13 @@ func (h *Handler) getBeatById(c *gin.Context) {
 }
 
 func (h *Handler) getAllBeats(c *gin.Context) {
+	beats, err := h.service.Beat.GetAll()
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	c.JSON(http.StatusOK, beats)
 }
 
 func (h *Handler) updateBeat(c *gin.Context) {
