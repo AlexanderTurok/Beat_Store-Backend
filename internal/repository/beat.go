@@ -24,3 +24,24 @@ func (r *BeatRepository) GetById(id int) (beatstore.Beat, error) {
 
 	return beat, err
 }
+
+func (r *BeatRepository) GetAll() ([]beatstore.Beat, error) {
+	var beats []beatstore.Beat
+
+	query := fmt.Sprintf("SELECT * FROM %s", beatTable)
+	rows, err := r.db.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var beat beatstore.Beat
+		if err := rows.Scan(&beat.Id, &beat.Bpm, &beat.Key, &beat.Path, &beat.Tags, &beat.Price); err != nil {
+			return beats, err
+		}
+		beats = append(beats, beat)
+	}
+
+	return beats, rows.Err()
+}

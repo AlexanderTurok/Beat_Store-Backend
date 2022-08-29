@@ -11,6 +11,7 @@ type Authorization interface {
 
 type Beat interface {
 	GetById(id int) (beatstore.Beat, error)
+	GetAll() ([]beatstore.Beat, error)
 }
 
 type Repository struct {
