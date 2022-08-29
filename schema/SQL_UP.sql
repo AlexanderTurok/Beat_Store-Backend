@@ -1,0 +1,27 @@
+CREATE TABLE user (
+  id PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  username VARCHAR(255) UNIQUE NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+);
+
+CREATE TABLE beat (
+  id PRIMARY KEY,
+  bpm INT NOT NULL,
+  key VARCHAR(16) NOT NULL,
+  path VARCHAR(255) NOT NULL,
+  tags [] VARCHAR(255),
+);
+
+CREATE TABLE users_beat (
+  id PRIMARY KEY,
+  user_id INT REFERENCES user (id) ON DELETE CASCADE NOT NULL,
+  beat_id INT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
+);
+
+CREATE TABLE users_cart (
+  id PRIMARY KEY,
+  user_id INT REFERENCES user (id) ON DELETE CASCADE NOT NULL,
+  beat_id INT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
+);
