@@ -1,11 +1,17 @@
 package repository
 
-import "database/sql"
+import (
+	"database/sql"
+
+	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+)
 
 type Authorization interface {
 }
 
 type Beat interface {
+	GetById(id int) (beatstore.Beat, error)
+	GetAll() ([]beatstore.Beat, error)
 }
 
 type Repository struct {
@@ -14,5 +20,7 @@ type Repository struct {
 }
 
 func NewRepository(db *sql.DB) *Repository {
-	return &Repository{}
+	return &Repository{
+		Beat: NewBeatRepository(db),
+	}
 }

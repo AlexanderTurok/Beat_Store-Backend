@@ -5,6 +5,10 @@ import (
 	"fmt"
 )
 
+const (
+	beatTable = "beat"
+)
+
 type Config struct {
 	Host     string
 	Port     string
