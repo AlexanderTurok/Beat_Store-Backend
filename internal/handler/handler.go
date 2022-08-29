@@ -22,6 +22,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	{
 		user.POST("/sign-up")
 		user.POST("/sign-in")
+		user.POST("/")
 		user.GET("/")
 		user.GET("/:id")
 		user.PUT("/:id")
@@ -29,12 +30,12 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 		cart := user.Group("/cart")
 		{
-			cart.POST("/")
-			cart.GET("/")
-			cart.GET("/:id")
-			cart.PUT("/:id")
-			cart.DELETE("/")
-			cart.DELETE("/:id")
+			cart.POST(":id/")
+			cart.GET(":id/")
+			cart.GET(":id/:id")
+			cart.PUT(":id/:id")
+			cart.DELETE(":id/")
+			cart.DELETE(":id/:id")
 		}
 	}
 
