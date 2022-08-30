@@ -7,6 +7,8 @@ import (
 )
 
 type Authorization interface {
+	CreateUser(user beatstore.User) (int, error)
+	GetUser(email, password string) (beatstore.User, error)
 }
 
 type Beat interface {

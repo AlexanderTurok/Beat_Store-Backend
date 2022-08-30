@@ -18,36 +18,45 @@ func NewHandler(service *service.Service) *Handler {
 func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
 
-	api := router.Group("/api")
+	auth := router.Group("/api")
 	{
-		api.POST("/sign-up", h.signUp)
-		api.POST("/sign-in", h.signIn)
+		auth.POST("/sign-up", h.signUp)
+		auth.POST("/sign-in", h.signIn)
 	}
 
-	user := router.Group("/user")
+	api := router.Group("/api", h.userIdentity)
 	{
-		user.GET("/", h.getAllUsers)
-		user.GET("/:id", h.getUserById)
-		user.PUT("/:id", h.updateUser)
-		user.DELETE("/:id", h.deleteUser)
-
-		cart := user.Group("/cart")
+		user := api.Group("/user")
 		{
-			cart.POST(":id/", h.addBeatToCart)
-			cart.GET(":id/", h.getAllBeatsFromCart)
-			cart.GET(":id/:id", h.getBeatByIdFromCart)
-			cart.DELETE(":id/", h.deleteAllBeatsInCart)
-			cart.DELETE(":id/:id", h.deleteBeatInCart)
-		}
-	}
+			user.GET("/", h.getAllUsers)
+			user.GET("/:id", h.getUserById)
+			user.PUT("/:id", h.updateUser)
+			user.DELETE("/:id", h.deleteUser)
 
-	beats := router.Group("/beats")
-	{
-		beats.POST("/", h.addBeat)
-		beats.GET("/", h.getAllBeats)
-		beats.GET("/:id", h.getBeatById)
-		beats.PUT("/:id", h.updateBeat)
-		beats.DELETE("/:id", h.deleteBeat)
+			cart := user.Group("/cart")
+			{
+				cart.POST(":id/", h.addBeatToCart)
+				cart.GET(":id/", h.getAllBeatsFromCart)
+				cart.GET(":id/:id", h.getBeatByIdFromCart)
+				cart.DELETE(":id/", h.deleteAllBeatsInCart)
+				cart.DELETE(":id/:id", h.deleteBeatInCart)
+			}
+
+			beats := user.Group("/beats")
+			{
+				beats.POST(":id/", h.addBeat)
+				beats.PUT(":id/:id", h.updateBeat)
+				beats.DELETE(":id/:id", h.deleteBeat)
+			}
+		}
+
+		beats := router.Group("/beats")
+		{
+			beats.GET("/", h.getAllBeats)
+			beats.GET("/:id", h.getBeatById)
+			beats.PUT("/:id", h.updateBeat)
+			beats.DELETE("/:id", h.deleteBeat)
+		}
 	}
 
 	return router
