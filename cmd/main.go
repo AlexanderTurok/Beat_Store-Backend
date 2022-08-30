@@ -38,7 +38,7 @@ func main() {
 	handler := handler.NewHandler(service)
 
 	server := new(beatstore.Server)
-	if err := server.Run("8000", handler.InitRoutes()); err != nil {
+	if err := server.Run(viper.GetString("port"), handler.InitRoutes()); err != nil {
 		logrus.Fatalf("error while running the server: %s", err)
 	}
 }
