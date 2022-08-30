@@ -2,7 +2,7 @@ package beatstore
 
 type Beat struct {
 	Id    int     `json:"id" db:"id"`
-	Bpm   int     `json:"bpm" db:"bpm"`
+	Bpm   string  `json:"bpm" db:"bpm"`
 	Key   string  `json:"key" db:"key"`
 	Path  string  `json:"path" db:"path"`
 	Tags  []Tag   `json:"tags" db:"tags"`
