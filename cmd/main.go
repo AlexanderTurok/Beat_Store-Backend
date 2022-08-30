@@ -17,9 +17,9 @@ func main() {
 		logrus.Fatalf("error while loading enviroment variables: %s", err)
 	}
 
-	if err := initConfig(); err != nil {
-		logrus.Fatalf("error while initializing configs: %s", err)
-	}
+	// if err := initConfig(); err != nil {
+	// 	logrus.Fatalf("error while initializing configs: %s", err)
+	// }
 
 	db, err := repository.NewPostgresDB(repository.Config{
 		// Host:     viper.GetString("db.host"),
