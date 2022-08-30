@@ -50,7 +50,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			}
 		}
 
-		beats := router.Group("/beats")
+		beats := api.Group("/beats")
 		{
 			beats.GET("/", h.getAllBeats)
 		}
