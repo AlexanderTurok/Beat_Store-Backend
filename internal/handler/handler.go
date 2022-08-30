@@ -24,9 +24,9 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		auth.POST("/sign-in", h.signIn)
 	}
 
-	api := router.Group("/api", h.userIdentity)
+	api := router.Group("/api")
 	{
-		user := api.Group("/user")
+		user := api.Group("/user", h.userIdentity)
 		{
 			user.GET("/", h.getAllUsers)
 			user.GET("/:id", h.getUserById)
@@ -35,16 +35,16 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 			cart := user.Group("/cart")
 			{
-				cart.POST(":id/", h.addBeatToCart)
-				cart.GET(":id/", h.getAllBeatsFromCart)
-				cart.GET(":id/:id", h.getBeatByIdFromCart)
-				cart.DELETE(":id/", h.deleteAllBeatsInCart)
-				cart.DELETE(":id/:id", h.deleteBeatInCart)
+				cart.POST("/", h.addBeatToCart)
+				cart.GET("/", h.getAllBeatsFromCart)
+				cart.GET("/:id", h.getBeatByIdFromCart)
+				cart.DELETE("/", h.deleteAllBeatsInCart)
+				cart.DELETE("/:id", h.deleteBeatInCart)
 			}
 
 			beats := user.Group("/beats")
 			{
-				beats.POST("/", h.addBeat)
+				beats.POST("/", h.createBeat)
 				beats.PUT("/:id", h.updateBeat)
 				beats.DELETE("/:id", h.deleteBeat)
 			}
@@ -53,9 +53,6 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		beats := router.Group("/beats")
 		{
 			beats.GET("/", h.getAllBeats)
-			beats.GET("/:id", h.getBeatById)
-			beats.PUT("/:id", h.updateBeat)
-			beats.DELETE("/:id", h.deleteBeat)
 		}
 	}
 

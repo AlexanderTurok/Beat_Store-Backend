@@ -19,10 +19,6 @@ func (s *BeatService) Create(userId int, beat beatstore.Beat) (int, error) {
 	return s.repos.Create(userId, beat)
 }
 
-func (s *BeatService) GetById(id int) (beatstore.Beat, error) {
-	return s.repos.GetById(id)
-}
-
 func (s *BeatService) GetAll() ([]beatstore.Beat, error) {
 	return s.repos.GetAll()
 }
