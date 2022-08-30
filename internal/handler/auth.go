@@ -10,8 +10,8 @@ import (
 func (h *Handler) signUp(c *gin.Context) {
 	var userInput beatstore.User
 
-	if err := c.BindJSON(userInput); err != nil {
-		newErrorResponse(c, http.StatusBadRequest, err.Error())
+	if err := c.BindJSON(&userInput); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid input body")
 		return
 	}
 

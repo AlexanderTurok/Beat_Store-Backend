@@ -23,6 +23,7 @@ type Repository struct {
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
-		Beat: NewBeatRepository(db),
+		Authorization: NewAuthService(db),
+		Beat:          NewBeatRepository(db),
 	}
 }

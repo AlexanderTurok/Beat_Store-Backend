@@ -37,7 +37,7 @@ type tokenClaims struct {
 }
 
 func (s *AuthService) GenerateToken(email, password string) (string, error) {
-	user, err := s.repos.GetUser(email, password)
+	user, err := s.repos.GetUser(email, generatePasswordHash(password))
 	if err != nil {
 		return "", err
 	}
