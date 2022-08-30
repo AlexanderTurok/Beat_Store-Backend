@@ -24,8 +24,8 @@ func (r *BeatRepository) Create(userId int, beat beatstore.Beat) (int, error) {
 	}
 
 	var beatId int
-	beatQuery := fmt.Sprintf("INSERT INTO %s (bpm, key, path, price, tags) VALUES ($1, $2, $3, $4, $5) RETURNING id", beatTable)
-	row := tx.QueryRow(beatQuery, beat.Bpm, beat.Key, beat.Path, beat.Price, beat.Tags)
+	beatQuery := fmt.Sprintf("INSERT INTO %s (bpm, key, path, tag, price) VALUES ($1, $2, $3, $4, $5) RETURNING id", beatTable)
+	row := tx.QueryRow(beatQuery, beat.Bpm, beat.Key, beat.Path, beat.Tag, beat.Price)
 	if err := row.Scan(&beatId); err != nil {
 		tx.Rollback()
 		return 0, err
@@ -41,14 +41,6 @@ func (r *BeatRepository) Create(userId int, beat beatstore.Beat) (int, error) {
 	return beatId, tx.Commit()
 }
 
-func (r *BeatRepository) GetById(id int) (beatstore.Beat, error) {
-	var beat beatstore.Beat
-	query := fmt.Sprintf("SELECT * FROM %s WHERE id=$1", beatTable)
-	err := r.db.QueryRow(query, id).Scan(&beat)
-
-	return beat, err
-}
-
 func (r *BeatRepository) GetAll() ([]beatstore.Beat, error) {
 	var beats []beatstore.Beat
 
@@ -61,7 +53,7 @@ func (r *BeatRepository) GetAll() ([]beatstore.Beat, error) {
 
 	for rows.Next() {
 		var beat beatstore.Beat
-		if err := rows.Scan(&beat.Id, &beat.Bpm, &beat.Key, &beat.Path, &beat.Tags, &beat.Price); err != nil {
+		if err := rows.Scan(&beat.Id, &beat.Bpm, &beat.Key, &beat.Path, &beat.Tag, &beat.Price); err != nil {
 			return beats, err
 		}
 		beats = append(beats, beat)
