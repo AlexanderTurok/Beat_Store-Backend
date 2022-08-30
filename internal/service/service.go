@@ -6,6 +6,7 @@ import (
 )
 
 type Authorization interface {
+	CreateUser(user beatstore.User) (int, error)
 }
 
 type Beat interface {
@@ -20,6 +21,7 @@ type Service struct {
 
 func NewService(repos *repository.Repository) *Service {
 	return &Service{
-		Beat: NewBeatService(repos.Beat),
+		Authorization: NewAuthService(repos),
+		Beat:          NewBeatService(repos.Beat),
 	}
 }
