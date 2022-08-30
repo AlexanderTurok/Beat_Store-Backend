@@ -39,6 +39,7 @@ require (
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.8.1
+	github.com/jmoiron/sqlx v1.3.5
 	github.com/joho/godotenv v1.4.0
 	github.com/spf13/viper v1.12.0
 	golang.org/x/sys v0.0.0-20220825204002-c680a09ffe64 // indirect

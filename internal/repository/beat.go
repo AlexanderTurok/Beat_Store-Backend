@@ -1,20 +1,44 @@
 package repository
 
 import (
-	"database/sql"
 	"fmt"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/jmoiron/sqlx"
 )
 
 type BeatRepository struct {
-	db *sql.DB
+	db *sqlx.DB
 }
 
-func NewBeatRepository(db *sql.DB) *BeatRepository {
+func NewBeatRepository(db *sqlx.DB) *BeatRepository {
 	return &BeatRepository{
 		db: db,
 	}
+}
+
+func (r *BeatRepository) Create(userId int, beat beatstore.Beat) (int, error) {
+	tx, err := r.db.Begin()
+	if err != nil {
+		return 0, err
+	}
+
+	var beatId int
+	beatQuery := fmt.Sprintf("INSERT INTO %s (bpm, key, path, price, tags) VALUES ($1, $2, $3, $4, $5) RETURNING id", beatTable)
+	row := tx.QueryRow(beatQuery, beat.Bpm, beat.Key, beat.Path, beat.Price, beat.Tags)
+	if err := row.Scan(&beatId); err != nil {
+		tx.Rollback()
+		return 0, err
+	}
+
+	usersBeatQuery := fmt.Sprintf("INSERT INTO %s (user_id, beat_id) VALUES ($1, $2)", usersBeatTable)
+	_, err = tx.Exec(usersBeatQuery, userId, beatId)
+	if err != nil {
+		tx.Rollback()
+		return 0, err
+	}
+
+	return beatId, tx.Commit()
 }
 
 func (r *BeatRepository) GetById(id int) (beatstore.Beat, error) {

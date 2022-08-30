@@ -4,15 +4,32 @@ import (
 	"net/http"
 	"strconv"
 
+	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/gin-gonic/gin"
 )
 
 func (h *Handler) addBeat(c *gin.Context) {
-	// if err := h.service.CreateBeat(ctx.Body); err != nil {
-	// newErrorResponse(c)
-	// }
+	userId, err := getUserId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
-	// c.JSON(http.StatusOK)
+	var userInput beatstore.Beat
+	if err := c.BindJSON(&userInput); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	id, err := h.service.Beat.Create(userId, userInput)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"id": id,
+	})
 }
 
 func (h *Handler) getBeatById(c *gin.Context) {
