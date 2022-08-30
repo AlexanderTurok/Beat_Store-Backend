@@ -24,3 +24,11 @@ func (r *AuthRepository) CreateUser(user beatstore.User) (int, error) {
 
 	return id, err
 }
+
+func (r *AuthRepository) GetUser(email, password string) (beatstore.User, error) {
+	var user beatstore.User
+	query := fmt.Sprintf("SELECT * FROM %s WHERE email=$1 AND password_hash=$2", userTable)
+	err := r.db.QueryRow(query, email, password).Scan(&user)
+
+	return user, err
+}
