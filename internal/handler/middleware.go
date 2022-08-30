@@ -8,8 +8,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+const (
+	authorizationHeader = "Authorization"
+	userCtx             = "userId"
+)
+
 func (h *Handler) userIdentity(c *gin.Context) {
-	header := c.GetHeader("Authorization")
+	header := c.GetHeader(authorizationHeader)
 
 	if header == "" {
 		newErrorResponse(c, http.StatusUnauthorized, "empty auth header")
@@ -33,11 +38,11 @@ func (h *Handler) userIdentity(c *gin.Context) {
 		return
 	}
 
-	c.Set("userId", userId)
+	c.Set(userCtx, userId)
 }
 
 func getUserId(c *gin.Context) (int, error) {
-	id, ok := c.Get("userID")
+	id, ok := c.Get(userCtx)
 	if !ok {
 		return 0, errors.New("user id not found")
 	}
