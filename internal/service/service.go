@@ -12,6 +12,7 @@ type Authorization interface {
 }
 
 type Beat interface {
+	Create(userId int, beat beatstore.Beat) (int, error)
 	GetById(id int) (beatstore.Beat, error)
 	GetAll() ([]beatstore.Beat, error)
 }
