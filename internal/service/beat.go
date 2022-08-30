@@ -22,3 +22,15 @@ func (s *BeatService) Create(userId int, beat beatstore.Beat) (int, error) {
 func (s *BeatService) GetAll() ([]beatstore.Beat, error) {
 	return s.repos.GetAll()
 }
+
+func (s *BeatService) Update(userId, beatId int, input beatstore.BeatUpdateInput) error {
+	if err := input.Validate(); err != nil {
+		return err
+	}
+
+	return s.repos.Update(userId, beatId, input)
+}
+
+func (s *BeatService) Delete(userId, beatId int) error {
+	return s.repos.Delete(userId, beatId)
+}

@@ -2,6 +2,7 @@ package repository
 
 import (
 	"fmt"
+	"strings"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/jmoiron/sqlx"
@@ -60,4 +61,56 @@ func (r *BeatRepository) GetAll() ([]beatstore.Beat, error) {
 	}
 
 	return beats, rows.Err()
+}
+
+func (r *BeatRepository) Update(userId, beatId int, input beatstore.BeatUpdateInput) error {
+	setValues := make([]string, 0)
+	args := make([]interface{}, 0)
+	argId := 1
+
+	if input.Bpm != nil {
+		setValues = append(setValues, fmt.Sprintf("bpm=$%d", argId))
+		args = append(args, *input.Bpm)
+		argId++
+	}
+
+	if input.Key != nil {
+		setValues = append(setValues, fmt.Sprintf("key=$%d", argId))
+		args = append(args, *input.Key)
+		argId++
+	}
+
+	if input.Path != nil {
+		setValues = append(setValues, fmt.Sprintf("path=$%d", argId))
+		args = append(args, *input.Path)
+		argId++
+	}
+
+	if input.Price != nil {
+		setValues = append(setValues, fmt.Sprintf("price=$%d", argId))
+		args = append(args, *input.Price)
+		argId++
+	}
+
+	if input.Tag != nil {
+		setValues = append(setValues, fmt.Sprintf("tag=$%d", argId))
+		args = append(args, *input.Tag)
+		argId++
+	}
+
+	setQuery := strings.Join(setValues, ", ")
+	query := fmt.Sprintf("UPDATE %s bt SET %s FROM %s ub WHERE bt.id = ub.beat_id AND ub.beat_id=$%d AND ub.user_id=$%d",
+		beatTable, setQuery, usersBeatTable, argId, argId+1)
+	args = append(args, beatId, userId)
+
+	_, err := r.db.Exec(query, args...)
+	return err
+}
+
+func (r *BeatRepository) Delete(userId, beatId int) error {
+	query := fmt.Sprintf("DELETE FROM %s bt USING %s ub WHERE bt.id = ub.beat_id AND ub.user_id=$1 AND ub.beat_id=$2",
+		beatTable, usersBeatTable)
+	_, err := r.db.Exec(query, userId, beatId)
+
+	return err
 }
