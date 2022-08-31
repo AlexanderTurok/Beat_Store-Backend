@@ -25,8 +25,8 @@ func (r *BeatRepository) Create(userId int, beat beatstore.Beat) (int, error) {
 	}
 
 	var beatId int
-	beatQuery := fmt.Sprintf("INSERT INTO %s (bpm, key, path, tag, price) VALUES ($1, $2, $3, $4, $5) RETURNING id", beatTable)
-	row := tx.QueryRow(beatQuery, beat.Bpm, beat.Key, beat.Path, beat.Tag, beat.Price)
+	beatQuery := fmt.Sprintf("INSERT INTO %s (bpm, key, path, photo, tag, price) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id", beatTable)
+	row := tx.QueryRow(beatQuery, beat.Bpm, beat.Key, beat.Path, beat.Photo, beat.Tag, beat.Price)
 	if err := row.Scan(&beatId); err != nil {
 		tx.Rollback()
 		return 0, err
@@ -54,7 +54,7 @@ func (r *BeatRepository) GetAll() ([]beatstore.Beat, error) {
 
 	for rows.Next() {
 		var beat beatstore.Beat
-		if err := rows.Scan(&beat.Id, &beat.Bpm, &beat.Key, &beat.Path, &beat.Tag, &beat.Price); err != nil {
+		if err := rows.Scan(&beat.Id, &beat.Bpm, &beat.Key, &beat.Path, &beat.Photo, &beat.Tag, &beat.Price); err != nil {
 			return beats, err
 		}
 		beats = append(beats, beat)
@@ -83,6 +83,12 @@ func (r *BeatRepository) Update(userId, beatId int, input beatstore.BeatUpdateIn
 	if input.Path != nil {
 		setValues = append(setValues, fmt.Sprintf("path=$%d", argId))
 		args = append(args, *input.Path)
+		argId++
+	}
+
+	if input.Photo != nil {
+		setValues = append(setValues, fmt.Sprintf("photo=$%d", argId))
+		args = append(args, *input.Photo)
 		argId++
 	}
 
