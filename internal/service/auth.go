@@ -37,7 +37,7 @@ type tokenClaims struct {
 }
 
 func (s *AuthService) GenerateToken(email, password string) (string, error) {
-	user, err := s.repos.GetUser(email, generatePasswordHash(password))
+	userId, err := s.repos.GetUser(email, generatePasswordHash(password))
 	if err != nil {
 		return "", err
 	}
@@ -47,7 +47,7 @@ func (s *AuthService) GenerateToken(email, password string) (string, error) {
 			ExpiresAt: time.Now().Add(tokenTTL).Unix(),
 			IssuedAt:  time.Now().Unix(),
 		},
-		user.Id,
+		userId,
 	})
 	signingKey := os.Getenv("SIGNING_KEY")
 
