@@ -7,7 +7,7 @@ import (
 
 type Authorization interface {
 	CreateUser(user beatstore.User) (int, error)
-	GetUser(email, password string) (beatstore.User, error)
+	GetUser(email, password string) (int, error)
 }
 
 type Beat interface {
@@ -17,14 +17,23 @@ type Beat interface {
 	Delete(userId, beatId int) error
 }
 
+type User interface {
+	Get(userId int) (beatstore.User, error)
+	GetAll() ([]beatstore.User, error)
+	Update(userId int, input beatstore.UserUpdateInput) error
+	Delete(userId int) error
+}
+
 type Repository struct {
 	Authorization
 	Beat
+	User
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthService(db),
 		Beat:          NewBeatRepository(db),
+		User:          NewUserRepository(db),
 	}
 }
