@@ -18,14 +18,23 @@ type Beat interface {
 	Delete(userId, beatId int) error
 }
 
+type User interface {
+	Get(userId int) (beatstore.User, error)
+	GetAll() ([]beatstore.User, error)
+	Update(userId int, input beatstore.UserUpdateInput) error
+	Delete(userId int) error
+}
+
 type Service struct {
 	Authorization
 	Beat
+	User
 }
 
 func NewService(repos *repository.Repository) *Service {
 	return &Service{
-		Authorization: NewAuthService(repos),
+		Authorization: NewAuthService(repos.Authorization),
 		Beat:          NewBeatService(repos.Beat),
+		User:          NewUserService(repos.User),
 	}
 }
