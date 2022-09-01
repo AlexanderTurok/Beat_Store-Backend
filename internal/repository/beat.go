@@ -33,7 +33,7 @@ func (r *BeatRepository) Create(userId int, beat beatstore.Beat) (int, error) {
 		return 0, err
 	}
 
-	usersBeatQuery := fmt.Sprintf("INSERT INTO %s (user_id, beat_id) VALUES ($1, $2)", usersBeatTable)
+	usersBeatQuery := fmt.Sprintf("INSERT INTO %s (user_id, beat_id) VALUES ($1, $2)", usersPlaylistTable)
 	_, err = tx.Exec(usersBeatQuery, userId, beatId)
 	if err != nil {
 		tx.Rollback()
@@ -69,7 +69,7 @@ func (r *BeatRepository) GetUsersBeats(userId int) ([]beatstore.Beat, error) {
 	var beats []beatstore.Beat
 
 	query := fmt.Sprintf("SELECT bt.* FROM %s bt INNER JOIN %s ub on bt.id = ub.beat_id WHERE ub.user_id = $1",
-		beatTable, usersBeatTable)
+		beatTable, usersPlaylistTable)
 	err := r.db.Select(&beats, query, userId)
 
 	return beats, err
@@ -107,7 +107,7 @@ func (r *BeatRepository) Update(userId, beatId int, input beatstore.BeatUpdateIn
 
 	setQuery := strings.Join(setValues, ", ")
 	query := fmt.Sprintf("UPDATE %s bt SET %s FROM %s ub WHERE bt.id = ub.beat_id AND ub.beat_id=$%d AND ub.user_id=$%d",
-		beatTable, setQuery, usersBeatTable, argId, argId+1)
+		beatTable, setQuery, usersPlaylistTable, argId, argId+1)
 	args = append(args, beatId, userId)
 
 	_, err := r.db.Exec(query, args...)
@@ -116,7 +116,7 @@ func (r *BeatRepository) Update(userId, beatId int, input beatstore.BeatUpdateIn
 
 func (r *BeatRepository) Delete(userId, beatId int) error {
 	query := fmt.Sprintf("DELETE FROM %s bt USING %s ub WHERE bt.id = ub.beat_id AND ub.user_id=$1 AND ub.beat_id=$2",
-		beatTable, usersBeatTable)
+		beatTable, usersPlaylistTable)
 	_, err := r.db.Exec(query, userId, beatId)
 
 	return err

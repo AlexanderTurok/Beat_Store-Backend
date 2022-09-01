@@ -20,7 +20,7 @@ func NewAuthService(db *sqlx.DB) *AuthRepository {
 func (r *AuthRepository) CreateUser(user beatstore.User) (int, error) {
 	var id int
 	query := fmt.Sprintf("INSERT INTO %s (name, username, photo, email, password_hash) values ($1, $2, $3, $4, $5) RETURNING id", userTable)
-	row := r.db.QueryRow(query, user.Name, user.Username, user.Photo, user.Email, user.Password)
+	row := r.db.QueryRow(query, user.Name, user.Username, user.Email, user.Password)
 	if err := row.Scan(&id); err != nil {
 		return 0, err
 	}
