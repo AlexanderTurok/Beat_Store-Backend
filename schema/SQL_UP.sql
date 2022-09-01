@@ -1,26 +1,60 @@
-CREATE TABLE users (
-  id SERIAL NOT NULL UNIQUE,
-  name VARCHAR(255) NOT NULL,
-  photo VARCHAR(255) NOT NULL,
-  username VARCHAR(255) UNIQUE NOT NULL,
-  email VARCHAR(255) UNIQUE NOT NULL,
-  password_hash VARCHAR(255) NOT NULL
+CREATE TABLE user (
+  id BIGSERIAL,
+  name TEXT,
+  username TEXT UNIQUE NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  photo_path TEXT,
+  password_hash TEXT NOT NULL,
+  created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+
+CREATE TABLE artist (
+  id BIGINT UNIQUE NOT NULL,
+  artist_name TEXT NOT NULL,
+  created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE beat (
-  id SERIAL NOT NULL UNIQUE,
-  bpm INT NOT NULL,
-  key VARCHAR(16) NOT NULL,
-  photo VARCHAR(255) NOT NULL,
-  path VARCHAR(255) NOT NULL,
-  tag VARCHAR(255),
-  price FLOAT NOT NULL
+  id BIGSERIAL,
+  artist_id BIGINT REFERENCES artist (id) NOT NULL ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  bpm TEXT NOT NULL,
+  key TEXT NOT NULL,
+  photo_path TEXT NOT NULL,
+  mp3_path TEXT NOT NULL,
+  wav_path TEXT,
+  like INT DEFAULT(0),
+  genre TEXT DEFAULT("All"),
+  mood TEXT DEFAULT("All"),
+  created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 
-CREATE TABLE users_beat (
-  id SERIAL NOT NULL UNIQUE,
-  user_id INT REFERENCES users (id) ON DELETE CASCADE NOT NULL,
-  beat_id INT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
-  bought BOOLEAN DEFAULT (FALSE) -- if bought=false -> it is beat which user sells
-  -- if bought=true -> it is beat which user bought 
+CREATE TABLE tag (
+  id BIGSERIAL,
+  beat_id BIGINT REFERENCES beat (id) NOT NULL ON DELETE CASCADE,
+  name TEXT NOT NULL
+);
+
+CREATE TABLE price (
+  id BIGSERIAL,
+  beat_id BIGINT REFERENCES beat (id) UNIQUE NOT NULL ON DELETE CASCADE,
+  standart_price TEXT NOT NULL,
+  premium_price TEXT,
+  unlimited_price TEXT
+);
+
+CREATE TABLE users_bought_beat (
+  id BIGSERIAL,
+  user_id BIGINT REFERENCES user (id) NOT NULL ON DELETE CASCADE,
+  beat_id BIGINT REFERENCES beat (id) NOT NULL ON DELETE CASCADE,
+  created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+
+CREATE TABLE users_playlist (
+  id BIGSERIAL,
+  user_id BIGINT REFERENCES user (id) NOT NULL ON DELETE CASCADE,
+  beat_id BIGINT REFERENCES beat (id) NOT NULL ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );

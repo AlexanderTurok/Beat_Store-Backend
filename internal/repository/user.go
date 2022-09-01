@@ -38,7 +38,7 @@ func (r *UserRepository) GetAll() ([]beatstore.User, error) {
 
 	for rows.Next() {
 		var user beatstore.User
-		if err := rows.Scan(&user.Name, &user.Username, &user.Photo, &user.Email); err != nil {
+		if err := rows.Scan(&user.Name, &user.Username, &user.Email); err != nil {
 			return users, err
 		}
 		users = append(users, user)
