@@ -3,12 +3,12 @@ package beatstore
 import "errors"
 
 type User struct {
-	Id       int    `json:"-" db:"id"`
-	Name     string `json:"name" db:"name" binding:"required"`
-	Username string `json:"username" db:"username" binding:"required"`
-	Photo    string `json:"photo" db:"photo" binding:"required"`
-	Email    string `json:"email" db:"email" binding:"required"`
-	Password string `json:"password"`
+	Id        int    `json:"-" db:"id"`
+	Name      string `json:"name" db:"name"`
+	Username  string `json:"username" db:"username" binding:"required"`
+	PhotoPath string `json:"photo_path" db:"photo_path"`
+	Email     string `json:"email" db:"email" binding:"required"`
+	Password  string `json:"password" db:"password_hash"`
 }
 
 type UserUpdateInput struct {
