@@ -32,6 +32,38 @@ func (h *Handler) createBeat(c *gin.Context) {
 	})
 }
 
+func (h *Handler) getUsersBeats(c *gin.Context) {
+	userId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid id param")
+		return
+	}
+
+	beats, err := h.service.GetUsersBeats(userId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beats)
+}
+
+func (h *Handler) getBeatsByToken(c *gin.Context) {
+	userId, err := getUserId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	beats, err := h.service.GetUsersBeats(userId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beats)
+}
+
 func (h *Handler) getAllBeats(c *gin.Context) {
 	beats, err := h.service.Beat.GetAll()
 	if err != nil {
