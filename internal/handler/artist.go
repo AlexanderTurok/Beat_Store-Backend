@@ -38,14 +38,6 @@ func (h *Handler) getArtistByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, artist)
 }
 
-func (h *Handler) getArtistById(c *gin.Context) {
-
-}
-
-func (h *Handler) getAllArtists(c *gin.Context) {
-
-}
-
 func (h *Handler) deleteArtist(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
