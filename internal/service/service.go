@@ -35,6 +35,6 @@ func NewService(repos *repository.Repository) *Service {
 	return &Service{
 		Authorization: NewAuthService(repos.Authorization),
 		Beat:          NewBeatService(repos.Beat),
-		Account:       NewUserService(repos.User),
+		Account:       NewAccountService(repos.Account),
 	}
 }
