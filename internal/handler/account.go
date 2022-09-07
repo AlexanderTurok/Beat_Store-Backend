@@ -22,16 +22,6 @@ func (h *Handler) getAccountByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, account)
 }
 
-func (h *Handler) getAllAccounts(c *gin.Context) {
-	// users, err := h.service.User.GetAll()
-	// if err != nil {
-	// 	newErrorResponse(c, http.StatusInternalServerError, err.Error())
-	// 	return
-	// }
-
-	// c.JSON(http.StatusOK, users)
-}
-
 func (h *Handler) updateAccount(c *gin.Context) {
 	// userId, err := getUserId(c)
 	// if err != nil {
