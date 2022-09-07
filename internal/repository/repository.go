@@ -11,6 +11,7 @@ type Authorization interface {
 }
 
 type Account interface {
+	Get(accountId int) (beatstore.Account, error)
 }
 
 type Artist interface {
@@ -34,6 +35,6 @@ func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthService(db),
 		Beat:          NewBeatRepository(db),
-		Account:       NewUserRepository(db),
+		Account:       NewAccountRepository(db),
 	}
 }
