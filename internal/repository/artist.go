@@ -37,7 +37,7 @@ func (r *ArtistRepository) Get(accountId int) (beatstore.Account, error) {
 			account.photo_path
 		FROM %s 
 		JOIN %s ON account.id = artist.id
-		WHERE id=$1`, artistTable, accountTable,
+		WHERE account.id=$1`, artistTable, accountTable,
 	)
 	err := r.db.Get(&artist, query, accountId)
 
