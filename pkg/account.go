@@ -6,13 +6,13 @@ import (
 )
 
 type Account struct {
-	Id        int       `json:"-"`
-	Name      string    `json:"name" binding:"required"`
-	Username  string    `json:"username" binding:"required"`
-	Email     string    `json:"email" binding:"required"`
-	PhotoPath string    `json:"photo_path"`
-	Password  string    `json:"password"`
-	CreatedAt time.Time `json:"created_at"`
+	Id        int       `json:"-" db:"id"`
+	Name      string    `json:"name" db:"name" binding:"required"`
+	Username  string    `json:"username" db:"username" binding:"required"`
+	Email     string    `json:"email" db:"email" binding:"required"`
+	PhotoPath string    `json:"photo_path" db:"photo_path"`
+	Password  string    `json:"password" binding:"required"`
+	CreatedAt time.Time `json:"created_at" db:"created_at"`
 }
 
 type AccountUpdateInput struct {
