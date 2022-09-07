@@ -43,3 +43,18 @@ func (r *ArtistRepository) Get(accountId int) (beatstore.Account, error) {
 
 	return artist, err
 }
+
+func (r *ArtistRepository) GetPasswordHash(accountId int) (beatstore.Password, error) {
+	var passwordHash beatstore.Password
+	query := fmt.Sprintf("SELECT password_hash FROM %s WHERE id=$1", accountTable)
+	err := r.db.Get(&passwordHash, query, accountId)
+
+	return passwordHash, err
+}
+
+func (r *ArtistRepository) Delete(accountId int) error {
+	query := fmt.Sprintf("DELETE FROM %s WHERE id=$1", artistTable)
+	_, err := r.db.Exec(query, accountId)
+
+	return err
+}
