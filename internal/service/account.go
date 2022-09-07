@@ -1,6 +1,8 @@
 package service
 
 import (
+	"errors"
+
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 )
@@ -25,4 +27,18 @@ func (s *AccountService) Update(accountId int, input beatstore.AccountUpdateInpu
 	}
 
 	return s.repos.Update(accountId, input)
+}
+
+func (s *AccountService) Delete(accountId int, password beatstore.Password) error {
+	password.Password = generatePasswordHash(password.Password)
+	passwordHash, err := s.repos.GetPasswordHash(accountId)
+	if err != nil {
+		return err
+	}
+
+	if password.Password != passwordHash.Password {
+		return errors.New("invalid password")
+	}
+
+	return s.repos.Delete(accountId)
 }
