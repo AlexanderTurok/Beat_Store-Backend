@@ -26,39 +26,58 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 	api := router.Group("/api")
 	{
-		user := api.Group("/user", h.userIdentity)
+		accounts := api.Group("/accounts", h.userIdentity)
 		{
-			user.GET("/", h.getUser)
-			user.PUT("/", h.updateUser)
-			user.DELETE("/", h.deleteUser)
+			accounts.POST("/")
+			accounts.GET("/")
+			accounts.GET("/:id")
+			accounts.PUT("/:id")
+			accounts.DELETE("/:id")
 
-			cart := user.Group("/cart")
+			carts := accounts.Group("/carts")
 			{
-				cart.POST("/", h.addBeatToCart)
-				cart.GET("/", h.getAllBeatsFromCart)
-				cart.GET("/:id", h.getBeatByIdFromCart)
-				cart.DELETE("/", h.deleteAllBeatsInCart)
-				cart.DELETE("/:id", h.deleteBeatInCart)
+				carts.POST("/")
+				carts.GET("/")
+				carts.DELETE("/:")
+				carts.DELETE("/:id")
 			}
 
-			beats := user.Group("/beats")
+			artists := accounts.Group("/artists")
 			{
-				beats.GET("/", h.getBeatsByToken)
-				beats.POST("/", h.createBeat)
-				beats.PUT("/:id", h.updateBeat)
-				beats.DELETE("/:id", h.deleteBeat)
+				artists.GET("/")
+				artists.GET("/:id")
+				artists.DELETE("/:id")
+
+				beats := accounts.Group("/beats")
+				{
+					beats.POST("/")
+					beats.GET("/")
+					beats.GET("/:id")
+					beats.PUT("/:id")
+					beats.DELETE("/:id")
+				}
+
+				playlists := accounts.Group("/playlists")
+				{
+					playlists.POST("/")
+					playlists.GET("/")
+					playlists.GET("/:id")
+					playlists.PUT("/:id")
+					playlists.DELETE("/:id")
+				}
 			}
 		}
 
 		beats := api.Group("/beats")
 		{
-			beats.GET("/", h.getAllBeats)
+			beats.GET("/")
+			beats.GET("/:id")
 		}
 
-		users := api.Group("/users")
+		playlists := api.Group("/playlists")
 		{
-			beats.GET("/:id", h.getUsersBeats)
-			users.GET("/", h.getAllUsers)
+			playlists.GET("/")
+			playlists.GET("/:id")
 		}
 	}
 
