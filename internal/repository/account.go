@@ -34,6 +34,21 @@ func (r *AccountRepository) Update(accountId int, input beatstore.AccountUpdateI
 	return err
 }
 
+func (r *AccountRepository) GetPasswordHash(accountId int) (beatstore.Password, error) {
+	var passwordHash beatstore.Password
+	query := fmt.Sprintf("SELECT password_hash FROM %s WHERE id=$1", accountTable)
+	err := r.db.Get(&passwordHash, query, accountId)
+
+	return passwordHash, err
+}
+
+func (r *AccountRepository) Delete(accountId int) error {
+	query := fmt.Sprintf("DELETE FROM %s WHERE id=$1", accountTable)
+	_, err := r.db.Exec(query, accountId)
+
+	return err
+}
+
 func createAccountUpdateQuery(accountId int, input beatstore.AccountUpdateInput) (string, []interface{}) {
 	setValues := make([]string, 0)
 	args := make([]interface{}, 0)
