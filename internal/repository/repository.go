@@ -12,6 +12,9 @@ type Authorization interface {
 
 type Account interface {
 	Get(accountId int) (beatstore.Account, error)
+	Update(accountId int, input beatstore.AccountUpdateInput) error
+	GetPasswordHash(accountId int) (beatstore.Password, error)
+	Delete(accountId int) error
 }
 
 type Artist interface {
