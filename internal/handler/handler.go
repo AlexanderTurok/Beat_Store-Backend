@@ -28,8 +28,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	{
 		accounts := api.Group("/accounts", h.userIdentity)
 		{
-			accounts.GET("/", h.getAllAccounts)
-			accounts.GET("/:id", h.getAccount)
+			accounts.GET("/", h.getAccountByToken)
 			accounts.PUT("/:id", h.updateAccount)
 			accounts.DELETE("/:id", h.deleteAccount)
 
@@ -61,8 +60,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			artists := accounts.Group("/artists")
 			{
 				artists.POST("/", h.createArtist)
-				artists.GET("/:id", h.getArtist)
-				artists.GET("/", h.getAllArtists)
+				artists.GET("/", h.getArtistByToken)
 				artists.DELETE("/:id", h.deleteArtist)
 
 				beats := artists.Group("/beats")
@@ -74,6 +72,12 @@ func (h *Handler) InitRoutes() *gin.Engine {
 					beats.DELETE("/:id", h.deleteArtistsBeat)
 				}
 			}
+		}
+
+		artists := api.Group("/artists")
+		{
+			artists.GET("/", h.getAllArtists)
+			artists.GET("/:id", h.getArtistById)
 		}
 
 		beats := api.Group("/beats")
