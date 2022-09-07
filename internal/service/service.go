@@ -20,6 +20,7 @@ type Account interface {
 type Artist interface {
 	Create(accountId int) error
 	Get(accountId int) (beatstore.Account, error)
+	Delete(accountId int, password beatstore.Password) error
 }
 
 type Beat interface {
