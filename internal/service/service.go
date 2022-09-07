@@ -24,6 +24,7 @@ type Artist interface {
 }
 
 type Beat interface {
+	Create(artistId int, input beatstore.Beat) (int, error)
 }
 
 type Playlist interface {
