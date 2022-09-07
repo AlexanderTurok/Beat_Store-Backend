@@ -6,20 +6,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) getAccount(c *gin.Context) {
+func (h *Handler) getAccountByToken(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	user, err := h.service.Account.Get(accountId)
+	account, err := h.service.Account.Get(accountId)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	c.JSON(http.StatusOK, user)
+	c.JSON(http.StatusOK, account)
 }
 
 func (h *Handler) getAllAccounts(c *gin.Context) {
