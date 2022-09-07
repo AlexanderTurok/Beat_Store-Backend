@@ -6,7 +6,11 @@ func (h *Handler) createArtist(c *gin.Context) {
 
 }
 
-func (h *Handler) getArtist(c *gin.Context) {
+func (h *Handler) getArtistByToken(c *gin.Context) {
+
+}
+
+func (h *Handler) getArtistById(c *gin.Context) {
 
 }
 
