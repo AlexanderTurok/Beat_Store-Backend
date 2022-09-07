@@ -61,7 +61,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			{
 				artists.POST("/", h.createArtist)
 				artists.GET("/", h.getArtistByToken)
-				artists.DELETE("/:id", h.deleteArtist)
+				artists.DELETE("/", h.deleteArtist)
 
 				beats := artists.Group("/beats")
 				{
