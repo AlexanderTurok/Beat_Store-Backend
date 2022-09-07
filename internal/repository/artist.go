@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -22,4 +23,23 @@ func (r *ArtistRepository) Create(accountId int) error {
 	_, err := r.db.Exec(query, accountId, time.Now())
 
 	return err
+}
+
+func (r *ArtistRepository) Get(accountId int) (beatstore.Account, error) {
+	var artist beatstore.Account
+
+	query := fmt.Sprintf(`
+		SELECT 
+			artist.created_at,
+			account.name,
+			account.username, 
+			account.email, 
+			account.photo_path
+		FROM %s 
+		JOIN %s ON account.id = artist.id
+		WHERE id=$1`, artistTable, accountTable,
+	)
+	err := r.db.Get(&artist, query, accountId)
+
+	return artist, err
 }
