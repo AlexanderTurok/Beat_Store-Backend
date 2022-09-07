@@ -29,8 +29,8 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		accounts := api.Group("/accounts", h.userIdentity)
 		{
 			accounts.GET("/", h.getAccountByToken)
-			accounts.PUT("/:id", h.updateAccount)
-			accounts.DELETE("/:id", h.deleteAccount)
+			accounts.PUT("/", h.updateAccount)
+			accounts.DELETE("/", h.deleteAccount)
 
 			beats := accounts.Group("/beats")
 			{
