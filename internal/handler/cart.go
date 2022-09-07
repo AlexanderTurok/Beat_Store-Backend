@@ -6,10 +6,6 @@ func (h *Handler) addBeatToCart(ctx *gin.Context) {
 
 }
 
-func (h *Handler) getBeatByIdFromCart(ctx *gin.Context) {
-
-}
-
 func (h *Handler) getAllBeatsFromCart(ctx *gin.Context) {
 
 }
