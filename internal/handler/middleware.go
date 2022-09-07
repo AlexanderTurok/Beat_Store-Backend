@@ -10,7 +10,7 @@ import (
 
 const (
 	authorizationHeader = "Authorization"
-	userCtx             = "userId"
+	accountCtx          = "accountId"
 )
 
 func (h *Handler) userIdentity(c *gin.Context) {
@@ -32,24 +32,24 @@ func (h *Handler) userIdentity(c *gin.Context) {
 		return
 	}
 
-	userId, err := h.service.Authorization.ParseToken(headerParts[1])
+	accountId, err := h.service.Authorization.ParseToken(headerParts[1])
 	if err != nil {
 		newErrorResponse(c, http.StatusUnauthorized, err.Error())
 		return
 	}
 
-	c.Set(userCtx, userId)
+	c.Set(accountCtx, accountId)
 }
 
-func getUserId(c *gin.Context) (int, error) {
-	id, ok := c.Get(userCtx)
+func getAccountId(c *gin.Context) (int, error) {
+	id, ok := c.Get(accountCtx)
 	if !ok {
-		return 0, errors.New("user id not found")
+		return 0, errors.New("account id not found")
 	}
 
 	idInt, ok := id.(int)
 	if !ok {
-		return 0, errors.New("user id is of invalid type")
+		return 0, errors.New("account id is of invalid type")
 	}
 
 	return idInt, nil
