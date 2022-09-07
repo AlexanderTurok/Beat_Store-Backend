@@ -12,6 +12,7 @@ type Authorization interface {
 }
 
 type Account interface {
+	Get(accountId int) (beatstore.Account, error)
 }
 
 type Artist interface {
