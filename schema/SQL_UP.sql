@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS account (
   id BIGSERIAL PRIMARY KEY,
-  name TEXT,
+  name TEXT NOT NULL,
   username TEXT UNIQUE NOT NULL,
   email TEXT UNIQUE NOT NULL,
   photo_path TEXT,
@@ -10,7 +10,6 @@ CREATE TABLE IF NOT EXISTS account (
 
 CREATE TABLE IF NOT EXISTS artist (
   id BIGINT REFERENCES account (id) ON DELETE CASCADE UNIQUE NOT NULL,
-  artist_name TEXT NOT NULL,
   created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
   PRIMARY KEY (id)
 );
@@ -98,9 +97,9 @@ FROM
 
 -- Create Artist
 INSERT INTO
-  artist (id, artist_name, created_at)
+  artist (id, created_at)
 VALUES
-  (1, 'Alex Beats', CURRENT_TIMESTAMP);
+  (1, CURRENT_TIMESTAMP);
 
 -- Select Artist
 SELECT
