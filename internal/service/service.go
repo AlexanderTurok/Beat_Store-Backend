@@ -18,6 +18,9 @@ type Account interface {
 }
 
 type Artist interface {
+	Create(accountId int) error
+	Get(accountId int) (beatstore.Account, error)
+	Delete(accountId int, password beatstore.Password) error
 }
 
 type Beat interface {
@@ -37,7 +40,8 @@ type Service struct {
 func NewService(repos *repository.Repository) *Service {
 	return &Service{
 		Authorization: NewAuthService(repos.Authorization),
-		Beat:          NewBeatService(repos.Beat),
 		Account:       NewAccountService(repos.Account),
+		Artist:        NewArtistService(repos.Artist),
+		Beat:          NewBeatService(repos.Beat),
 	}
 }

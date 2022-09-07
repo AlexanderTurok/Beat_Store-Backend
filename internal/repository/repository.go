@@ -18,6 +18,10 @@ type Account interface {
 }
 
 type Artist interface {
+	Create(accountId int) error
+	Get(accountId int) (beatstore.Account, error)
+	GetPasswordHash(accountId int) (beatstore.Password, error)
+	Delete(accountId int) error
 }
 
 type Beat interface {
@@ -37,7 +41,8 @@ type Repository struct {
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthService(db),
-		Beat:          NewBeatRepository(db),
 		Account:       NewAccountRepository(db),
+		Artist:        NewArtistRepository(db),
+		Beat:          NewBeatRepository(db),
 	}
 }
