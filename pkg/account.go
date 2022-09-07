@@ -18,8 +18,8 @@ type Account struct {
 type AccountUpdateInput struct {
 	Name      *string `json:"name"`
 	Username  *string `json:"username"`
-	PhotoPath *string `json:"photo" `
 	Email     *string `json:"email"`
+	PhotoPath *string `json:"photo_path"`
 }
 
 func (a *AccountUpdateInput) Validate() error {
