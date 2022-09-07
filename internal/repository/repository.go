@@ -6,35 +6,34 @@ import (
 )
 
 type Authorization interface {
-	CreateUser(user beatstore.User) (int, error)
-	GetUser(email, password string) (int, error)
+	CreateAccount(account beatstore.Account) (int, error)
+	GetAccountId(email, password string) (int, error)
+}
+
+type Account interface {
+}
+
+type Artist interface {
 }
 
 type Beat interface {
-	Create(userId int, beat beatstore.Beat) (int, error)
-	GetAll() ([]beatstore.Beat, error)
-	GetUsersBeats(userId int) ([]beatstore.Beat, error)
-	Update(userId, beatId int, input beatstore.BeatUpdateInput) error
-	Delete(userId, beatId int) error
 }
 
-type User interface {
-	Get(userId int) (beatstore.User, error)
-	GetAll() ([]beatstore.User, error)
-	Update(userId int, input beatstore.UserUpdateInput) error
-	Delete(userId int) error
+type Playlist interface {
 }
 
 type Repository struct {
 	Authorization
+	Account
+	Artist
 	Beat
-	User
+	Playlist
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthService(db),
 		Beat:          NewBeatRepository(db),
-		User:          NewUserRepository(db),
+		Account:       NewUserRepository(db),
 	}
 }

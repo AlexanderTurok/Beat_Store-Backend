@@ -2,6 +2,7 @@ package repository
 
 import (
 	"fmt"
+	"time"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/jmoiron/sqlx"
@@ -17,10 +18,10 @@ func NewAuthService(db *sqlx.DB) *AuthRepository {
 	}
 }
 
-func (r *AuthRepository) CreateUser(user beatstore.User) (int, error) {
+func (r *AuthRepository) CreateAccount(account beatstore.Account) (int, error) {
 	var id int
-	query := fmt.Sprintf("INSERT INTO %s (name, username, photo, email, password_hash) values ($1, $2, $3, $4, $5) RETURNING id", userTable)
-	row := r.db.QueryRow(query, user.Name, user.Username, user.Email, user.Password)
+	query := fmt.Sprintf("INSERT INTO %s (name, username, email, photo_path, password_hash, created_at) values ($1, $2, $3, $4, $5, $6) RETURNING id", accountTable)
+	row := r.db.QueryRow(query, account.Name, account.Username, account.Email, account.PhotoPath, account.Password, time.Now())
 	if err := row.Scan(&id); err != nil {
 		return 0, err
 	}
@@ -28,10 +29,10 @@ func (r *AuthRepository) CreateUser(user beatstore.User) (int, error) {
 	return id, nil
 }
 
-func (r *AuthRepository) GetUser(email, password string) (int, error) {
-	var user int
-	query := fmt.Sprintf("SELECT id FROM %s WHERE email=$1 AND password_hash=$2", userTable)
-	err := r.db.Get(&user, query, email, password)
+func (r *AuthRepository) GetAccountId(email, password string) (int, error) {
+	var id int
+	query := fmt.Sprintf("SELECT id FROM %s WHERE email=$1 AND password_hash=$2", accountTable)
+	err := r.db.Get(&id, query, email, password)
 
-	return user, err
+	return id, err
 }

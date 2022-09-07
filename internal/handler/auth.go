@@ -8,14 +8,14 @@ import (
 )
 
 func (h *Handler) signUp(c *gin.Context) {
-	var userInput beatstore.User
+	var accountInput beatstore.Account
 
-	if err := c.BindJSON(&userInput); err != nil {
+	if err := c.BindJSON(&accountInput); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid input body")
 		return
 	}
 
-	id, err := h.service.Authorization.CreateUser(userInput)
+	id, err := h.service.Authorization.CreateAccount(accountInput)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
@@ -32,14 +32,14 @@ type signInInput struct {
 }
 
 func (h *Handler) signIn(c *gin.Context) {
-	var userInput signInInput
+	var accountInput signInInput
 
-	if err := c.BindJSON(&userInput); err != nil {
+	if err := c.BindJSON(&accountInput); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
-	token, err := h.service.GenerateToken(userInput.Email, userInput.Password)
+	token, err := h.service.GenerateToken(accountInput.Email, accountInput.Password)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return

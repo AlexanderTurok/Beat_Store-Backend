@@ -26,9 +26,9 @@ func NewAuthService(repos repository.Authorization) *AuthService {
 	}
 }
 
-func (s *AuthService) CreateUser(user beatstore.User) (int, error) {
-	user.Password = generatePasswordHash(user.Password)
-	return s.repos.CreateUser(user)
+func (s *AuthService) CreateAccount(account beatstore.Account) (int, error) {
+	account.Password = generatePasswordHash(account.Password)
+	return s.repos.CreateAccount(account)
 }
 
 type tokenClaims struct {
@@ -37,7 +37,7 @@ type tokenClaims struct {
 }
 
 func (s *AuthService) GenerateToken(email, password string) (string, error) {
-	userId, err := s.repos.GetUser(email, generatePasswordHash(password))
+	userId, err := s.repos.GetAccountId(email, generatePasswordHash(password))
 	if err != nil {
 		return "", err
 	}
