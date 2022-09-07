@@ -4,12 +4,12 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 )
 
-type UserService struct {
-	repos repository.User
+type AccountService struct {
+	repos repository.Account
 }
 
-func NewUserService(repos repository.User) *UserService {
-	return &UserService{
+func NewAccountService(repos repository.Account) *AccountService {
+	return &AccountService{
 		repos: repos,
 	}
 }
