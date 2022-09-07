@@ -7,7 +7,7 @@ import (
 
 type Beat struct {
 	Id        int       `json:"-" db:"id"`
-	ArtistId  int       `json:"artist_id" db:"artist_db" binding:"required"`
+	ArtistId  int       `json:"-" db:"artist_id"`
 	Name      string    `json:"name" db:"name" binding:"required"`
 	Bpm       string    `json:"bpm" db:"bpm" binding:"required"`
 	Key       string    `json:"key" db:"key" binding:"required"`
@@ -31,9 +31,9 @@ type Tag struct {
 type Price struct {
 	Id             int    `json:"-" db:"id"`
 	BeatId         int    `json:"beat_id" db:"beat_id"`
-	StandartPrice  string `json:"standart" db:"standart"`
-	PremiumPrice   string `json:"premium" db:"premium"`
-	UnlimitedPrice string `json:"unlimited" db:"unlimited"`
+	StandartPrice  string `json:"standart_price" db:"standart_price"`
+	PremiumPrice   string `json:"premium_price" db:"premium_price"`
+	UnlimitedPrice string `json:"unlimited_price" db:"unlimited_price"`
 }
 
 type BeatUpdateInput struct {
