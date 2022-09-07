@@ -29,7 +29,7 @@ func (s *AccountService) Update(accountId int, input beatstore.AccountUpdateInpu
 	return s.repos.Update(accountId, input)
 }
 
-func (s *AccountService) Delete(accountId int, password beatstore.Password) error {
+func (s *AccountService) Delete(accountId int, password beatstore.AccountPassword) error {
 	password.Password = generatePasswordHash(password.Password)
 	passwordHash, err := s.repos.GetPasswordHash(accountId)
 	if err != nil {

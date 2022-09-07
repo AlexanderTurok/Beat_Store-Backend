@@ -14,13 +14,13 @@ type Authorization interface {
 type Account interface {
 	Get(accountId int) (beatstore.Account, error)
 	Update(accountId int, input beatstore.AccountUpdateInput) error
-	Delete(accountId int, password beatstore.Password) error
+	Delete(accountId int, password beatstore.AccountPassword) error
 }
 
 type Artist interface {
 	Create(accountId int) error
 	Get(accountId int) (beatstore.Account, error)
-	Delete(accountId int, password beatstore.Password) error
+	Delete(accountId int, password beatstore.AccountPassword) error
 }
 
 type Beat interface {

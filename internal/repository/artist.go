@@ -44,8 +44,8 @@ func (r *ArtistRepository) Get(accountId int) (beatstore.Account, error) {
 	return artist, err
 }
 
-func (r *ArtistRepository) GetPasswordHash(accountId int) (beatstore.Password, error) {
-	var passwordHash beatstore.Password
+func (r *ArtistRepository) GetPasswordHash(accountId int) (beatstore.AccountPassword, error) {
+	var passwordHash beatstore.AccountPassword
 	query := fmt.Sprintf("SELECT password_hash FROM %s WHERE id=$1", accountTable)
 	err := r.db.Get(&passwordHash, query, accountId)
 

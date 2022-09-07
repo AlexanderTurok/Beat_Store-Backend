@@ -22,7 +22,7 @@ type AccountUpdateInput struct {
 	PhotoPath *string `json:"photo_path"`
 }
 
-type Password struct {
+type AccountPassword struct {
 	Password string `json:"password" db:"password_hash"`
 }
 

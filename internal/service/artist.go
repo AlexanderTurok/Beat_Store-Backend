@@ -25,7 +25,7 @@ func (s *ArtistService) Get(accountId int) (beatstore.Account, error) {
 	return s.repos.Get(accountId)
 }
 
-func (s *ArtistService) Delete(accountId int, password beatstore.Password) error {
+func (s *ArtistService) Delete(accountId int, password beatstore.AccountPassword) error {
 	password.Password = generatePasswordHash(password.Password)
 	passwordHash, err := s.repos.GetPasswordHash(accountId)
 	if err != nil {

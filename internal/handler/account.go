@@ -51,7 +51,7 @@ func (h *Handler) deleteAccount(c *gin.Context) {
 		return
 	}
 
-	var password beatstore.Password
+	var password beatstore.AccountPassword
 	if err := c.BindJSON(&password); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return

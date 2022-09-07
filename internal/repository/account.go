@@ -34,8 +34,8 @@ func (r *AccountRepository) Update(accountId int, input beatstore.AccountUpdateI
 	return err
 }
 
-func (r *AccountRepository) GetPasswordHash(accountId int) (beatstore.Password, error) {
-	var passwordHash beatstore.Password
+func (r *AccountRepository) GetPasswordHash(accountId int) (beatstore.AccountPassword, error) {
+	var passwordHash beatstore.AccountPassword
 	query := fmt.Sprintf("SELECT password_hash FROM %s WHERE id=$1", accountTable)
 	err := r.db.Get(&passwordHash, query, accountId)
 
