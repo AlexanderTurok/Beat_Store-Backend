@@ -1,23 +1,25 @@
 package handler
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
 func (h *Handler) getAccount(c *gin.Context) {
-	// userId, err := getUserId(c)
-	// if err != nil {
-	// 	newErrorResponse(c, http.StatusInternalServerError, err.Error())
-	// 	return
-	// }
+	accountId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
-	// user, err := h.service.User.Get(userId)
-	// if err != nil {
-	// 	newErrorResponse(c, http.StatusInternalServerError, err.Error())
-	// 	return
-	// }
+	user, err := h.service.Account.Get(accountId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
-	// c.JSON(http.StatusOK, user)
+	c.JSON(http.StatusOK, user)
 }
 
 func (h *Handler) getAllAccounts(c *gin.Context) {
