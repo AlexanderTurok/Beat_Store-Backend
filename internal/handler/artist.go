@@ -22,7 +22,19 @@ func (h *Handler) createArtist(c *gin.Context) {
 }
 
 func (h *Handler) getArtistByToken(c *gin.Context) {
+	accountId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	artist, err := h.service.Artist.Get(accountId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, artist)
 }
 
 func (h *Handler) getArtistById(c *gin.Context) {
