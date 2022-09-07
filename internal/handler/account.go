@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) getUser(c *gin.Context) {
+func (h *Handler) getAccount(c *gin.Context) {
 	userId, err := getUserId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -23,7 +23,7 @@ func (h *Handler) getUser(c *gin.Context) {
 	c.JSON(http.StatusOK, user)
 }
 
-func (h *Handler) getAllUsers(c *gin.Context) {
+func (h *Handler) getAllAccounts(c *gin.Context) {
 	users, err := h.service.User.GetAll()
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -33,7 +33,7 @@ func (h *Handler) getAllUsers(c *gin.Context) {
 	c.JSON(http.StatusOK, users)
 }
 
-func (h *Handler) updateUser(c *gin.Context) {
+func (h *Handler) updateAccount(c *gin.Context) {
 	userId, err := getUserId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -54,7 +54,7 @@ func (h *Handler) updateUser(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handler) deleteUser(c *gin.Context) {
+func (h *Handler) deleteAccount(c *gin.Context) {
 	userId, err := getUserId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
