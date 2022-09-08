@@ -6,34 +6,34 @@ import (
 )
 
 type Beat struct {
-	Id        int       `json:"-" db:"id"`
-	ArtistId  int       `json:"-" db:"artist_id"`
-	Name      string    `json:"name" db:"name" binding:"required"`
-	Bpm       string    `json:"bpm" db:"bpm" binding:"required"`
-	Key       string    `json:"key" db:"key" binding:"required"`
+	Id        int       `json:"-"          db:"id"`
+	ArtistId  int       `json:"-"          db:"artist_id"`
+	Name      string    `json:"name"       db:"name"       binding:"required"`
+	Bpm       string    `json:"bpm"        db:"bpm"        binding:"required"`
+	Key       string    `json:"key"        db:"key"        binding:"required"`
 	PhotoPath string    `json:"photo_path" db:"photo_path" binding:"required"`
-	MP3Path   string    `json:"mp3_path" db:"mp3_path" binding:"required"`
-	WavPath   string    `json:"wav_path" db:"wav_path"`
-	Likes     int       `json:"likes" db:"likes"`
-	Genre     string    `json:"genre" db:"genre"`
-	Mood      string    `json:"mood" db:"mood"`
-	Tags      []Tag     `json:"tags" db:"tags" binding:"required"`
-	Price     Price     `json:"price" db:"price" binding:"required"`
+	MP3Path   string    `json:"mp3_path"   db:"mp3_path"   binding:"required"`
+	WavPath   string    `json:"wav_path"   db:"wav_path"`
+	Likes     int       `json:"likes"      db:"likes"`
+	Genre     string    `json:"genre"      db:"genre"`
+	Mood      string    `json:"mood"       db:"mood"`
+	Tags      []Tag     `json:"tags"       db:"tags" `
+	Price     Price     `json:"price"      db:"price"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 }
 
 type Tag struct {
-	Id     int    `json:"-" db:"id"`
-	BeatId int    `json:"beat_id" db:"beat_id"`
-	Name   string `json:"name" db:"name"`
+	Id      int    `json:"id"       db:"id"`
+	BeatId  int    `json:"beat_id"  db:"beat_id"  binding:"required"`
+	TagName string `json:"tag_name" db:"tag_name" binding:"required"`
 }
 
 type Price struct {
-	Id             int    `json:"-" db:"id"`
-	BeatId         int    `json:"beat_id" db:"beat_id"`
-	StandartPrice  string `json:"standart_price" db:"standart_price"`
-	PremiumPrice   string `json:"premium_price" db:"premium_price"`
-	UnlimitedPrice string `json:"unlimited_price" db:"unlimited_price"`
+	Id        int    `json:"id"        db:"id"`
+	BeatId    int    `json:"beat_id"   db:"beat_id"  binding:"required"`
+	Standart  string `json:"standart"  db:"standart" binding:"required"`
+	Premium   string `json:"premium"   db:"premium"`
+	Unlimited string `json:"unlimited" db:"unlimited"`
 }
 
 type BeatUpdateInput struct {
