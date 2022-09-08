@@ -172,30 +172,29 @@ VALUES
 
 -- Select Beat
 SELECT
-  beat.*,
-  tag.id,
-  tag.tag_name,
-  price.standart,
-  price.premium,
-  price.unlimited
+  *
 FROM
   beat
-  LEFT JOIN price ON price.beat_id = beat.id
   LEFT JOIN lateral (
     SELECT
       json_agg(
         json_build_object(
           'id',
           tag.id,
+          'beat_id',
+          tag.beat_id,
           'tag_name',
           tag.tag_name
         )
       ) as tags
     FROM
       tag
-    where
+    WHERE
       tag.beat_id = beat.id
-  ) c ON true;
+  ) c ON true
+  LEFT JOIN price ON price.beat_id = 1
+WHERE
+  beat.id = 1;
 
 -- Select Artisit's beat
 SELECT
