@@ -52,34 +52,22 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 		input.Mood,
 		time.Now(),
 	)
-	err = row.Scan(&beatId)
-	if err != nil {
+	if err = row.Scan(&beatId); err != nil {
 		tx.Rollback()
 		return 0, err
 	}
 
-	insertPriceQuery := fmt.Sprintf(`INSERT INTO %s (
-			beat_id, 
-			standart_price, 
-			premium_price, 
-			unlimited_price) 
-		VALUES ($1, $2, $3, $4)`,
-		priceTable,
-	)
-	_, err = tx.Exec(insertPriceQuery,
-		beatId,
-		input.Price.StandartPrice,
-		input.Price.PremiumPrice,
-		input.Price.UnlimitedPrice,
-	)
-	if err != nil {
+	insertPriceQuery := fmt.Sprintf(`
+		INSERT INTO %s (beat_id, standart, premium, unlimited) 
+		VALUES ($1, $2, $3, $4)`, priceTable)
+	if _, err = tx.Exec(insertPriceQuery, beatId, input.Price.Standart, input.Price.Premium, input.Price.Unlimited); err != nil {
 		tx.Rollback()
 		return 0, err
 	}
 
-	insertTagQuery := fmt.Sprintf(`INSERT INTO %s (beat_id, name) VALUES ($1, $2)`, tagTable)
+	insertTagQuery := fmt.Sprintf(`INSERT INTO %s (beat_id, tag_name) VALUES ($1, $2)`, tagTable)
 	for _, tag := range input.Tags {
-		if _, err := tx.Exec(insertTagQuery, beatId, tag.Name); err != nil {
+		if _, err := tx.Exec(insertTagQuery, beatId, tag.TagName); err != nil {
 			tx.Rollback()
 			return 0, err
 		}
