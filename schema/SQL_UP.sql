@@ -38,9 +38,9 @@ CREATE TABLE IF NOT EXISTS tag (
 CREATE TABLE IF NOT EXISTS price (
   id BIGSERIAL PRIMARY KEY,
   beat_id BIGINT REFERENCES beat (id) ON DELETE CASCADE UNIQUE NOT NULL,
-  standart_price TEXT NOT NULL,
-  premium_price TEXT,
-  unlimited_price TEXT
+  standart TEXT NOT NULL,
+  premium TEXT,
+  unlimited TEXT
 );
 
 CREATE TABLE IF NOT EXISTS account_beat (
@@ -172,17 +172,21 @@ VALUES
 
 -- Select Beat
 SELECT
-  *
+  beat.*,
+  tag.id,
+  tag.tag_name,
+  price.standart,
+  price.premium,
+  price.unlimited
 FROM
   beat
+  LEFT JOIN price ON price.beat_id = beat.id
   LEFT JOIN lateral (
     SELECT
       json_agg(
         json_build_object(
           'id',
           tag.id,
-          'beat_id',
-          tag.beat_id,
           'tag_name',
           tag.tag_name
         )
@@ -191,8 +195,7 @@ FROM
       tag
     where
       tag.beat_id = beat.id
-  ) c ON true
-  LEFT JOIN price ON price.beat_id = beat.id;
+  ) c ON true;
 
 -- Select Artisit's beat
 SELECT
