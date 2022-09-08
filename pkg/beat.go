@@ -14,7 +14,7 @@ type Beat struct {
 	PhotoPath string    `json:"photo_path" db:"photo_path" binding:"required"`
 	MP3Path   string    `json:"mp3_path" db:"mp3_path" binding:"required"`
 	WavPath   string    `json:"wav_path" db:"wav_path"`
-	Like      int       `json:"like" db:"like"`
+	Likes     int       `json:"likes" db:"likes"`
 	Genre     string    `json:"genre" db:"genre"`
 	Mood      string    `json:"mood" db:"mood"`
 	Tags      []Tag     `json:"tags" db:"tags" binding:"required"`
