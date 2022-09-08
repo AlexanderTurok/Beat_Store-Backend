@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS beat (
 CREATE TABLE IF NOT EXISTS tag (
   id BIGSERIAL PRIMARY KEY,
   beat_id BIGINT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
-  name TEXT NOT NULL
+  tag_name TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS price (
@@ -175,18 +175,36 @@ SELECT
   *
 FROM
   beat
-  JOIN price ON price.beat_id = beat.id
-  JOIN tag ON tag.beat_id = beat.id;
+  LEFT JOIN lateral (
+    SELECT
+      json_agg(
+        json_build_object(
+          'id',
+          tag.id,
+          'beat_id',
+          tag.beat_id,
+          'tag_name',
+          tag.tag_name
+        )
+      ) as tags
+    FROM
+      tag
+    where
+      tag.beat_id = beat.id
+  ) c ON true
+  LEFT JOIN price ON price.beat_id = beat.id;
 
 -- Select Artisit's beat
 SELECT
-  *
+  beat.*,
+  STRING_AGG(tag.*, ', ') AS DATA
 FROM
   beat
-  JOIN price ON price.beat_id = beat.id
-  JOIN tag ON tag.beat_id = beat.id
+  LEFT JOIN tag ON tag.beat_id = beat.id
+GROUP BY
+  beat.id
 WHERE
-  artist_id = 1;
+  beat.id = 3;
 
 -- Craete Account Beat (when account buys beat)
 INSERT INTO
