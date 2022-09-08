@@ -35,10 +35,6 @@ func (h *Handler) getAllArtistsBeats(c *gin.Context) {
 
 }
 
-func (h *Handler) getArtistsBeatById(c *gin.Context) {
-
-}
-
 func (h *Handler) updateArtistsBeat(c *gin.Context) {
 
 }

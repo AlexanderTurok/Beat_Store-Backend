@@ -67,7 +67,6 @@ func (h *Handler) InitRoutes() *gin.Engine {
 				{
 					beats.POST("/", h.createBeat)
 					beats.GET("/", h.getAllArtistsBeats)
-					beats.GET("/:id", h.getArtistsBeatById)
 					beats.PUT("/:id", h.updateArtistsBeat)
 					beats.DELETE("/:id", h.deleteArtistsBeat)
 				}
