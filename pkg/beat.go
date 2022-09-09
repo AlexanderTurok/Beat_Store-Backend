@@ -17,7 +17,7 @@ type Beat struct {
 	Likes     int       `json:"likes"      db:"likes"`
 	Genre     string    `json:"genre"      db:"genre"`
 	Mood      string    `json:"mood"       db:"mood"`
-	Tags      []Tag     `json:"tags"       db:"tags" `
+	Tags      []Tag     `json:"tags"       db:"tags"`
 	Price     Price     `json:"price"      db:"price"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 }

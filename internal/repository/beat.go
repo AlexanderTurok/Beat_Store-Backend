@@ -6,6 +6,7 @@ import (
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/jmoiron/sqlx"
+	"github.com/lib/pq"
 )
 
 type BeatRepository struct {
@@ -74,4 +75,37 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 	}
 
 	return beatId, tx.Commit()
+}
+
+func (r *BeatRepository) Get(beatId int) (beatstore.Beat, error) {
+	var b beatstore.Beat
+	query := fmt.Sprintf(`
+	SELECT * FROM %s
+  LEFT JOIN lateral (
+    SELECT tag.id, tag.beat_id, tag.tag_name
+    FROM %s
+    WHERE tag.beat_id = beat.id
+  ) c ON true
+	WHERE beat.id = $1;
+	`, beatTable, tagTable)
+	row := r.db.QueryRow(query, beatId)
+	err := row.Scan(
+		&b.Id,
+		&b.ArtistId,
+		&b.Name,
+		&b.Bpm,
+		&b.Key,
+		&b.PhotoPath,
+		&b.MP3Path,
+		&b.WavPath,
+		&b.Likes,
+		&b.Genre,
+		&b.Mood,
+		&b.CreatedAt,
+		pq.Array(&b.Tags),
+		pq.Array(&b.Tags),
+		pq.Array(&b.Tags),
+	)
+
+	return b, err
 }
