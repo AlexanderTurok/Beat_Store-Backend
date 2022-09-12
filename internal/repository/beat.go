@@ -76,17 +76,14 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 
 func (r *BeatRepository) Get(beatId int) (beatstore.Beat, error) {
 	var beat beatstore.Beat
-	query := `
-	SELECT * FROM beat
-  LEFT JOIN lateral (
-    SELECT json_agg(to_json(tag.*)) as tags
-    FROM tag
-    WHERE tag.beat_id = beat.id
-  ) c ON true
-  LEFT JOIN price ON price.beat_id = beat.id
-	WHERE beat.id = $1;`
 
-	err := r.db.Get(&beat, query, beatId)
+	beatQuery := fmt.Sprintf("SELECT * FROM %s WHERE id=$1", beatTable)
+	if err := r.db.Get(&beat, beatQuery, beatId); err != nil {
+		return beatstore.Beat{}, err
+	}
+
+	tagsQuery := fmt.Sprintf("SELECT * FROM %s WHERE beat_id=$1", tagTable)
+	err := r.db.Select(&beat.Tags, tagsQuery, beatId)
 
 	return beat, err
 }
