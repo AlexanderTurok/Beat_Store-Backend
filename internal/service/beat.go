@@ -38,3 +38,7 @@ func (s *BeatService) Update(beatId int, input beatstore.BeatUpdateInput) error 
 
 	return s.repos.Update(beatId, input)
 }
+
+func (s *BeatService) Delete(beatId int) error {
+	return s.repos.Delete(beatId)
+}

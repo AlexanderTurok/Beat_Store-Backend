@@ -29,6 +29,7 @@ type Beat interface {
 	GetAll() ([]beatstore.Beat, error)
 	GetAllArtistsBeats(artistId int) ([]beatstore.Beat, error)
 	Update(beatId int, input beatstore.BeatUpdateInput) error
+	Delete(beatId int) error
 }
 
 type Playlist interface {

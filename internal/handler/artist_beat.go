@@ -70,5 +70,16 @@ func (h *Handler) updateArtistsBeat(c *gin.Context) {
 }
 
 func (h *Handler) deleteArtistsBeat(c *gin.Context) {
+	beatId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid id")
+		return
+	}
 
+	if err := h.service.Beat.Delete(beatId); err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, statusResponse{"ok"})
 }

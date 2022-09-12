@@ -125,6 +125,13 @@ func (r *BeatRepository) Update(beatId int, input beatstore.BeatUpdateInput) err
 	return err
 }
 
+func (r *BeatRepository) Delete(beatId int) error {
+	query := fmt.Sprintf("DELETE FROM %s WHERE id=$1", beatTable)
+	_, err := r.db.Exec(query, beatId)
+
+	return err
+}
+
 func createBeatUpdateQuery(beatId int, input beatstore.BeatUpdateInput) (string, []interface{}) {
 	setValues := make([]string, 0)
 	args := make([]interface{}, 0)
