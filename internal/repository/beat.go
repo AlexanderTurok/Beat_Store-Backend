@@ -5,15 +5,14 @@ import (
 	"time"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
-	"github.com/jmoiron/sqlx"
-	"github.com/lib/pq"
+	"gorm.io/gorm"
 )
 
 type BeatRepository struct {
-	db *sqlx.DB
+	db *gorm.DB
 }
 
-func NewBeatRepository(db *sqlx.DB) *BeatRepository {
+func NewBeatRepository(db *gorm.DB) *BeatRepository {
 	return &BeatRepository{
 		db: db,
 	}
@@ -78,34 +77,18 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 }
 
 func (r *BeatRepository) Get(beatId int) (beatstore.Beat, error) {
-	var b beatstore.Beat
-	query := fmt.Sprintf(`
-	SELECT * FROM %s
+	var beat beatstore.Beat
+	query := `
+	SELECT * FROM beat
   LEFT JOIN lateral (
-    SELECT tag.id, tag.beat_id, tag.tag_name
-    FROM %s
+    SELECT json_agg(to_json(tag.*)) as tags
+    FROM tag
     WHERE tag.beat_id = beat.id
   ) c ON true
-	WHERE beat.id = $1;
-	`, beatTable, tagTable)
-	row := r.db.QueryRow(query, beatId)
-	err := row.Scan(
-		&b.Id,
-		&b.ArtistId,
-		&b.Name,
-		&b.Bpm,
-		&b.Key,
-		&b.PhotoPath,
-		&b.MP3Path,
-		&b.WavPath,
-		&b.Likes,
-		&b.Genre,
-		&b.Mood,
-		&b.CreatedAt,
-		pq.Array(&b.Tags),
-		pq.Array(&b.Tags),
-		pq.Array(&b.Tags),
-	)
+  LEFT JOIN price ON price.beat_id = beat.id
+	WHERE beat.id = $1;`
 
-	return b, err
+	err := r.db.Get(&beat, query, beatId)
+
+	return beat, err
 }

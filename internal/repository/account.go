@@ -5,14 +5,14 @@ import (
 	"strings"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
-	"github.com/jmoiron/sqlx"
+	"gorm.io/gorm"
 )
 
 type AccountRepository struct {
-	db *sqlx.DB
+	db *gorm.DB
 }
 
-func NewAccountRepository(db *sqlx.DB) *AccountRepository {
+func NewAccountRepository(db *gorm.DB) *AccountRepository {
 	return &AccountRepository{
 		db: db,
 	}

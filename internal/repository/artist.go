@@ -5,14 +5,14 @@ import (
 	"time"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
-	"github.com/jmoiron/sqlx"
+	"gorm.io/gorm"
 )
 
 type ArtistRepository struct {
-	db *sqlx.DB
+	db *gorm.DB
 }
 
-func NewArtistRepository(db *sqlx.DB) *ArtistRepository {
+func NewArtistRepository(db *gorm.DB) *ArtistRepository {
 	return &ArtistRepository{
 		db: db,
 	}

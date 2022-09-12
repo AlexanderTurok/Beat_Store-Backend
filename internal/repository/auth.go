@@ -5,14 +5,14 @@ import (
 	"time"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
-	"github.com/jmoiron/sqlx"
+	"gorm.io/gorm"
 )
 
 type AuthRepository struct {
-	db *sqlx.DB
+	db *gorm.DB
 }
 
-func NewAuthService(db *sqlx.DB) *AuthRepository {
+func NewAuthService(db *gorm.DB) *AuthRepository {
 	return &AuthRepository{
 		db: db,
 	}

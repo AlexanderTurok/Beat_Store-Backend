@@ -2,7 +2,7 @@ package repository
 
 import (
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
-	"github.com/jmoiron/sqlx"
+	"gorm.io/gorm"
 )
 
 type Authorization interface {
@@ -40,7 +40,7 @@ type Repository struct {
 	Playlist
 }
 
-func NewRepository(db *sqlx.DB) *Repository {
+func NewRepository(db *gorm.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthService(db),
 		Account:       NewAccountRepository(db),
