@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS account (
   email TEXT UNIQUE NOT NULL,
   photo_path TEXT,
   password_hash TEXT NOT NULL,
-  confirmed BOOLEAN DEFAULT 0,
+  confirmed BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 
@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS beat (
   photo_path TEXT NOT NULL,
   mp3_path TEXT NOT NULL,
   wav_path TEXT,
-  likes BIGINT DEFAULT 0,
   genre TEXT DEFAULT 'All',
   mood TEXT DEFAULT 'All',
   standart_price TEXT NOT NULL,
@@ -43,7 +42,9 @@ CREATE TABLE IF NOT EXISTS account_beat (
   id BIGSERIAL PRIMARY KEY,
   account_id BIGINT REFERENCES account (id) ON DELETE CASCADE NOT NULL,
   beat_id BIGINT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
-  access_status TEXT CHECK IN('standart', 'premium', 'unlimited') NOT NULL,
+  access_status TEXT CHECK (
+    access_status IN('standart', 'premium', 'unlimited')
+  ) NOT NULL,
   created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 

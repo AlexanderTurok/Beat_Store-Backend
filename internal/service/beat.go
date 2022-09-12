@@ -19,6 +19,26 @@ func (s *BeatService) Create(artistId int, input beatstore.Beat) (int, error) {
 	return s.repos.Create(artistId, input)
 }
 
-func (s *BeatService) Get(beatId int) (beatstore.Beat, error) {
-	return s.repos.Get(beatId)
+// func (s *BeatService) Get(beatId int) (beatstore.Beat, error) {
+// 	return s.repos.Get(beatId)
+// }
+
+func (s *BeatService) GetAll() ([]beatstore.Beat, error) {
+	return s.repos.GetAll()
+}
+
+func (s *BeatService) GetAllArtistsBeats(artistId int) ([]beatstore.Beat, error) {
+	return s.repos.GetAllArtistsBeats(artistId)
+}
+
+func (s *BeatService) Update(beatId int, input beatstore.BeatUpdateInput) error {
+	if err := input.Validate(); err != nil {
+		return err
+	}
+
+	return s.repos.Update(beatId, input)
+}
+
+func (s *BeatService) Delete(beatId int) error {
+	return s.repos.Delete(beatId)
 }

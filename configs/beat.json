@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Moonlight",
+    "bpm": "96",
+    "key": "Amaj5",
+    "photo_path": "moonlight.jpeg",
+    "mp3_path": "moonlight.mp3",
+    "wav_path": "moonlight.wav",
+    "genre": "electro",
+    "mood": "rush",
+    "tags": [
+        {
+            "tag_name": "moonlight"
+        },
+        {
+            "tag_name": "beat"
+        }
+    ],
+    "standart_price": "19.99$",
+    "premium_price": "49.99$",
+    "unlimited_price": "99.99$"
+  },
+  {
+    "name": "Sunshine",
+    "bpm": "20",
+    "key": "Cm",
+    "photo_path": "sunshine.jpeg",
+    "mp3_path": "sunshine.mp3",
+    "wav_path": "sunshine.wav",
+    "genre": "electro",
+    "mood": "happy",
+    "tags": [
+        {
+            "tag_name": "sunshine"
+        },
+        {
+            "tag_name": "beat"
+        }
+    ],
+    "standart_price": "19.99$",
+    "premium_price": "49.99$",
+    "unlimited_price": "99.99$"
+  }
+]

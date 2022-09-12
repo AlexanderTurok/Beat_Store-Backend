@@ -6,8 +6,8 @@ import (
 )
 
 type Beat struct {
-	Id             int       `json:"-"               db:"id"`
-	ArtistId       int       `json:"artist_id"       db:"artist_db"       binding:"required"`
+	Id             int       `json:"id"               db:"id"`
+	ArtistId       int       `json:"artist_id"       db:"artist_id"`
 	Name           string    `json:"name"            db:"name"            binding:"required"`
 	Bpm            string    `json:"bpm"             db:"bpm"             binding:"required"`
 	Key            string    `json:"key"             db:"key"             binding:"required"`
@@ -16,7 +16,7 @@ type Beat struct {
 	WavPath        string    `json:"wav_path"        db:"wav_path"`
 	Genre          string    `json:"genre"           db:"genre"`
 	Mood           string    `json:"mood"            db:"mood"`
-	Tags           []Tag     `json:"tags"            db:"tags"            binding:"required"`
+	Tags           []Tag     `json:"tags"                                 binding:"required"`
 	StandartPrice  string    `json:"standart_price"  db:"standart_price"  binding:"required"`
 	PremiumPrice   string    `json:"premium_price"   db:"premium_price"   binding:"required"`
 	UnlimitedPrice string    `json:"unlimited_price" db:"unlimited_price" binding:"required"`
@@ -24,8 +24,7 @@ type Beat struct {
 }
 
 type Tag struct {
-	Id      int    `json:"-"`
-	BeatId  int    `json:"beat_id"  db:"beat_id"  binding:"required"`
+	Id      int    `json:"id" db:"tag_id"`
 	TagName string `json:"tag_name" db:"tag_name" binding:"required"`
 }
 
@@ -38,7 +37,6 @@ type BeatUpdateInput struct {
 	WavPath        *string `json:"wav_path"`
 	Genre          *string `json:"genre"`
 	Mood           *string `json:"mood"`
-	Tags           *[]Tag  `json:"tags"`
 	StandartPrice  *string `json:"standart_price"`
 	PremiumPrice   *string `json:"premium_price"`
 	UnlimitedPrice *string `json:"unlimited_price"`
@@ -46,7 +44,7 @@ type BeatUpdateInput struct {
 
 func (b *BeatUpdateInput) Validate() error {
 	if b.Name == nil && b.Bpm == nil && b.Key == nil && b.PhotoPath == nil &&
-		b.MP3Path == nil && b.WavPath == nil && b.Tags == nil && b.Genre == nil &&
+		b.MP3Path == nil && b.WavPath == nil && b.Genre == nil &&
 		b.Mood == nil && b.StandartPrice == nil && b.PremiumPrice == nil && b.UnlimitedPrice == nil {
 		return errors.New("update structure has no values")
 	}
