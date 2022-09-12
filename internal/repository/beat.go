@@ -5,6 +5,7 @@ import (
 	"time"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/jackskj/carta"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -75,15 +76,29 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 }
 
 func (r *BeatRepository) Get(beatId int) (beatstore.Beat, error) {
-	var beat beatstore.Beat
+	beat := beatstore.Beat{}
 
-	beatQuery := fmt.Sprintf("SELECT * FROM %s WHERE id=$1", beatTable)
-	if err := r.db.Get(&beat, beatQuery, beatId); err != nil {
+	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id WHERE beat.id=$1`, beatTable, tagTable)
+	rows, err := r.db.Query(query, beatId)
+	if err != nil {
 		return beatstore.Beat{}, err
 	}
 
-	tagsQuery := fmt.Sprintf("SELECT * FROM %s WHERE beat_id=$1", tagTable)
-	err := r.db.Select(&beat.Tags, tagsQuery, beatId)
+	err = carta.Map(rows, &beat)
 
 	return beat, err
+}
+
+func (r *BeatRepository) GetAll() ([]beatstore.Beat, error) {
+	beats := []beatstore.Beat{}
+
+	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id`, beatTable, tagTable)
+	rows, err := r.db.Query(query)
+	if err != nil {
+		return nil, err
+	}
+
+	err = carta.Map(rows, &beats)
+
+	return beats, err
 }

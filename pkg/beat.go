@@ -24,8 +24,7 @@ type Beat struct {
 }
 
 type Tag struct {
-	Id      int    `json:"id" db:"id"`
-	BeatId  int    `json:"beat_id"  db:"beat_id"`
+	Id      int    `json:"id" db:"tag_id"`
 	TagName string `json:"tag_name" db:"tag_name" binding:"required"`
 }
 
