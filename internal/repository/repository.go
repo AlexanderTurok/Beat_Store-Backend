@@ -2,7 +2,7 @@ package repository
 
 import (
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
-	"gorm.io/gorm"
+	"github.com/jmoiron/sqlx"
 )
 
 type Authorization interface {
@@ -13,14 +13,14 @@ type Authorization interface {
 type Account interface {
 	Get(accountId int) (beatstore.Account, error)
 	Update(accountId int, input beatstore.AccountUpdateInput) error
-	GetPasswordHash(accountId int) (beatstore.AccountPassword, error)
+	GetPasswordHash(accountId int) (string, error)
 	Delete(accountId int) error
 }
 
 type Artist interface {
 	Create(accountId int) error
 	Get(accountId int) (beatstore.Account, error)
-	GetPasswordHash(accountId int) (beatstore.AccountPassword, error)
+	GetPasswordHash(accountId int) (string, error)
 	Delete(accountId int) error
 }
 
@@ -40,7 +40,7 @@ type Repository struct {
 	Playlist
 }
 
-func NewRepository(db *gorm.DB) *Repository {
+func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthService(db),
 		Account:       NewAccountRepository(db),

@@ -5,14 +5,14 @@ import (
 	"time"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
-	"gorm.io/gorm"
+	"github.com/jmoiron/sqlx"
 )
 
 type BeatRepository struct {
-	db *gorm.DB
+	db *sqlx.DB
 }
 
-func NewBeatRepository(db *gorm.DB) *BeatRepository {
+func NewBeatRepository(db *sqlx.DB) *BeatRepository {
 	return &BeatRepository{
 		db: db,
 	}
@@ -35,8 +35,11 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 			wav_path,
 			genre,
 			mood,
+			standart_price,
+			premium_price,
+			unlimited_price,
 			created_at)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id`,
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
 		beatTable,
 	)
 
@@ -50,17 +53,12 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 		input.WavPath,
 		input.Genre,
 		input.Mood,
+		input.StandartPrice,
+		input.PremiumPrice,
+		input.UnlimitedPrice,
 		time.Now(),
 	)
 	if err = row.Scan(&beatId); err != nil {
-		tx.Rollback()
-		return 0, err
-	}
-
-	insertPriceQuery := fmt.Sprintf(`
-		INSERT INTO %s (beat_id, standart, premium, unlimited) 
-		VALUES ($1, $2, $3, $4)`, priceTable)
-	if _, err = tx.Exec(insertPriceQuery, beatId, input.Price.Standart, input.Price.Premium, input.Price.Unlimited); err != nil {
 		tx.Rollback()
 		return 0, err
 	}

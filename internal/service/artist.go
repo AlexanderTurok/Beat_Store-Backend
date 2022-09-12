@@ -25,14 +25,14 @@ func (s *ArtistService) Get(accountId int) (beatstore.Account, error) {
 	return s.repos.Get(accountId)
 }
 
-func (s *ArtistService) Delete(accountId int, password beatstore.AccountPassword) error {
-	password.Password = generatePasswordHash(password.Password)
+func (s *ArtistService) Delete(accountId int, password string) error {
+	password = generatePasswordHash(password)
 	passwordHash, err := s.repos.GetPasswordHash(accountId)
 	if err != nil {
 		return err
 	}
 
-	if password.Password != passwordHash.Password {
+	if password != passwordHash {
 		return errors.New("invalid password")
 	}
 

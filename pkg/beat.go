@@ -6,27 +6,27 @@ import (
 )
 
 type Beat struct {
-	Id             int       `json:"-"`
-	ArtistId       int       `json:"artist_id"`
-	Name           string    `json:"name"            binding:"required"`
-	Bpm            string    `json:"bpm"             binding:"required"`
-	Key            string    `json:"key"             binding:"required"`
-	PhotoPath      string    `json:"photo_path"      binding:"required"`
-	MP3Path        string    `json:"mp3_path"        binding:"required"`
-	WavPath        string    `json:"wav_path"`
-	Genre          string    `json:"genre"`
-	Mood           string    `json:"mood"`
-	Tags           []Tag     `json:"tags"`
-	StandartPrice  string    `json:"standart_price"  binding:"required"`
-	PremiumPrice   string    `json:"premium_price"   binding:"required"`
-	UnlimitedPrice string    `json:"unlimited_price" binding:"required"`
-	CreatedAt      time.Time `json:"created_at"      binding:"required"`
+	Id             int       `json:"-"               db:"id"`
+	ArtistId       int       `json:"artist_id"       db:"artist_db"       binding:"required"`
+	Name           string    `json:"name"            db:"name"            binding:"required"`
+	Bpm            string    `json:"bpm"             db:"bpm"             binding:"required"`
+	Key            string    `json:"key"             db:"key"             binding:"required"`
+	PhotoPath      string    `json:"photo_path"      db:"photo_path"      binding:"required"`
+	MP3Path        string    `json:"mp3_path"        db:"mp3_path"        binding:"required"`
+	WavPath        string    `json:"wav_path"        db:"wav_path"`
+	Genre          string    `json:"genre"           db:"genre"`
+	Mood           string    `json:"mood"            db:"mood"`
+	Tags           []Tag     `json:"tags"            db:"tags"            binding:"required"`
+	StandartPrice  string    `json:"standart_price"  db:"standart_price"  binding:"required"`
+	PremiumPrice   string    `json:"premium_price"   db:"premium_price"   binding:"required"`
+	UnlimitedPrice string    `json:"unlimited_price" db:"unlimited_price" binding:"required"`
+	CreatedAt      time.Time `json:"created_at"      db:"created_at"`
 }
 
 type Tag struct {
 	Id      int    `json:"-"`
-	BeatId  int    `json:"beat_id"  binding:"required"`
-	TagName string `json:"tag_name" binding:"required"`
+	BeatId  int    `json:"beat_id"  db:"beat_id"  binding:"required"`
+	TagName string `json:"tag_name" db:"tag_name" binding:"required"`
 }
 
 type BeatUpdateInput struct {

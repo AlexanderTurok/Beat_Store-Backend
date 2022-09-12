@@ -29,14 +29,14 @@ func (s *AccountService) Update(accountId int, input beatstore.AccountUpdateInpu
 	return s.repos.Update(accountId, input)
 }
 
-func (s *AccountService) Delete(accountId int, password beatstore.AccountPassword) error {
-	password.Password = generatePasswordHash(password.Password)
+func (s *AccountService) Delete(accountId int, password string) error {
+	password = generatePasswordHash(password)
 	passwordHash, err := s.repos.GetPasswordHash(accountId)
 	if err != nil {
 		return err
 	}
 
-	if password.Password != passwordHash.Password {
+	if password != passwordHash {
 		return errors.New("invalid password")
 	}
 

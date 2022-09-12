@@ -3,7 +3,6 @@ package handler
 import (
 	"net/http"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/gin-gonic/gin"
 )
 
@@ -38,6 +37,10 @@ func (h *Handler) getArtistByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, artist)
 }
 
+type ArtistPassword struct {
+	Password string `json:"password" db:"password_hash"`
+}
+
 func (h *Handler) deleteArtist(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
@@ -45,13 +48,13 @@ func (h *Handler) deleteArtist(c *gin.Context) {
 		return
 	}
 
-	var password beatstore.AccountPassword
+	var password ArtistPassword
 	if err := c.BindJSON(&password); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
-	if err := h.service.Artist.Delete(accountId, password); err != nil {
+	if err := h.service.Artist.Delete(accountId, password.Password); err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}

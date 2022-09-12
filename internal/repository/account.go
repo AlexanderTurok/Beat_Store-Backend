@@ -5,14 +5,14 @@ import (
 	"strings"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
-	"gorm.io/gorm"
+	"github.com/jmoiron/sqlx"
 )
 
 type AccountRepository struct {
-	db *gorm.DB
+	db *sqlx.DB
 }
 
-func NewAccountRepository(db *gorm.DB) *AccountRepository {
+func NewAccountRepository(db *sqlx.DB) *AccountRepository {
 	return &AccountRepository{
 		db: db,
 	}
@@ -34,8 +34,8 @@ func (r *AccountRepository) Update(accountId int, input beatstore.AccountUpdateI
 	return err
 }
 
-func (r *AccountRepository) GetPasswordHash(accountId int) (beatstore.AccountPassword, error) {
-	var passwordHash beatstore.AccountPassword
+func (r *AccountRepository) GetPasswordHash(accountId int) (string, error) {
+	var passwordHash string
 	query := fmt.Sprintf("SELECT password_hash FROM %s WHERE id=$1", accountTable)
 	err := r.db.Get(&passwordHash, query, accountId)
 
