@@ -6,8 +6,8 @@ import (
 )
 
 type Beat struct {
-	Id             int       `json:"-"               db:"id"`
-	ArtistId       int       `json:"artist_id"       db:"artist_db"       binding:"required"`
+	Id             int       `json:"id"               db:"id"`
+	ArtistId       int       `json:"artist_id"       db:"artist_id"`
 	Name           string    `json:"name"            db:"name"            binding:"required"`
 	Bpm            string    `json:"bpm"             db:"bpm"             binding:"required"`
 	Key            string    `json:"key"             db:"key"             binding:"required"`
@@ -16,7 +16,7 @@ type Beat struct {
 	WavPath        string    `json:"wav_path"        db:"wav_path"`
 	Genre          string    `json:"genre"           db:"genre"`
 	Mood           string    `json:"mood"            db:"mood"`
-	Tags           []Tag     `json:"tags"            db:"tags"            binding:"required"`
+	Tags           []Tag     `json:"tags"                                 binding:"required"`
 	StandartPrice  string    `json:"standart_price"  db:"standart_price"  binding:"required"`
 	PremiumPrice   string    `json:"premium_price"   db:"premium_price"   binding:"required"`
 	UnlimitedPrice string    `json:"unlimited_price" db:"unlimited_price" binding:"required"`
@@ -24,8 +24,8 @@ type Beat struct {
 }
 
 type Tag struct {
-	Id      int    `json:"-"`
-	BeatId  int    `json:"beat_id"  db:"beat_id"  binding:"required"`
+	Id      int    `json:"id" db:"id"`
+	BeatId  int    `json:"beat_id"  db:"beat_id"`
 	TagName string `json:"tag_name" db:"tag_name" binding:"required"`
 }
 
