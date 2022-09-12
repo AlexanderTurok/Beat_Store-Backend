@@ -5,6 +5,21 @@ import (
 	_ "github.com/lib/pq"
 )
 
+const (
+	accountTable = "account"
+	artistTable  = "artist"
+
+	accountBeatTable     = "account_beat"
+	accountPlaylistTable = " account_playlist"
+
+	playlistBeatTable = "playlist_beat"
+	playlistTable     = "playlist"
+
+	beatTable  = "beat"
+	tagTable   = "tag"
+	priceTable = "price"
+)
+
 type Config struct {
 	Host     string
 	Port     string
