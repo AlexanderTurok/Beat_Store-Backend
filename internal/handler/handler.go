@@ -66,7 +66,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 				beats := artists.Group("/beats")
 				{
 					beats.POST("/", h.createBeat)
-					beats.GET("/", h.getAllArtistsBeats)
+					beats.GET("/", h.getAllBeatsByToken)
 					beats.PUT("/:id", h.updateArtistsBeat)
 					beats.DELETE("/:id", h.deleteArtistsBeat)
 				}
@@ -82,7 +82,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		beats := api.Group("/beats")
 		{
 			beats.GET("/", h.getAllBeats)
-			beats.GET("/:id", h.getBeatById)
+			beats.GET("/:id", h.getAllArtistsBeats)
 		}
 
 		playlists := api.Group("/playlists")

@@ -31,8 +31,20 @@ func (h *Handler) createBeat(c *gin.Context) {
 	})
 }
 
-func (h *Handler) getAllArtistsBeats(c *gin.Context) {
+func (h *Handler) getAllBeatsByToken(c *gin.Context) {
+	artistId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	beats, err := h.service.Beat.GetAllArtistsBeats(artistId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beats)
 }
 
 func (h *Handler) updateArtistsBeat(c *gin.Context) {

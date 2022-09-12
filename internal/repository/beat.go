@@ -75,25 +75,39 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 	return beatId, tx.Commit()
 }
 
-func (r *BeatRepository) Get(beatId int) (beatstore.Beat, error) {
-	beat := beatstore.Beat{}
+// func (r *BeatRepository) Get(beatId int) (beatstore.Beat, error) {
+// 	beat := beatstore.Beat{}
 
-	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id WHERE beat.id=$1`, beatTable, tagTable)
-	rows, err := r.db.Query(query, beatId)
-	if err != nil {
-		return beatstore.Beat{}, err
-	}
+// 	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id WHERE beat.id=$1`, beatTable, tagTable)
+// 	rows, err := r.db.Query(query, beatId)
+// 	if err != nil {
+// 		return beatstore.Beat{}, err
+// 	}
 
-	err = carta.Map(rows, &beat)
+// 	err = carta.Map(rows, &beat)
 
-	return beat, err
-}
+// 	return beat, err
+// }
 
 func (r *BeatRepository) GetAll() ([]beatstore.Beat, error) {
 	beats := []beatstore.Beat{}
 
 	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id`, beatTable, tagTable)
 	rows, err := r.db.Query(query)
+	if err != nil {
+		return nil, err
+	}
+
+	err = carta.Map(rows, &beats)
+
+	return beats, err
+}
+
+func (r *BeatRepository) GetAllArtistsBeats(artistId int) ([]beatstore.Beat, error) {
+	beats := []beatstore.Beat{}
+
+	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id WHERE beat.artist_id=$1`, beatTable, tagTable)
+	rows, err := r.db.Query(query, artistId)
 	if err != nil {
 		return nil, err
 	}
