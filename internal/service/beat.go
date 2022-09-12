@@ -30,3 +30,11 @@ func (s *BeatService) GetAll() ([]beatstore.Beat, error) {
 func (s *BeatService) GetAllArtistsBeats(artistId int) ([]beatstore.Beat, error) {
 	return s.repos.GetAllArtistsBeats(artistId)
 }
+
+func (s *BeatService) Update(beatId int, input beatstore.BeatUpdateInput) error {
+	if err := input.Validate(); err != nil {
+		return err
+	}
+
+	return s.repos.Update(beatId, input)
+}

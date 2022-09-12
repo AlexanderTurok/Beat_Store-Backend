@@ -37,7 +37,6 @@ type BeatUpdateInput struct {
 	WavPath        *string `json:"wav_path"`
 	Genre          *string `json:"genre"`
 	Mood           *string `json:"mood"`
-	Tags           *[]Tag  `json:"tags"`
 	StandartPrice  *string `json:"standart_price"`
 	PremiumPrice   *string `json:"premium_price"`
 	UnlimitedPrice *string `json:"unlimited_price"`
@@ -45,7 +44,7 @@ type BeatUpdateInput struct {
 
 func (b *BeatUpdateInput) Validate() error {
 	if b.Name == nil && b.Bpm == nil && b.Key == nil && b.PhotoPath == nil &&
-		b.MP3Path == nil && b.WavPath == nil && b.Tags == nil && b.Genre == nil &&
+		b.MP3Path == nil && b.WavPath == nil && b.Genre == nil &&
 		b.Mood == nil && b.StandartPrice == nil && b.PremiumPrice == nil && b.UnlimitedPrice == nil {
 		return errors.New("update structure has no values")
 	}

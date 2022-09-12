@@ -2,6 +2,7 @@ package repository
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
@@ -115,4 +116,89 @@ func (r *BeatRepository) GetAllArtistsBeats(artistId int) ([]beatstore.Beat, err
 	err = carta.Map(rows, &beats)
 
 	return beats, err
+}
+
+func (r *BeatRepository) Update(beatId int, input beatstore.BeatUpdateInput) error {
+	query, args := createBeatUpdateQuery(beatId, input)
+	_, err := r.db.Exec(query, args...)
+
+	return err
+}
+
+func createBeatUpdateQuery(beatId int, input beatstore.BeatUpdateInput) (string, []interface{}) {
+	setValues := make([]string, 0)
+	args := make([]interface{}, 0)
+	argId := 1
+
+	if input.Name != nil {
+		setValues = append(setValues, fmt.Sprintf("name=$%d", argId))
+		args = append(args, *input.Name)
+		argId++
+	}
+
+	if input.Bpm != nil {
+		setValues = append(setValues, fmt.Sprintf("bpm=$%d", argId))
+		args = append(args, *input.Bpm)
+		argId++
+	}
+
+	if input.Key != nil {
+		setValues = append(setValues, fmt.Sprintf("key=$%d", argId))
+		args = append(args, *input.Key)
+		argId++
+	}
+
+	if input.PhotoPath != nil {
+		setValues = append(setValues, fmt.Sprintf("photo_path=$%d", argId))
+		args = append(args, *input.PhotoPath)
+		argId++
+	}
+
+	if input.MP3Path != nil {
+		setValues = append(setValues, fmt.Sprintf("mp3_path=$%d", argId))
+		args = append(args, *input.MP3Path)
+		argId++
+	}
+
+	if input.WavPath != nil {
+		setValues = append(setValues, fmt.Sprintf("wav_path=$%d", argId))
+		args = append(args, *input.WavPath)
+		argId++
+	}
+
+	if input.Genre != nil {
+		setValues = append(setValues, fmt.Sprintf("genre=$%d", argId))
+		args = append(args, *input.Genre)
+		argId++
+	}
+
+	if input.Mood != nil {
+		setValues = append(setValues, fmt.Sprintf("mood=$%d", argId))
+		args = append(args, *input.Mood)
+		argId++
+	}
+
+	if input.StandartPrice != nil {
+		setValues = append(setValues, fmt.Sprintf("standart_price=$%d", argId))
+		args = append(args, *input.StandartPrice)
+		argId++
+	}
+
+	if input.PremiumPrice != nil {
+		setValues = append(setValues, fmt.Sprintf("premium_price=$%d", argId))
+		args = append(args, *input.PremiumPrice)
+		argId++
+	}
+
+	if input.UnlimitedPrice != nil {
+		setValues = append(setValues, fmt.Sprintf("unlimited_price=$%d", argId))
+		args = append(args, *input.UnlimitedPrice)
+		argId++
+	}
+
+	setQuery := strings.Join(setValues, ", ")
+	query := fmt.Sprintf("UPDATE %s SET %s WHERE id=$%d", beatTable, setQuery, argId)
+	args = append(args, beatId)
+
+	return query, args
 }
