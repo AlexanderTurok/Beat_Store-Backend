@@ -33,6 +33,7 @@ type Beat interface {
 }
 
 type Playlist interface {
+	Create(accountId int, input beatstore.Playlist) error
 }
 
 type Service struct {
@@ -49,5 +50,6 @@ func NewService(repos *repository.Repository) *Service {
 		Account:       NewAccountService(repos.Account),
 		Artist:        NewArtistService(repos.Artist),
 		Beat:          NewBeatService(repos.Beat),
+		Playlist:      NewPlaylistService(&repos.Playlist),
 	}
 }
