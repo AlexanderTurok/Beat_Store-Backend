@@ -77,7 +77,6 @@ func (r *PlaylistRepository) AddBeat(playlistId, beatId int) error {
 }
 
 func (r *PlaylistRepository) GetAllBeats(playlistId int) ([]beatstore.Beat, error) {
-
 	beats := []beatstore.Beat{}
 
 	query := fmt.Sprintf(`
@@ -98,4 +97,11 @@ func (r *PlaylistRepository) GetAllBeats(playlistId int) ([]beatstore.Beat, erro
 	err = carta.Map(rows, &beats)
 
 	return beats, err
+}
+
+func (r *PlaylistRepository) DeleteBeat(playlistId, beatId int) error {
+	query := fmt.Sprintf("DELETE FROM %s WHERE playlist_id = $1 AND beat_id = $2", playlistBeatTable)
+	_, err := r.db.Exec(query, playlistId, beatId)
+
+	return err
 }

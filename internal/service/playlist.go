@@ -42,3 +42,7 @@ func (s *PlaylistService) AddBeat(playlistId, beatId int) error {
 func (s *PlaylistService) GetAllBeats(playlistId int) ([]beatstore.Beat, error) {
 	return s.repos.GetAllBeats(playlistId)
 }
+
+func (s *PlaylistService) DeleteBeat(playlistId, beatId int) error {
+	return s.repos.DeleteBeat(playlistId, beatId)
+}

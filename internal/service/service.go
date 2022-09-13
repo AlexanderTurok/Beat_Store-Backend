@@ -39,6 +39,7 @@ type Playlist interface {
 	Delete(playlistId int) error
 	AddBeat(playlistId, beatId int) error
 	GetAllBeats(playlistId int) ([]beatstore.Beat, error)
+	DeleteBeat(playlistId, beatId int) error
 }
 
 type Service struct {
