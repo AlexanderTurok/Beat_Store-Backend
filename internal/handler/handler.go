@@ -40,14 +40,6 @@ func (h *Handler) InitRoutes() *gin.Engine {
 				beats.DELETE("/:id", h.returnBoughtBeat)
 			}
 
-			carts := accounts.Group("/carts")
-			{
-				carts.POST("/", h.addBeatToCart)
-				carts.GET("/", h.getAllBeatsFromCart)
-				carts.DELETE("/", h.deleteAllBeatsInCart)
-				carts.DELETE("/:id", h.deleteBeatInCart)
-			}
-
 			playlists := accounts.Group("/playlists")
 			{
 				playlists.POST("/", h.createPlaylist)
