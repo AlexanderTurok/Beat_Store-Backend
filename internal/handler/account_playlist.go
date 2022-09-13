@@ -15,7 +15,7 @@ func (h *Handler) createPlaylist(c *gin.Context) {
 	}
 
 	var input beatstore.Playlist
-	if err := c.BindJSON(input); err != nil {
+	if err := c.BindJSON(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
@@ -31,8 +31,20 @@ func (h *Handler) createPlaylist(c *gin.Context) {
 	})
 }
 
-func (h *Handler) getAllAccountsPlaylists(c *gin.Context) {
+func (h *Handler) getAllPlaylistsByToken(c *gin.Context) {
+	accountId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	playlists, err := h.service.GetAllAccountsPlaylists(accountId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, playlists)
 }
 
 func (h *Handler) getAccountsPlaylistById(c *gin.Context) {
