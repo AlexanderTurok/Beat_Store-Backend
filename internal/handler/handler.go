@@ -93,8 +93,8 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 		playlists := api.Group("/playlists")
 		{
-			playlists.GET("/:account_id", h.getAllAccountsPlaylists)
-			playlists.GET("/:account_id/beats", h.getAllBeatsFromPlaylist)
+			playlists.GET("/:id", h.getAllAccountsPlaylists)
+			playlists.GET("/:id/beats", h.getAllBeatsFromPlaylist)
 		}
 	}
 
