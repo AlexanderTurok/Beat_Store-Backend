@@ -43,12 +43,16 @@ type Playlist interface {
 	DeleteBeat(playlistId, beatId int) error
 }
 
+type Payment interface {
+}
+
 type Service struct {
 	Authorization
 	Account
 	Artist
 	Beat
 	Playlist
+	Payment
 }
 
 func NewService(repos *repository.Repository) *Service {
@@ -58,5 +62,6 @@ func NewService(repos *repository.Repository) *Service {
 		Artist:        NewArtistService(repos.Artist),
 		Beat:          NewBeatService(repos.Beat),
 		Playlist:      NewPlaylistService(repos.Playlist),
+		Payment:       NewPaymentService(repos.Payment),
 	}
 }

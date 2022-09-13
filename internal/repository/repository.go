@@ -44,12 +44,16 @@ type Playlist interface {
 	DeleteBeat(playlistId, beatId int) error
 }
 
+type Payment interface {
+}
+
 type Repository struct {
 	Authorization
 	Account
 	Artist
 	Beat
 	Playlist
+	Payment
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
@@ -59,5 +63,6 @@ func NewRepository(db *sqlx.DB) *Repository {
 		Artist:        NewArtistRepository(db),
 		Beat:          NewBeatRepository(db),
 		Playlist:      NewPlaylistRepository(db),
+		Payment:       NewPaymentRepository(db),
 	}
 }
