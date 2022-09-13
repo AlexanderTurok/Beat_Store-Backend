@@ -5,6 +5,7 @@ import (
 	"time"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/jackskj/carta"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -66,4 +67,35 @@ func (r *PlaylistRepository) Delete(playlistId int) error {
 	_, err := r.db.Exec(query, playlistId)
 
 	return err
+}
+
+func (r *PlaylistRepository) AddBeat(playlistId, beatId int) error {
+	query := fmt.Sprintf("INSERT INTO %s (playlist_id, beat_id) VALUES ($1, $2)", playlistBeatTable)
+	_, err := r.db.Exec(query, playlistId, beatId)
+
+	return err
+}
+
+func (r *PlaylistRepository) GetAllBeats(playlistId int) ([]beatstore.Beat, error) {
+
+	beats := []beatstore.Beat{}
+
+	query := fmt.Sprintf(`
+	SELECT 
+		beat.*, 
+		tag.id AS tag_id, 
+		tag.tag_name AS tag_name 
+	FROM %s 
+	LEFT OUTER JOIN %s ON playlist_beat.beat_id = beat.id
+	LEFT OUTER JOIN %s ON beat.id = tag.beat_id
+	WHERE playlist_beat.playlist_id = $1`,
+		playlistBeatTable, beatTable, tagTable)
+	rows, err := r.db.Query(query, playlistId)
+	if err != nil {
+		return nil, err
+	}
+
+	err = carta.Map(rows, &beats)
+
+	return beats, err
 }

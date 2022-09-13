@@ -55,11 +55,11 @@ func (h *Handler) InitRoutes() *gin.Engine {
 				playlists.PUT("/:id", h.updatePlaylist)
 				playlists.DELETE("/:id", h.deleteAccountsPlaylist)
 
-				beats := playlists.Group("/beats")
+				beats := playlists.Group(":id/beats")
 				{
-					beats.POST("/", h.addBeatToPlaylist)
+					beats.POST("/:beat_id", h.addBeatToPlaylist)
 					beats.GET("/", h.getAllBeatsFromPlaylist)
-					beats.DELETE("/:id", h.deleteBeatFromPlaylist)
+					beats.DELETE("/:beat_id", h.deleteBeatFromPlaylist)
 				}
 			}
 

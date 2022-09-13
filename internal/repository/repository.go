@@ -38,6 +38,8 @@ type Playlist interface {
 	GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error)
 	Update(playlistId int, input beatstore.PlaylistUpdateInput) error
 	Delete(playlistId int) error
+	AddBeat(playlistId, beatId int) error
+	GetAllBeats(playlistId int) ([]beatstore.Beat, error)
 }
 
 type Repository struct {
