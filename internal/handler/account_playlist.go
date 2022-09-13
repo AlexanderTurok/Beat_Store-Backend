@@ -2,6 +2,7 @@ package handler
 
 import (
 	"net/http"
+	"strconv"
 
 	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/gin-gonic/gin"
@@ -47,12 +48,25 @@ func (h *Handler) getAllPlaylistsByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, playlists)
 }
 
-func (h *Handler) getAccountsPlaylistById(c *gin.Context) {
+func (h *Handler) updatePlaylist(c *gin.Context) {
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
-}
+	var updateInput beatstore.PlaylistUpdateInput
+	if err := c.BindJSON(&updateInput); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
 
-func (h *Handler) updateAccountsPlaylist(c *gin.Context) {
+	if err := h.service.Playlist.Update(playlistId, updateInput); err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
 func (h *Handler) deleteAccountsPlaylist(c *gin.Context) {
