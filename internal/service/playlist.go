@@ -6,15 +6,15 @@ import (
 )
 
 type PlaylistService struct {
-	repos *repository.Playlist
+	repos repository.Playlist
 }
 
-func NewPlaylistService(repos *repository.Playlist) *PlaylistService {
+func NewPlaylistService(repos repository.Playlist) *PlaylistService {
 	return &PlaylistService{
 		repos: repos,
 	}
 }
 
-func (s *PlaylistService) Create(accountId int, input beatstore.Playlist) error {
+func (s *PlaylistService) Create(accountId int, input beatstore.Playlist) (int, error) {
 	return s.repos.Create(accountId, input)
 }

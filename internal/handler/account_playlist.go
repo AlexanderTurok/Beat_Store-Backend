@@ -20,12 +20,15 @@ func (h *Handler) createPlaylist(c *gin.Context) {
 		return
 	}
 
-	if err := h.service.Playlist.Create(accountId, input); err != nil {
+	playlistId, err := h.service.Playlist.Create(accountId, input)
+	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	c.JSON(http.StatusOK, statusResponse{"ok"})
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"id": playlistId,
+	})
 }
 
 func (h *Handler) getAllAccountsPlaylists(c *gin.Context) {
