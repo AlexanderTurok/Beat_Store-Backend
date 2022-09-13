@@ -28,7 +28,7 @@ func (h *Handler) addBeatToPlaylist(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handler) getAllBeatsFromPlaylist(c *gin.Context) {
+func (h *Handler) getAllBeatsFromPlaylistByToken(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "parameter playlist id is empty")
