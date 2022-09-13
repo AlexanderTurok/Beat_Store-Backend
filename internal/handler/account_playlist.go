@@ -1,9 +1,31 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+
+	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/gin-gonic/gin"
+)
 
 func (h *Handler) createPlaylist(c *gin.Context) {
+	accountId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	var input beatstore.Playlist
+	if err := c.BindJSON(input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	if err := h.service.Playlist.Create(accountId, input); err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
 func (h *Handler) getAllAccountsPlaylists(c *gin.Context) {
