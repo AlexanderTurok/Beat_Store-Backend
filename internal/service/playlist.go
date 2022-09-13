@@ -18,3 +18,7 @@ func NewPlaylistService(repos repository.Playlist) *PlaylistService {
 func (s *PlaylistService) Create(accountId int, input beatstore.Playlist) (int, error) {
 	return s.repos.Create(accountId, input)
 }
+
+func (s *PlaylistService) GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error) {
+	return s.repos.GetAllAccountsPlaylists(accountId)
+}

@@ -34,6 +34,7 @@ type Beat interface {
 
 type Playlist interface {
 	Create(accountId int, input beatstore.Playlist) (int, error)
+	GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error)
 }
 
 type Service struct {
