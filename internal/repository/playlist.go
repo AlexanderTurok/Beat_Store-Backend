@@ -31,7 +31,6 @@ func (r *PlaylistRepository) Create(accountId int, input beatstore.Playlist) (in
 		tx.Rollback()
 		return 0, err
 	}
-	fmt.Println(playlistId)
 
 	accountPlaylistInsertQuery := fmt.Sprintf(`INSERT INTO %s (account_id, playlist_id)
 		VALUES ($1, $2)`, accountPlaylistTable)
