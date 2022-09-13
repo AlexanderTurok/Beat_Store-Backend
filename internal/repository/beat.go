@@ -45,7 +45,7 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 		beatTable,
 	)
 
-	row := tx.QueryRow(insertBeatQuery,
+	if err := tx.QueryRow(insertBeatQuery,
 		artistId,
 		input.Name,
 		input.Bpm,
@@ -59,8 +59,7 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 		input.PremiumPrice,
 		input.UnlimitedPrice,
 		time.Now(),
-	)
-	if err = row.Scan(&beatId); err != nil {
+	).Scan(&beatId); err != nil {
 		tx.Rollback()
 		return 0, err
 	}
