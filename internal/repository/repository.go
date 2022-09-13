@@ -51,5 +51,6 @@ func NewRepository(db *sqlx.DB) *Repository {
 		Account:       NewAccountRepository(db),
 		Artist:        NewArtistRepository(db),
 		Beat:          NewBeatRepository(db),
+		Playlist:      NewPlaylistRepository(db),
 	}
 }
