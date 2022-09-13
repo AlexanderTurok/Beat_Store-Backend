@@ -51,7 +51,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			playlists := accounts.Group("/playlists")
 			{
 				playlists.POST("/", h.createPlaylist)
-				playlists.GET("/", h.getAllAccountsPlaylists)
+				playlists.GET("/", h.getAllPlaylistsByToken)
 				playlists.GET("/:id", h.getAccountsPlaylistById)
 				playlists.PUT("/:id", h.updateAccountsPlaylist)
 				playlists.DELETE("/:id", h.deleteAccountsPlaylist)
