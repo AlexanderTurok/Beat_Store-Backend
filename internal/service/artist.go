@@ -25,6 +25,10 @@ func (s *ArtistService) Get(accountId int) (beatstore.Account, error) {
 	return s.repos.Get(accountId)
 }
 
+func (s *ArtistService) GetAll() ([]beatstore.Account, error) {
+	return s.repos.GetAll()
+}
+
 func (s *ArtistService) Delete(accountId int, password string) error {
 	password = generatePasswordHash(password)
 	passwordHash, err := s.repos.GetPasswordHash(accountId)
