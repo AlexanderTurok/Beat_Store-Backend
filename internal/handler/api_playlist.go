@@ -1,11 +1,28 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+	"strconv"
 
-func (h *Handler) getAllPlaylists(c *gin.Context) {
+	"github.com/gin-gonic/gin"
+)
 
+func (h *Handler) getAllAccountsPlaylists(c *gin.Context) {
+	accountId, err := strconv.Atoi(c.Param("account_id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	playlists, err := h.service.Playlist.GetAllAccountsPlaylists(accountId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, playlists)
 }
 
-func (h *Handler) getPlaylistById(c *gin.Context) {
+func (h *Handler) getAllBeatsFromPlaylist(c *gin.Context) {
 
 }
