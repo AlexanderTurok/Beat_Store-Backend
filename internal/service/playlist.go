@@ -30,3 +30,7 @@ func (s *PlaylistService) Update(playlistId int, input beatstore.PlaylistUpdateI
 
 	return s.repos.Update(playlistId, input)
 }
+
+func (s *PlaylistService) Delete(playlistId int) error {
+	return s.repos.Delete(playlistId)
+}

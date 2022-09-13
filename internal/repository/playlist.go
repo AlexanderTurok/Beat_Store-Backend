@@ -60,3 +60,10 @@ func (r *PlaylistRepository) Update(playlistId int, input beatstore.PlaylistUpda
 
 	return err
 }
+
+func (r *PlaylistRepository) Delete(playlistId int) error {
+	query := fmt.Sprintf("DELETE FROM %s WHERE id = $1", playlistTable)
+	_, err := r.db.Exec(query, playlistId)
+
+	return err
+}

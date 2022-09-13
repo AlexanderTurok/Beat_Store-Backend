@@ -70,5 +70,16 @@ func (h *Handler) updatePlaylist(c *gin.Context) {
 }
 
 func (h *Handler) deleteAccountsPlaylist(c *gin.Context) {
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	if err := h.service.Playlist.Delete(playlistId); err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
