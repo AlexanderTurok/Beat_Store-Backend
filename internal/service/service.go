@@ -33,6 +33,13 @@ type Beat interface {
 }
 
 type Playlist interface {
+	Create(accountId int, input beatstore.Playlist) (int, error)
+	GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error)
+	Update(playlistId int, input beatstore.PlaylistUpdateInput) error
+	Delete(playlistId int) error
+	AddBeat(playlistId, beatId int) error
+	GetAllBeats(playlistId int) ([]beatstore.Beat, error)
+	DeleteBeat(playlistId, beatId int) error
 }
 
 type Service struct {
@@ -49,5 +56,6 @@ func NewService(repos *repository.Repository) *Service {
 		Account:       NewAccountService(repos.Account),
 		Artist:        NewArtistService(repos.Artist),
 		Beat:          NewBeatService(repos.Beat),
+		Playlist:      NewPlaylistService(repos.Playlist),
 	}
 }

@@ -1,23 +1,85 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+	"strconv"
+
+	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/gin-gonic/gin"
+)
 
 func (h *Handler) createPlaylist(c *gin.Context) {
+	accountId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	var input beatstore.Playlist
+	if err := c.BindJSON(&input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	playlistId, err := h.service.Playlist.Create(accountId, input)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"id": playlistId,
+	})
 }
 
-func (h *Handler) getAllAccountsPlaylists(c *gin.Context) {
+func (h *Handler) getAllPlaylistsByToken(c *gin.Context) {
+	accountId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	playlists, err := h.service.GetAllAccountsPlaylists(accountId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, playlists)
 }
 
-func (h *Handler) getAccountsPlaylistById(c *gin.Context) {
+func (h *Handler) updatePlaylist(c *gin.Context) {
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
-}
+	var updateInput beatstore.PlaylistUpdateInput
+	if err := c.BindJSON(&updateInput); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
 
-func (h *Handler) updateAccountsPlaylist(c *gin.Context) {
+	if err := h.service.Playlist.Update(playlistId, updateInput); err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
 func (h *Handler) deleteAccountsPlaylist(c *gin.Context) {
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	if err := h.service.Playlist.Delete(playlistId); err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, statusResponse{"ok"})
 }

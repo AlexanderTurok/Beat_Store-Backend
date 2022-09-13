@@ -1,0 +1,48 @@
+package service
+
+import (
+	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
+	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+)
+
+type PlaylistService struct {
+	repos repository.Playlist
+}
+
+func NewPlaylistService(repos repository.Playlist) *PlaylistService {
+	return &PlaylistService{
+		repos: repos,
+	}
+}
+
+func (s *PlaylistService) Create(accountId int, input beatstore.Playlist) (int, error) {
+	return s.repos.Create(accountId, input)
+}
+
+func (s *PlaylistService) GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error) {
+	return s.repos.GetAllAccountsPlaylists(accountId)
+}
+
+func (s *PlaylistService) Update(playlistId int, input beatstore.PlaylistUpdateInput) error {
+	if err := input.Validate(); err != nil {
+		return err
+	}
+
+	return s.repos.Update(playlistId, input)
+}
+
+func (s *PlaylistService) Delete(playlistId int) error {
+	return s.repos.Delete(playlistId)
+}
+
+func (s *PlaylistService) AddBeat(playlistId, beatId int) error {
+	return s.repos.AddBeat(playlistId, beatId)
+}
+
+func (s *PlaylistService) GetAllBeats(playlistId int) ([]beatstore.Beat, error) {
+	return s.repos.GetAllBeats(playlistId)
+}
+
+func (s *PlaylistService) DeleteBeat(playlistId, beatId int) error {
+	return s.repos.DeleteBeat(playlistId, beatId)
+}

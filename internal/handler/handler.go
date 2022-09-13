@@ -51,10 +51,16 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			playlists := accounts.Group("/playlists")
 			{
 				playlists.POST("/", h.createPlaylist)
-				playlists.GET("/", h.getAllAccountsPlaylists)
-				playlists.GET("/:id", h.getAccountsPlaylistById)
-				playlists.PUT("/:id", h.updateAccountsPlaylist)
+				playlists.GET("/", h.getAllPlaylistsByToken)
+				playlists.PUT("/:id", h.updatePlaylist)
 				playlists.DELETE("/:id", h.deleteAccountsPlaylist)
+
+				beats := playlists.Group(":id/beats")
+				{
+					beats.POST("/:beat_id", h.addBeatToPlaylist)
+					beats.GET("/", h.getAllBeatsFromPlaylistByToken)
+					beats.DELETE("/:beat_id", h.deleteBeatFromPlaylist)
+				}
 			}
 
 			artists := accounts.Group("/artists")
@@ -87,8 +93,8 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 		playlists := api.Group("/playlists")
 		{
-			playlists.GET("/", h.getAllPlaylists)
-			playlists.GET("/:id", h.getPlaylistById)
+			playlists.GET("/:id", h.getAllAccountsPlaylists)
+			playlists.GET("/:id/beats", h.getAllBeatsFromPlaylist)
 		}
 	}
 

@@ -34,6 +34,13 @@ type Beat interface {
 }
 
 type Playlist interface {
+	Create(accountId int, input beatstore.Playlist) (int, error)
+	GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error)
+	Update(playlistId int, input beatstore.PlaylistUpdateInput) error
+	Delete(playlistId int) error
+	AddBeat(playlistId, beatId int) error
+	GetAllBeats(playlistId int) ([]beatstore.Beat, error)
+	DeleteBeat(playlistId, beatId int) error
 }
 
 type Repository struct {
@@ -50,5 +57,6 @@ func NewRepository(db *sqlx.DB) *Repository {
 		Account:       NewAccountRepository(db),
 		Artist:        NewArtistRepository(db),
 		Beat:          NewBeatRepository(db),
+		Playlist:      NewPlaylistRepository(db),
 	}
 }
