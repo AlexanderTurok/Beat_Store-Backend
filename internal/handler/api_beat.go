@@ -33,18 +33,18 @@ func (h *Handler) getAllArtistsBeats(c *gin.Context) {
 	c.JSON(http.StatusOK, beats)
 }
 
-// func (h *Handler) getBeatById(c *gin.Context) {
-// 	beatId, err := strconv.Atoi(c.Param("id"))
-// 	if err != nil {
-// 		newErrorResponse(c, http.StatusBadRequest, "invalid id")
-// 		return
-// 	}
+func (h *Handler) getBeatById(c *gin.Context) {
+	beatId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid id")
+		return
+	}
 
-// 	beat, err := h.service.Beat.Get(beatId)
-// 	if err != nil {
-// 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
-// 		return
-// 	}
+	beat, err := h.service.Beat.Get(beatId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
-// 	c.JSON(http.StatusOK, beat)
-// }
+	c.JSON(http.StatusOK, beat)
+}

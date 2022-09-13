@@ -79,6 +79,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 		beats := api.Group("/beats")
 		{
+			beats.POST("/:id", h.getBeatById)
 			beats.GET("/", h.getAllBeats)
 			beats.GET("/:id", h.getAllArtistsBeats)
 		}
