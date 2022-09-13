@@ -22,3 +22,11 @@ func (s *PlaylistService) Create(accountId int, input beatstore.Playlist) (int, 
 func (s *PlaylistService) GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error) {
 	return s.repos.GetAllAccountsPlaylists(accountId)
 }
+
+func (s *PlaylistService) Update(playlistId int, input beatstore.PlaylistUpdateInput) error {
+	if err := input.Validate(); err != nil {
+		return err
+	}
+
+	return s.repos.Update(playlistId, input)
+}

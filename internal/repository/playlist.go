@@ -53,3 +53,10 @@ func (r *PlaylistRepository) GetAllAccountsPlaylists(accountId int) ([]beatstore
 
 	return playlists, err
 }
+
+func (r *PlaylistRepository) Update(playlistId int, input beatstore.PlaylistUpdateInput) error {
+	query := fmt.Sprintf("UPDATE %s SET name = $1 WHERE id = $2", playlistTable)
+	_, err := r.db.Exec(query, input.Name, playlistId)
+
+	return err
+}
