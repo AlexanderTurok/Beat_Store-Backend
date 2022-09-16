@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,7 +15,7 @@ func (h *Handler) createBeat(c *gin.Context) {
 		return
 	}
 
-	var input beatstore.Beat
+	var input model.Beat
 	if err := c.BindJSON(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
@@ -55,7 +55,7 @@ func (h *Handler) updateArtistsBeat(c *gin.Context) {
 		return
 	}
 
-	var input beatstore.BeatUpdateInput
+	var input model.BeatUpdateInput
 	if err := c.BindJSON(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return

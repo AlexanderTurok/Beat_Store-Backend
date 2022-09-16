@@ -3,19 +3,19 @@ package handler
 import (
 	"net/http"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/gin-gonic/gin"
 )
 
 func (h *Handler) signUp(c *gin.Context) {
-	var accountInput beatstore.Account
+	var accountInput model.Account
 
 	if err := c.BindJSON(&accountInput); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid input body")
 		return
 	}
 
-	id, err := h.service.Authorization.CreateAccount(accountInput)
+	id, err := h.service.Account.CreateAccount(accountInput)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return

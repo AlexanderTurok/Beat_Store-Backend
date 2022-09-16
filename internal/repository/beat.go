@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/jackskj/carta"
 	"github.com/jmoiron/sqlx"
 )
@@ -20,7 +20,7 @@ func NewBeatRepository(db *sqlx.DB) *BeatRepository {
 	}
 }
 
-func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error) {
+func (r *BeatRepository) Create(artistId int, input model.Beat) (int, error) {
 	tx, err := r.db.Begin()
 	if err != nil {
 		return 0, err
@@ -75,13 +75,13 @@ func (r *BeatRepository) Create(artistId int, input beatstore.Beat) (int, error)
 	return beatId, tx.Commit()
 }
 
-func (r *BeatRepository) Get(beatId int) (beatstore.Beat, error) {
-	beat := beatstore.Beat{}
+func (r *BeatRepository) Get(beatId int) (model.Beat, error) {
+	beat := model.Beat{}
 
 	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id WHERE beat.id=$1`, beatTable, tagTable)
 	rows, err := r.db.Query(query, beatId)
 	if err != nil {
-		return beatstore.Beat{}, err
+		return model.Beat{}, err
 	}
 
 	err = carta.Map(rows, &beat)
@@ -89,8 +89,8 @@ func (r *BeatRepository) Get(beatId int) (beatstore.Beat, error) {
 	return beat, err
 }
 
-func (r *BeatRepository) GetAll() ([]beatstore.Beat, error) {
-	beats := []beatstore.Beat{}
+func (r *BeatRepository) GetAll() ([]model.Beat, error) {
+	beats := []model.Beat{}
 
 	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id`, beatTable, tagTable)
 	rows, err := r.db.Query(query)
@@ -103,8 +103,8 @@ func (r *BeatRepository) GetAll() ([]beatstore.Beat, error) {
 	return beats, err
 }
 
-func (r *BeatRepository) GetAllArtistsBeats(artistId int) ([]beatstore.Beat, error) {
-	beats := []beatstore.Beat{}
+func (r *BeatRepository) GetAllArtistsBeats(artistId int) ([]model.Beat, error) {
+	beats := []model.Beat{}
 
 	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id WHERE beat.artist_id=$1`, beatTable, tagTable)
 	rows, err := r.db.Query(query, artistId)
@@ -117,7 +117,7 @@ func (r *BeatRepository) GetAllArtistsBeats(artistId int) ([]beatstore.Beat, err
 	return beats, err
 }
 
-func (r *BeatRepository) Update(beatId int, input beatstore.BeatUpdateInput) error {
+func (r *BeatRepository) Update(beatId int, input model.BeatUpdateInput) error {
 	query, args := createBeatUpdateQuery(beatId, input)
 	_, err := r.db.Exec(query, args...)
 
@@ -131,7 +131,7 @@ func (r *BeatRepository) Delete(beatId int) error {
 	return err
 }
 
-func createBeatUpdateQuery(beatId int, input beatstore.BeatUpdateInput) (string, []interface{}) {
+func createBeatUpdateQuery(beatId int, input model.BeatUpdateInput) (string, []interface{}) {
 	setValues := make([]string, 0)
 	args := make([]interface{}, 0)
 	argId := 1

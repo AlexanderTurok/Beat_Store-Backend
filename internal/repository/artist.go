@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -25,8 +25,8 @@ func (r *ArtistRepository) Create(accountId int) error {
 	return err
 }
 
-func (r *ArtistRepository) Get(accountId int) (beatstore.Account, error) {
-	var artist beatstore.Account
+func (r *ArtistRepository) Get(accountId int) (model.Account, error) {
+	var artist model.Account
 
 	query := fmt.Sprintf(`
 		SELECT 
@@ -44,8 +44,8 @@ func (r *ArtistRepository) Get(accountId int) (beatstore.Account, error) {
 	return artist, err
 }
 
-func (r *ArtistRepository) GetAll() ([]beatstore.Account, error) {
-	var artists []beatstore.Account
+func (r *ArtistRepository) GetAll() ([]model.Account, error) {
+	var artists []model.Account
 
 	query := fmt.Sprintf(`
 		SELECT 

@@ -1,45 +1,43 @@
 package service
 
 import (
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/auth"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
 )
 
-type Authorization interface {
-	CreateAccount(account beatstore.Account) (int, error)
-	GenerateToken(email, password string) (string, error)
-	ParseToken(accessToken string) (int, error)
-}
-
 type Account interface {
-	Get(accountId int) (beatstore.Account, error)
-	Update(accountId int, input beatstore.AccountUpdateInput) error
-	Delete(accountId int, password string) error
+	CreateAccount(account model.Account) (int, error)
+	GenerateToken(email, password string) (string, error)
+	Get(accountId int) (model.Account, error)
+	Update(accountId int, input model.AccountUpdateInput) error
+	Delete(accountId int, inputPassword string) error
 }
 
 type Artist interface {
 	Create(accountId int) error
-	Get(accountId int) (beatstore.Account, error)
-	GetAll() ([]beatstore.Account, error)
-	Delete(accountId int, password string) error
+	Get(accountId int) (model.Account, error)
+	GetAll() ([]model.Account, error)
+	Delete(accountId int, inputPassword string) error
 }
 
 type Beat interface {
-	Create(artistId int, input beatstore.Beat) (int, error)
-	Get(beatId int) (beatstore.Beat, error)
-	GetAll() ([]beatstore.Beat, error)
-	GetAllArtistsBeats(artistId int) ([]beatstore.Beat, error)
-	Update(beatId int, input beatstore.BeatUpdateInput) error
+	Create(artistId int, input model.Beat) (int, error)
+	Get(beatId int) (model.Beat, error)
+	GetAll() ([]model.Beat, error)
+	GetAllArtistsBeats(artistId int) ([]model.Beat, error)
+	Update(beatId int, input model.BeatUpdateInput) error
 	Delete(beatId int) error
 }
 
 type Playlist interface {
-	Create(accountId int, input beatstore.Playlist) (int, error)
-	GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error)
-	Update(playlistId int, input beatstore.PlaylistUpdateInput) error
+	Create(accountId int, input model.Playlist) (int, error)
+	GetAllAccountsPlaylists(accountId int) ([]model.Playlist, error)
+	Update(playlistId int, input model.PlaylistUpdateInput) error
 	Delete(playlistId int) error
 	AddBeat(playlistId, beatId int) error
-	GetAllBeats(playlistId int) ([]beatstore.Beat, error)
+	GetAllBeats(playlistId int) ([]model.Beat, error)
 	DeleteBeat(playlistId, beatId int) error
 }
 
@@ -47,7 +45,6 @@ type Payment interface {
 }
 
 type Service struct {
-	Authorization
 	Account
 	Artist
 	Beat
@@ -55,13 +52,12 @@ type Service struct {
 	Payment
 }
 
-func NewService(repos *repository.Repository) *Service {
+func NewService(repos *repository.Repository, hasher hash.SHA1Hasher, manager auth.Manager) *Service {
 	return &Service{
-		Authorization: NewAuthService(repos.Authorization),
-		Account:       NewAccountService(repos.Account),
-		Artist:        NewArtistService(repos.Artist),
-		Beat:          NewBeatService(repos.Beat),
-		Playlist:      NewPlaylistService(repos.Playlist),
-		Payment:       NewPaymentService(repos.Payment),
+		Account:  NewAccountService(repos.Account, hasher, manager),
+		Artist:   NewArtistService(repos.Artist, hasher),
+		Beat:     NewBeatService(repos.Beat),
+		Playlist: NewPlaylistService(repos.Playlist),
+		Payment:  NewPaymentService(repos.Payment),
 	}
 }

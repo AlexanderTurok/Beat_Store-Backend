@@ -3,17 +3,20 @@ package service
 import (
 	"errors"
 
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
 )
 
 type ArtistService struct {
-	repos repository.Artist
+	repos  repository.Artist
+	hasher hash.SHA1Hasher
 }
 
-func NewArtistService(repos repository.Artist) *ArtistService {
+func NewArtistService(repos repository.Artist, hasher hash.SHA1Hasher) *ArtistService {
 	return &ArtistService{
-		repos: repos,
+		repos:  repos,
+		hasher: hasher,
 	}
 }
 
@@ -21,22 +24,23 @@ func (s *ArtistService) Create(accountId int) error {
 	return s.repos.Create(accountId)
 }
 
-func (s *ArtistService) Get(accountId int) (beatstore.Account, error) {
+func (s *ArtistService) Get(accountId int) (model.Account, error) {
 	return s.repos.Get(accountId)
 }
 
-func (s *ArtistService) GetAll() ([]beatstore.Account, error) {
+func (s *ArtistService) GetAll() ([]model.Account, error) {
 	return s.repos.GetAll()
 }
 
-func (s *ArtistService) Delete(accountId int, password string) error {
-	password = generatePasswordHash(password)
+func (s *ArtistService) Delete(accountId int, inputPassword string) error {
+	inputPassword = s.hasher.Hash(inputPassword)
+
 	passwordHash, err := s.repos.GetPasswordHash(accountId)
 	if err != nil {
 		return err
 	}
 
-	if password != passwordHash {
+	if inputPassword != passwordHash {
 		return errors.New("invalid password")
 	}
 

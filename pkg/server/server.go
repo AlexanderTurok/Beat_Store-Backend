@@ -1,4 +1,4 @@
-package beatstore
+package server
 
 import (
 	"context"

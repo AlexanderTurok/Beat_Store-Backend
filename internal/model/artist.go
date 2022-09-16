@@ -1,4 +1,4 @@
-package beatstore
+package model
 
 import "time"
 

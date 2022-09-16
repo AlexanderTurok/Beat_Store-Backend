@@ -3,8 +3,9 @@ package repository
 import (
 	"fmt"
 	"strings"
+	"time"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -18,8 +19,27 @@ func NewAccountRepository(db *sqlx.DB) *AccountRepository {
 	}
 }
 
-func (r *AccountRepository) Get(accountId int) (beatstore.Account, error) {
-	var account beatstore.Account
+func (r *AccountRepository) CreateAccount(account model.Account) (int, error) {
+	var id int
+	query := fmt.Sprintf("INSERT INTO %s (name, username, email, photo_path, password_hash, created_at) values ($1, $2, $3, $4, $5, $6) RETURNING id", accountTable)
+	row := r.db.QueryRow(query, account.Name, account.Username, account.Email, account.PhotoPath, account.Password, time.Now())
+	if err := row.Scan(&id); err != nil {
+		return 0, err
+	}
+
+	return id, nil
+}
+
+func (r *AccountRepository) GetAccountId(email, password string) (int, error) {
+	var id int
+	query := fmt.Sprintf("SELECT id FROM %s WHERE email=$1 AND password_hash=$2", accountTable)
+	err := r.db.Get(&id, query, email, password)
+
+	return id, err
+}
+
+func (r *AccountRepository) Get(accountId int) (model.Account, error) {
+	var account model.Account
 
 	query := fmt.Sprintf("SELECT name, username, email, photo_path, created_at FROM %s WHERE id=$1", accountTable)
 	err := r.db.Get(&account, query, accountId)
@@ -27,7 +47,7 @@ func (r *AccountRepository) Get(accountId int) (beatstore.Account, error) {
 	return account, err
 }
 
-func (r *AccountRepository) Update(accountId int, input beatstore.AccountUpdateInput) error {
+func (r *AccountRepository) Update(accountId int, input model.AccountUpdateInput) error {
 	query, args := createAccountUpdateQuery(accountId, input)
 	_, err := r.db.Exec(query, args...)
 
@@ -49,7 +69,7 @@ func (r *AccountRepository) Delete(accountId int) error {
 	return err
 }
 
-func createAccountUpdateQuery(accountId int, input beatstore.AccountUpdateInput) (string, []interface{}) {
+func createAccountUpdateQuery(accountId int, input model.AccountUpdateInput) (string, []interface{}) {
 	setValues := make([]string, 0)
 	args := make([]interface{}, 0)
 	argId := 1
