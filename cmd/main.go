@@ -6,6 +6,7 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/internal/handler"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 	"github.com/AlexanderTurok/beat-store-backend/internal/service"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/auth"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/server"
 	"github.com/joho/godotenv"
@@ -37,10 +38,11 @@ func main() {
 	}
 
 	hasher := hash.NewSHA1Hasher(os.Getenv("SALT"))
+	manager := auth.NewManager(os.Getenv("SIGNING_KEY"))
 
 	repository := repository.NewRepository(db)
-	service := service.NewService(repository, hasher)
-	handler := handler.NewHandler(service)
+	service := service.NewService(repository, *hasher, *manager)
+	handler := handler.NewHandler(service, manager)
 
 	server := new(server.Server)
 	if err := server.Run("8000", handler.InitRoutes()); err != nil {
