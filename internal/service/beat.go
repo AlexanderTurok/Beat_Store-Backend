@@ -1,8 +1,8 @@
 package service
 
 import (
+	model "github.com/AlexanderTurok/beat-store-backend/internal"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 )
 
 type BeatService struct {
@@ -15,23 +15,23 @@ func NewBeatService(repos repository.Beat) *BeatService {
 	}
 }
 
-func (s *BeatService) Create(artistId int, input beatstore.Beat) (int, error) {
+func (s *BeatService) Create(artistId int, input model.Beat) (int, error) {
 	return s.repos.Create(artistId, input)
 }
 
-func (s *BeatService) Get(beatId int) (beatstore.Beat, error) {
+func (s *BeatService) Get(beatId int) (model.Beat, error) {
 	return s.repos.Get(beatId)
 }
 
-func (s *BeatService) GetAll() ([]beatstore.Beat, error) {
+func (s *BeatService) GetAll() ([]model.Beat, error) {
 	return s.repos.GetAll()
 }
 
-func (s *BeatService) GetAllArtistsBeats(artistId int) ([]beatstore.Beat, error) {
+func (s *BeatService) GetAllArtistsBeats(artistId int) ([]model.Beat, error) {
 	return s.repos.GetAllArtistsBeats(artistId)
 }
 
-func (s *BeatService) Update(beatId int, input beatstore.BeatUpdateInput) error {
+func (s *BeatService) Update(beatId int, input model.BeatUpdateInput) error {
 	if err := input.Validate(); err != nil {
 		return err
 	}

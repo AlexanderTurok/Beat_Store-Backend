@@ -3,8 +3,8 @@ package service
 import (
 	"errors"
 
+	model "github.com/AlexanderTurok/beat-store-backend/internal"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 )
 
 type AccountService struct {
@@ -17,11 +17,11 @@ func NewAccountService(repos repository.Account) *AccountService {
 	}
 }
 
-func (s *AccountService) Get(accountId int) (beatstore.Account, error) {
+func (s *AccountService) Get(accountId int) (model.Account, error) {
 	return s.repos.Get(accountId)
 }
 
-func (s *AccountService) Update(accountId int, input beatstore.AccountUpdateInput) error {
+func (s *AccountService) Update(accountId int, input model.AccountUpdateInput) error {
 	if err := input.Validate(); err != nil {
 		return err
 	}

@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
+	model "github.com/AlexanderTurok/beat-store-backend/internal"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 	"github.com/dgrijalva/jwt-go"
 )
 
@@ -26,7 +26,7 @@ func NewAuthService(repos repository.Authorization) *AuthService {
 	}
 }
 
-func (s *AuthService) CreateAccount(account beatstore.Account) (int, error) {
+func (s *AuthService) CreateAccount(account model.Account) (int, error) {
 	account.Password = generatePasswordHash(account.Password)
 	return s.repos.CreateAccount(account)
 }

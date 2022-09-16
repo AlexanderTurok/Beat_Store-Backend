@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	model "github.com/AlexanderTurok/beat-store-backend/internal"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -18,8 +18,8 @@ func NewAccountRepository(db *sqlx.DB) *AccountRepository {
 	}
 }
 
-func (r *AccountRepository) Get(accountId int) (beatstore.Account, error) {
-	var account beatstore.Account
+func (r *AccountRepository) Get(accountId int) (model.Account, error) {
+	var account model.Account
 
 	query := fmt.Sprintf("SELECT name, username, email, photo_path, created_at FROM %s WHERE id=$1", accountTable)
 	err := r.db.Get(&account, query, accountId)
@@ -27,7 +27,7 @@ func (r *AccountRepository) Get(accountId int) (beatstore.Account, error) {
 	return account, err
 }
 
-func (r *AccountRepository) Update(accountId int, input beatstore.AccountUpdateInput) error {
+func (r *AccountRepository) Update(accountId int, input model.AccountUpdateInput) error {
 	query, args := createAccountUpdateQuery(accountId, input)
 	_, err := r.db.Exec(query, args...)
 
@@ -49,7 +49,7 @@ func (r *AccountRepository) Delete(accountId int) error {
 	return err
 }
 
-func createAccountUpdateQuery(accountId int, input beatstore.AccountUpdateInput) (string, []interface{}) {
+func createAccountUpdateQuery(accountId int, input model.AccountUpdateInput) (string, []interface{}) {
 	setValues := make([]string, 0)
 	args := make([]interface{}, 0)
 	argId := 1

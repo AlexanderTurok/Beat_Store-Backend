@@ -1,8 +1,8 @@
 package service
 
 import (
+	model "github.com/AlexanderTurok/beat-store-backend/internal"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 )
 
 type PlaylistService struct {
@@ -15,15 +15,15 @@ func NewPlaylistService(repos repository.Playlist) *PlaylistService {
 	}
 }
 
-func (s *PlaylistService) Create(accountId int, input beatstore.Playlist) (int, error) {
+func (s *PlaylistService) Create(accountId int, input model.Playlist) (int, error) {
 	return s.repos.Create(accountId, input)
 }
 
-func (s *PlaylistService) GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error) {
+func (s *PlaylistService) GetAllAccountsPlaylists(accountId int) ([]model.Playlist, error) {
 	return s.repos.GetAllAccountsPlaylists(accountId)
 }
 
-func (s *PlaylistService) Update(playlistId int, input beatstore.PlaylistUpdateInput) error {
+func (s *PlaylistService) Update(playlistId int, input model.PlaylistUpdateInput) error {
 	if err := input.Validate(); err != nil {
 		return err
 	}
@@ -39,7 +39,7 @@ func (s *PlaylistService) AddBeat(playlistId, beatId int) error {
 	return s.repos.AddBeat(playlistId, beatId)
 }
 
-func (s *PlaylistService) GetAllBeats(playlistId int) ([]beatstore.Beat, error) {
+func (s *PlaylistService) GetAllBeats(playlistId int) ([]model.Beat, error) {
 	return s.repos.GetAllBeats(playlistId)
 }
 

@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	"github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/gin-gonic/gin"
 )
 
@@ -30,7 +30,7 @@ func (h *Handler) updateAccount(c *gin.Context) {
 		return
 	}
 
-	var accountInput beatstore.AccountUpdateInput
+	var accountInput model.AccountUpdateInput
 	if err := c.BindJSON(&accountInput); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return

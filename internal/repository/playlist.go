@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	model "github.com/AlexanderTurok/beat-store-backend/internal"
 	"github.com/jackskj/carta"
 	"github.com/jmoiron/sqlx"
 )
@@ -19,7 +19,7 @@ func NewPlaylistRepository(db *sqlx.DB) *PlaylistRepository {
 	}
 }
 
-func (r *PlaylistRepository) Create(accountId int, input beatstore.Playlist) (int, error) {
+func (r *PlaylistRepository) Create(accountId int, input model.Playlist) (int, error) {
 	tx, err := r.db.Begin()
 	if err != nil {
 		return 0, err
@@ -42,8 +42,8 @@ func (r *PlaylistRepository) Create(accountId int, input beatstore.Playlist) (in
 	return playlistId, tx.Commit()
 }
 
-func (r *PlaylistRepository) GetAllAccountsPlaylists(accountId int) ([]beatstore.Playlist, error) {
-	var playlists []beatstore.Playlist
+func (r *PlaylistRepository) GetAllAccountsPlaylists(accountId int) ([]model.Playlist, error) {
+	var playlists []model.Playlist
 
 	selectPlaylistsId := fmt.Sprintf(` 
 		SELECT playlist.* FROM %s 
@@ -54,7 +54,7 @@ func (r *PlaylistRepository) GetAllAccountsPlaylists(accountId int) ([]beatstore
 	return playlists, err
 }
 
-func (r *PlaylistRepository) Update(playlistId int, input beatstore.PlaylistUpdateInput) error {
+func (r *PlaylistRepository) Update(playlistId int, input model.PlaylistUpdateInput) error {
 	query := fmt.Sprintf("UPDATE %s SET name = $1 WHERE id = $2", playlistTable)
 	_, err := r.db.Exec(query, input.Name, playlistId)
 
@@ -75,8 +75,8 @@ func (r *PlaylistRepository) AddBeat(playlistId, beatId int) error {
 	return err
 }
 
-func (r *PlaylistRepository) GetAllBeats(playlistId int) ([]beatstore.Beat, error) {
-	beats := []beatstore.Beat{}
+func (r *PlaylistRepository) GetAllBeats(playlistId int) ([]model.Beat, error) {
+	beats := []model.Beat{}
 
 	query := fmt.Sprintf(`
 	SELECT 

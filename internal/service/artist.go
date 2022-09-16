@@ -3,8 +3,8 @@ package service
 import (
 	"errors"
 
+	model "github.com/AlexanderTurok/beat-store-backend/internal"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
 )
 
 type ArtistService struct {
@@ -21,11 +21,11 @@ func (s *ArtistService) Create(accountId int) error {
 	return s.repos.Create(accountId)
 }
 
-func (s *ArtistService) Get(accountId int) (beatstore.Account, error) {
+func (s *ArtistService) Get(accountId int) (model.Account, error) {
 	return s.repos.Get(accountId)
 }
 
-func (s *ArtistService) GetAll() ([]beatstore.Account, error) {
+func (s *ArtistService) GetAll() ([]model.Account, error) {
 	return s.repos.GetAll()
 }
 

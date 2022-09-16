@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	beatstore "github.com/AlexanderTurok/beat-store-backend/pkg"
+	model "github.com/AlexanderTurok/beat-store-backend/internal"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -18,7 +18,7 @@ func NewAuthService(db *sqlx.DB) *AuthRepository {
 	}
 }
 
-func (r *AuthRepository) CreateAccount(account beatstore.Account) (int, error) {
+func (r *AuthRepository) CreateAccount(account model.Account) (int, error) {
 	var id int
 	query := fmt.Sprintf("INSERT INTO %s (name, username, email, photo_path, password_hash, created_at) values ($1, $2, $3, $4, $5, $6) RETURNING id", accountTable)
 	row := r.db.QueryRow(query, account.Name, account.Username, account.Email, account.PhotoPath, account.Password, time.Now())
