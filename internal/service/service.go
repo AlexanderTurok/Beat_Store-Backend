@@ -3,16 +3,13 @@ package service
 import (
 	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/auth"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
 )
 
-type Authorization interface {
+type Account interface {
 	CreateAccount(account model.Account) (int, error)
 	GenerateToken(email, password string) (string, error)
-	ParseToken(accessToken string) (int, error)
-}
-
-type Account interface {
 	Get(accountId int) (model.Account, error)
 	Update(accountId int, input model.AccountUpdateInput) error
 	Delete(accountId int, inputPassword string) error
@@ -48,7 +45,6 @@ type Payment interface {
 }
 
 type Service struct {
-	Authorization
 	Account
 	Artist
 	Beat
@@ -56,13 +52,12 @@ type Service struct {
 	Payment
 }
 
-func NewService(repos *repository.Repository, hasher *hash.SHA1Hasher) *Service {
+func NewService(repos *repository.Repository, hasher hash.SHA1Hasher, manager auth.Manager) *Service {
 	return &Service{
-		Authorization: NewAuthService(repos.Authorization, hasher),
-		Account:       NewAccountService(repos.Account, hasher),
-		Artist:        NewArtistService(repos.Artist, hasher),
-		Beat:          NewBeatService(repos.Beat),
-		Playlist:      NewPlaylistService(repos.Playlist),
-		Payment:       NewPaymentService(repos.Payment),
+		Account:  NewAccountService(repos.Account, hasher, manager),
+		Artist:   NewArtistService(repos.Artist, hasher),
+		Beat:     NewBeatService(repos.Beat),
+		Playlist: NewPlaylistService(repos.Playlist),
+		Payment:  NewPaymentService(repos.Payment),
 	}
 }
