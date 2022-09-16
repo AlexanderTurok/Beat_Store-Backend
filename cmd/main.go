@@ -6,6 +6,7 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/internal/handler"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 	"github.com/AlexanderTurok/beat-store-backend/internal/service"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/server"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
@@ -35,8 +36,10 @@ func main() {
 		logrus.Fatalf("error while starting postgres: s", err)
 	}
 
+	hasher := hash.NewSHA1Hasher(os.Getenv("SALT"))
+
 	repository := repository.NewRepository(db)
-	service := service.NewService(repository)
+	service := service.NewService(repository, hasher)
 	handler := handler.NewHandler(service)
 
 	server := new(server.Server)
