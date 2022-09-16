@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	model "github.com/AlexanderTurok/beat-store-backend/internal"
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/jackskj/carta"
 	"github.com/jmoiron/sqlx"
 )

@@ -1,7 +1,7 @@
 package service
 
 import (
-	model "github.com/AlexanderTurok/beat-store-backend/internal"
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 )
 

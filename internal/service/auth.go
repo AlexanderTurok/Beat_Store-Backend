@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	model "github.com/AlexanderTurok/beat-store-backend/internal"
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 	"github.com/dgrijalva/jwt-go"
 )

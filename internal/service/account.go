@@ -3,7 +3,7 @@ package service
 import (
 	"errors"
 
-	model "github.com/AlexanderTurok/beat-store-backend/internal"
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 )
 

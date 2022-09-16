@@ -1,7 +1,7 @@
 package repository
 
 import (
-	model "github.com/AlexanderTurok/beat-store-backend/internal"
+	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/jmoiron/sqlx"
 )
 
