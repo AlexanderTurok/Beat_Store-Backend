@@ -1,14 +1,13 @@
 package service
 
 import (
-	"crypto/sha1"
 	"errors"
-	"fmt"
 	"os"
 	"time"
 
 	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
 	"github.com/dgrijalva/jwt-go"
 )
 
@@ -17,17 +16,19 @@ const (
 )
 
 type AuthService struct {
-	repos repository.Authorization
+	repos  repository.Authorization
+	hasher *hash.SHA1Hasher
 }
 
-func NewAuthService(repos repository.Authorization) *AuthService {
+func NewAuthService(repos repository.Authorization, hasher *hash.SHA1Hasher) *AuthService {
 	return &AuthService{
 		repos: repos,
 	}
 }
 
 func (s *AuthService) CreateAccount(account model.Account) (int, error) {
-	account.Password = generatePasswordHash(account.Password)
+	account.Password = s.hasher.Hash(account.Password)
+
 	return s.repos.CreateAccount(account)
 }
 
@@ -37,7 +38,7 @@ type tokenClaims struct {
 }
 
 func (s *AuthService) GenerateToken(email, password string) (string, error) {
-	userId, err := s.repos.GetAccountId(email, generatePasswordHash(password))
+	userId, err := s.repos.GetAccountId(email, s.hasher.Hash(password))
 	if err != nil {
 		return "", err
 	}
@@ -74,12 +75,4 @@ func (s *AuthService) ParseToken(accessToken string) (int, error) {
 	}
 
 	return claims.UserId, nil
-}
-
-func generatePasswordHash(password string) string {
-	salt := os.Getenv("SALT")
-	hash := sha1.New()
-	hash.Write([]byte(password))
-
-	return fmt.Sprintf("%x", hash.Sum([]byte(salt)))
 }

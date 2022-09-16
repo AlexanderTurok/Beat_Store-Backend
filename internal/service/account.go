@@ -5,13 +5,15 @@ import (
 
 	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
 )
 
 type AccountService struct {
-	repos repository.Account
+	repos  repository.Account
+	hasher *hash.SHA1Hasher
 }
 
-func NewAccountService(repos repository.Account) *AccountService {
+func NewAccountService(repos repository.Account, hasher *hash.SHA1Hasher) *AccountService {
 	return &AccountService{
 		repos: repos,
 	}
@@ -29,14 +31,15 @@ func (s *AccountService) Update(accountId int, input model.AccountUpdateInput) e
 	return s.repos.Update(accountId, input)
 }
 
-func (s *AccountService) Delete(accountId int, password string) error {
-	password = generatePasswordHash(password)
+func (s *AccountService) Delete(accountId int, inputPassword string) error {
+	inputPassword = s.hasher.Hash(inputPassword)
+
 	passwordHash, err := s.repos.GetPasswordHash(accountId)
 	if err != nil {
 		return err
 	}
 
-	if password != passwordHash {
+	if inputPassword != passwordHash {
 		return errors.New("invalid password")
 	}
 
