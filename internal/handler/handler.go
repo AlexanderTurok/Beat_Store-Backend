@@ -2,16 +2,19 @@ package handler
 
 import (
 	"github.com/AlexanderTurok/beat-store-backend/internal/service"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/auth"
 	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {
 	service *service.Service
+	manager auth.TokenManager
 }
 
-func NewHandler(service *service.Service) *Handler {
+func NewHandler(service *service.Service, manager auth.TokenManager) *Handler {
 	return &Handler{
 		service: service,
+		manager: manager,
 	}
 }
 
