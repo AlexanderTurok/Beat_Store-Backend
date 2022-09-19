@@ -19,7 +19,7 @@ func NewAccountRepository(db *sqlx.DB) *AccountRepository {
 	}
 }
 
-func (r *AccountRepository) CreateAccount(account model.Account) (int, error) {
+func (r *AccountRepository) Create(account model.Account) (int, error) {
 	var id int
 	query := fmt.Sprintf("INSERT INTO %s (name, username, email, photo_path, password_hash, created_at) values ($1, $2, $3, $4, $5, $6) RETURNING id", accountTable)
 	row := r.db.QueryRow(query, account.Name, account.Username, account.Email, account.PhotoPath, account.Password, time.Now())
@@ -30,7 +30,14 @@ func (r *AccountRepository) CreateAccount(account model.Account) (int, error) {
 	return id, nil
 }
 
-func (r *AccountRepository) GetAccountId(email, password string) (int, error) {
+func (r *AccountRepository) Confirm(accountId int) error {
+	query := fmt.Sprintf("UPDATE %s SET confirmed = true WHERE id = $1", accountTable)
+	_, err := r.db.Exec(query, accountId)
+
+	return err
+}
+
+func (r *AccountRepository) GetId(email, password string) (int, error) {
 	var id int
 	query := fmt.Sprintf("SELECT id FROM %s WHERE email=$1 AND password_hash=$2", accountTable)
 	err := r.db.Get(&id, query, email, password)
