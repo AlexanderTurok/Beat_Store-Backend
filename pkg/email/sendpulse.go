@@ -3,6 +3,8 @@ package email
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"io"
 	"net/http"
 
@@ -39,7 +41,7 @@ type authRequest struct {
 type authResponse struct {
 	AccessToken string `json:"access_token"`
 	TokenType   string `json:"token_type"`
-	ExpiresIn   string `json:"expires_in"`
+	ExpiresIn   int    `json:"expires_in"`
 }
 
 func (c *Client) getToken() (string, error) {
@@ -57,7 +59,7 @@ func (c *Client) getToken() (string, error) {
 		return "", err
 	}
 
-	return token.(string), nil
+	return token.(string), err
 }
 
 func (c *Client) authenticate() (string, error) {
@@ -72,27 +74,33 @@ func (c *Client) authenticate() (string, error) {
 		return "", err
 	}
 
-	resp, err := http.Post(baseUrl+authEndpoint, "aplication/json", bytes.NewBuffer(reqBody))
+	fmt.Printf("req auth data - %s\n", reqBody)
+
+	res, err := http.Post(baseUrl+authEndpoint, "application/json", bytes.NewBuffer(reqBody))
 	if err != nil {
 		return "", err
 	}
 
-	defer resp.Body.Close()
+	defer res.Body.Close()
 
-	if resp.StatusCode != 200 {
-		return "", err
+	fmt.Printf("auth status code - %s\n", res.Status)
+
+	if res.StatusCode != 200 {
+		return "", errors.New("sendpulse: auth: status code is not OK")
 	}
 
-	var respData authResponse
+	var resData authResponse
 
-	respBody, err := io.ReadAll(resp.Body)
+	resBody, err := io.ReadAll(res.Body)
 	if err != nil {
 		return "", err
 	}
 
-	if err := json.Unmarshal(respBody, &respData); err != nil {
+	if err := json.Unmarshal(resBody, &resData); err != nil {
 		return "", err
 	}
 
-	return respData.AccessToken, nil
+	fmt.Printf("response auth data - %s\n", resData)
+
+	return resData.AccessToken, nil
 }

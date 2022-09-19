@@ -3,6 +3,7 @@ package service
 import (
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/email"
@@ -19,26 +20,30 @@ func NewEmailService(sender email.Client) *EmailService {
 }
 
 func (s *EmailService) SendVerificationEmail(input model.Account) error {
+	listId, _ := strconv.Atoi(os.Getenv("VERIFICATION_LIST_ID"))
 	result, err := s.sender.AddEmailToList(email.AddEmailToList{
-		ListId: os.Getenv("VERIFICATION_LIST_ID"),
+		ListId: listId,
 		Emails: []email.EmailData{
 			{
 				Email: input.Email,
 				Variables: map[string]string{
-					"name": input.Name,
-					"link": s.createVerificationLink(input.Id),
+					"Name": input.Name,
+					"Link": s.createVerificationLink(input.Username),
 				},
 			},
 		},
 	})
+	if err != nil {
+		return err
+	}
 	if !result.Result {
 		return fmt.Errorf("sendulse response: got: %t, expected: true", result.Result)
 	}
 
-	return err
+	return nil
 }
 
-func (s *EmailService) createVerificationLink(id int) string {
+func (s *EmailService) createVerificationLink(value string) string {
 	domain := os.Getenv("DOMAIN")
-	return fmt.Sprintf("%s/api/account/confirmation/%d", domain, id)
+	return fmt.Sprintf("%s/api/account/confirmation/%s", domain, value)
 }

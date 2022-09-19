@@ -26,20 +26,17 @@ func NewAccountService(repos repository.Account, hasher hash.SHA1Hasher, manager
 		repos:   repos,
 		hasher:  hasher,
 		manager: manager,
+		sender:  sender,
 	}
 }
 
 func (s *AccountService) Create(account model.Account) (int, error) {
 	account.Password = s.hasher.Hash(account.Password)
-
-	id, err := s.repos.Create(account)
-	if err != nil {
+	if err := s.sender.SendVerificationEmail(account); err != nil {
 		return 0, err
 	}
 
-	err = s.sender.SendVerificationEmail(account)
-
-	return id, err
+	return s.repos.Create(account)
 }
 
 func (s *AccountService) Confirm(accountId int) error {

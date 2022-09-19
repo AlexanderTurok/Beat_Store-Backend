@@ -10,11 +10,11 @@ import (
 )
 
 const (
-	addEmailToListEndpoint = "/addressbooks/%s/emails"
+	addEmailToListEndpoint = "/addressbooks/%d/emails"
 )
 
 type AddEmailToList struct {
-	ListId string      `json:"id"`
+	ListId int         `json:"id"`
 	Emails []EmailData `json:"emails"`
 }
 
@@ -38,14 +38,14 @@ func (c *Client) AddEmailToList(input AddEmailToList) (Result, error) {
 		return Result{}, err
 	}
 
-	path := fmt.Sprintf(addEmailToListEndpoint, input.ListId)
-	req, err := http.NewRequest(http.MethodPost, baseUrl+path, bytes.NewBuffer(reqBody))
+	path := fmt.Sprintf(baseUrl+addEmailToListEndpoint, input.ListId)
+	req, err := http.NewRequest(http.MethodPost, path, bytes.NewBuffer(reqBody))
 	if err != nil {
 		return Result{}, err
 	}
 
 	req.Header.Set("Content-Type", "aplication/json")
-	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", token))
+	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", token))
 
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -62,7 +62,7 @@ func (c *Client) AddEmailToList(input AddEmailToList) (Result, error) {
 	}
 
 	if res.StatusCode != 200 {
-		return Result{}, errors.New("status code is not OK")
+		return Result{}, errors.New("sendpulse: status code is not OK")
 	}
 
 	if err = json.Unmarshal(resBody, &resData); err != nil {

@@ -24,7 +24,8 @@ func main() {
 		logrus.Fatalf("error while loading enviroment variables: %s", err)
 	}
 
-	if err := initConfig(); err != nil {
+	// FIXME: handle error
+	if err := initConfig(); err == nil {
 		logrus.Fatalf("error while initializing configs: %s", err)
 	}
 
@@ -37,7 +38,7 @@ func main() {
 		SSLMode:  viper.GetString("db.sslmode"),
 	})
 	if err != nil {
-		logrus.Fatalf("error while starting postgres: s", err)
+		logrus.Fatalf("error while starting postgres: %s", err)
 	}
 
 	hasher := hash.NewSHA1Hasher(os.Getenv("SALT"))
