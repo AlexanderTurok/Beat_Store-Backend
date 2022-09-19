@@ -7,7 +7,10 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 	"github.com/AlexanderTurok/beat-store-backend/internal/service"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/auth"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/cache"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/email"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/postgres"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/server"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
@@ -25,7 +28,7 @@ func main() {
 		logrus.Fatalf("error while initializing configs: %s", err)
 	}
 
-	db, err := repository.NewPostgresDB(repository.Config{
+	db, err := postgres.NewPostgresDB(postgres.Config{
 		Host:     viper.GetString("db.host"),
 		Port:     viper.GetString("db.port"),
 		Username: viper.GetString("db.username"),
@@ -39,9 +42,14 @@ func main() {
 
 	hasher := hash.NewSHA1Hasher(os.Getenv("SALT"))
 	manager := auth.NewManager(os.Getenv("SIGNING_KEY"))
+	cacher := cache.NewMemoryCache()
+	sender := email.NewClient(email.Config{
+		Id:     os.Getenv("CLIENT_ID"),
+		Secret: os.Getenv("CLIENT_SECRET"),
+	}, cacher)
 
 	repository := repository.NewRepository(db)
-	service := service.NewService(repository, *hasher, *manager)
+	service := service.NewService(repository, *hasher, *manager, *sender)
 	handler := handler.NewHandler(service, manager)
 
 	server := new(server.Server)

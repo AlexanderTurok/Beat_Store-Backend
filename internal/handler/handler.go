@@ -74,6 +74,11 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			}
 		}
 
+		confirmation := api.Group("/account/confirmation")
+		{
+			confirmation.GET("/:id", h.confirmAccount)
+		}
+
 		artists := api.Group("/artists")
 		{
 			artists.GET("/", h.getAllArtists)

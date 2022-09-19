@@ -6,8 +6,9 @@ import (
 )
 
 type Account interface {
-	CreateAccount(account model.Account) (int, error)
-	GetAccountId(email, password string) (int, error)
+	Create(account model.Account) (int, error)
+	Confirm(accountId int) error
+	GetId(email, password string) (int, error)
 	Get(accountId int) (model.Account, error)
 	Update(accountId int, input model.AccountUpdateInput) error
 	GetPasswordHash(accountId int) (string, error)
