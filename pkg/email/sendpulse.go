@@ -1,21 +1,17 @@
-package sendpulse
+package email
 
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
-	"fmt"
 	"io"
 	"net/http"
 
 	"github.com/AlexanderTurok/beat-store-backend/pkg/cache"
-	"github.com/sirupsen/logrus"
 )
 
 const (
-	baseUrl                = "https://api.sendpulse.com"
-	authEndpoint           = "/oauth/access_token"
-	addEmailToListEndpoint = "/addressbooks/%s/emails"
+	baseUrl      = "https://api.sendpulse.com"
+	authEndpoint = "/oauth/access_token"
 
 	grantType = "client_credentials"
 
@@ -23,77 +19,15 @@ const (
 )
 
 type Client struct {
-	id     string
-	secret string
+	config Config
 	cache  cache.Cache
 }
 
-func NewClient(id, secret string, cache cache.Cache) *Client {
+func NewClient(config Config, cache cache.Cache) *Client {
 	return &Client{
-		id:     id,
-		secret: secret,
+		config: config,
 		cache:  cache,
 	}
-}
-
-type addToListRequest struct {
-	Emails []emailInfo `json:"emails"`
-}
-
-type emailInfo struct {
-	Email     string            `json:"email"`
-	Variables map[string]string `json:"variables"`
-}
-
-func (c *Client) AddEmailToList(input AddEmailInput) error {
-	token, err := c.getToken()
-	if err != nil {
-		return err
-	}
-
-	reqData := addToListRequest{
-		Emails: []emailInfo{
-			{
-				Email:     input.Email,
-				Variables: input.Variables,
-			},
-		},
-	}
-
-	reqBody, err := json.Marshal(reqData)
-	if err != nil {
-		return err
-	}
-
-	path := fmt.Sprintf(addEmailToListEndpoint, input.ListID)
-
-	req, err := http.NewRequest(http.MethodPost, baseUrl+path, bytes.NewBuffer(reqBody))
-	if err != nil {
-		return err
-	}
-
-	req.Header.Set("Content-Type", "aplication/json")
-	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", token))
-
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		return err
-	}
-
-	defer resp.Body.Close()
-
-	respBody, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return err
-	}
-
-	logrus.Infof("SendPulse Respons: %s", string(respBody))
-
-	if resp.StatusCode != 200 {
-		return errors.New("status code is not OK")
-	}
-
-	return nil
 }
 
 type authRequest struct {
@@ -129,8 +63,8 @@ func (c *Client) getToken() (string, error) {
 func (c *Client) authenticate() (string, error) {
 	reqData := authRequest{
 		GrantType:    grantType,
-		ClientId:     c.id,
-		ClientSecret: c.secret,
+		ClientId:     c.config.Id,
+		ClientSecret: c.config.Secret,
 	}
 
 	reqBody, err := json.Marshal(reqData)
