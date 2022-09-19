@@ -10,7 +10,7 @@ import (
 
 type Account interface {
 	Create(account model.Account) (int, error)
-	Confirm(accountId int) error
+	Confirm(username string) error
 	GenerateToken(email, password string) (string, error)
 	Get(accountId int) (model.Account, error)
 	Update(accountId int, input model.AccountUpdateInput) error

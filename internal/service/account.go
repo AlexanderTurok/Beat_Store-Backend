@@ -42,8 +42,8 @@ func (s *AccountService) Create(account model.Account) (int, error) {
 	return id, err
 }
 
-func (s *AccountService) Confirm(accountId int) error {
-	return s.repos.Confirm(accountId)
+func (s *AccountService) Confirm(username string) error {
+	return s.repos.Confirm(username)
 }
 
 func (s *AccountService) GenerateToken(email, password string) (string, error) {

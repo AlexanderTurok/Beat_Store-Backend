@@ -30,9 +30,9 @@ func (r *AccountRepository) Create(account model.Account) (int, error) {
 	return id, nil
 }
 
-func (r *AccountRepository) Confirm(accountId int) error {
-	query := fmt.Sprintf("UPDATE %s SET confirmed = true WHERE id = $1", accountTable)
-	_, err := r.db.Exec(query, accountId)
+func (r *AccountRepository) Confirm(username string) error {
+	query := fmt.Sprintf("UPDATE %s SET confirmed = true WHERE username = $1", accountTable)
+	_, err := r.db.Exec(query, username)
 
 	return err
 }

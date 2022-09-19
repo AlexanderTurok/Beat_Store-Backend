@@ -76,7 +76,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 
 		confirmation := api.Group("/account/confirmation")
 		{
-			confirmation.GET("/:id", h.confirmAccount)
+			confirmation.GET("/:username", h.confirmAccount)
 		}
 
 		artists := api.Group("/artists")
