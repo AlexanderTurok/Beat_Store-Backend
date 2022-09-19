@@ -10,6 +10,7 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/pkg/cache"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/email"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/postgres"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/server"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
@@ -27,7 +28,7 @@ func main() {
 		logrus.Fatalf("error while initializing configs: %s", err)
 	}
 
-	db, err := repository.NewPostgresDB(repository.Config{
+	db, err := postgres.NewPostgresDB(postgres.Config{
 		Host:     viper.GetString("db.host"),
 		Port:     viper.GetString("db.port"),
 		Username: viper.GetString("db.username"),
