@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 
@@ -74,16 +73,12 @@ func (c *Client) authenticate() (string, error) {
 		return "", err
 	}
 
-	fmt.Printf("req auth data - %s\n", reqBody)
-
 	res, err := http.Post(baseUrl+authEndpoint, "application/json", bytes.NewBuffer(reqBody))
 	if err != nil {
 		return "", err
 	}
 
 	defer res.Body.Close()
-
-	fmt.Printf("auth status code - %s\n", res.Status)
 
 	if res.StatusCode != 200 {
 		return "", errors.New("sendpulse: auth: status code is not OK")
@@ -99,8 +94,6 @@ func (c *Client) authenticate() (string, error) {
 	if err := json.Unmarshal(resBody, &resData); err != nil {
 		return "", err
 	}
-
-	fmt.Printf("response auth data - %s\n", resData)
 
 	return resData.AccessToken, nil
 }
