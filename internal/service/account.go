@@ -18,9 +18,10 @@ type AccountService struct {
 	repos   repository.Account
 	hasher  hash.SHA1Hasher
 	manager auth.Manager
+	sender  *EmailService
 }
 
-func NewAccountService(repos repository.Account, hasher hash.SHA1Hasher, manager auth.Manager) *AccountService {
+func NewAccountService(repos repository.Account, hasher hash.SHA1Hasher, manager auth.Manager, sender *EmailService) *AccountService {
 	return &AccountService{
 		repos:   repos,
 		hasher:  hasher,
@@ -28,14 +29,25 @@ func NewAccountService(repos repository.Account, hasher hash.SHA1Hasher, manager
 	}
 }
 
-func (s *AccountService) CreateAccount(account model.Account) (int, error) {
+func (s *AccountService) Create(account model.Account) (int, error) {
 	account.Password = s.hasher.Hash(account.Password)
 
-	return s.repos.CreateAccount(account)
+	id, err := s.repos.Create(account)
+	if err != nil {
+		return 0, err
+	}
+
+	err = s.sender.SendVerificationEmail(account)
+
+	return id, err
+}
+
+func (s *AccountService) Confirm(accountId int) error {
+	return s.repos.Confirm(accountId)
 }
 
 func (s *AccountService) GenerateToken(email, password string) (string, error) {
-	userId, err := s.repos.GetAccountId(email, s.hasher.Hash(password))
+	userId, err := s.repos.GetId(email, s.hasher.Hash(password))
 	if err != nil {
 		return "", err
 	}

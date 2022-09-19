@@ -4,11 +4,13 @@ import (
 	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/auth"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/email"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
 )
 
 type Account interface {
-	CreateAccount(account model.Account) (int, error)
+	Create(account model.Account) (int, error)
+	Confirm(accountId int) error
 	GenerateToken(email, password string) (string, error)
 	Get(accountId int) (model.Account, error)
 	Update(accountId int, input model.AccountUpdateInput) error
@@ -52,9 +54,9 @@ type Service struct {
 	Payment
 }
 
-func NewService(repos *repository.Repository, hasher hash.SHA1Hasher, manager auth.Manager) *Service {
+func NewService(repos *repository.Repository, hasher hash.SHA1Hasher, manager auth.Manager, sender email.Client) *Service {
 	return &Service{
-		Account:  NewAccountService(repos.Account, hasher, manager),
+		Account:  NewAccountService(repos.Account, hasher, manager, NewEmailService(sender)),
 		Artist:   NewArtistService(repos.Artist, hasher),
 		Beat:     NewBeatService(repos.Beat),
 		Playlist: NewPlaylistService(repos.Playlist),
