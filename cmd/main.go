@@ -7,6 +7,8 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
 	"github.com/AlexanderTurok/beat-store-backend/internal/service"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/auth"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/cache"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/email"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/server"
 	"github.com/joho/godotenv"
@@ -39,9 +41,14 @@ func main() {
 
 	hasher := hash.NewSHA1Hasher(os.Getenv("SALT"))
 	manager := auth.NewManager(os.Getenv("SIGNING_KEY"))
+	cacher := cache.NewMemoryCache()
+	sender := email.NewClient(email.Config{
+		Id:     os.Getenv("CLIENT_ID"),
+		Secret: os.Getenv("CLIENT_SECRET"),
+	}, cacher)
 
 	repository := repository.NewRepository(db)
-	service := service.NewService(repository, *hasher, *manager)
+	service := service.NewService(repository, *hasher, *manager, *sender)
 	handler := handler.NewHandler(service, manager)
 
 	server := new(server.Server)
