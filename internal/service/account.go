@@ -32,11 +32,14 @@ func NewAccountService(repos repository.Account, hasher hash.SHA1Hasher, manager
 
 func (s *AccountService) Create(account model.Account) (int, error) {
 	account.Password = s.hasher.Hash(account.Password)
-	if err := s.sender.SendVerificationEmail(account); err != nil {
+	id, err := s.repos.Create(account)
+	if err != nil {
 		return 0, err
 	}
 
-	return s.repos.Create(account)
+	err = s.sender.SendVerificationEmail(account)
+
+	return id, err
 }
 
 func (s *AccountService) Confirm(accountId int) error {
