@@ -2,6 +2,7 @@ package handler
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/gin-gonic/gin"
@@ -21,6 +22,21 @@ func (h *Handler) getAccountByToken(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, account)
+}
+
+func (h *Handler) confirmAccount(c *gin.Context) {
+	accountId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid confirmation link")
+		return
+	}
+
+	if err := h.service.Account.Confirm(accountId); err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
 func (h *Handler) updateAccount(c *gin.Context) {
