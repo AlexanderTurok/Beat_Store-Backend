@@ -6,6 +6,8 @@ DROP TABLE playlist;
 
 DROP TABLE account_beat;
 
+DROP TABLE price;
+
 DROP TABLE tag;
 
 DROP TABLE beat;
