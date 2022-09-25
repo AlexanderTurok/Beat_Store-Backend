@@ -83,3 +83,19 @@ func (h *Handlers) deleteAccountsPlaylist(c *gin.Context) {
 
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
+
+func (h *Handlers) getAllAccountsPlaylists(c *gin.Context) {
+	accountId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	playlists, err := h.service.Playlist.GetAllAccountsPlaylists(accountId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, playlists)
+}

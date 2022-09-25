@@ -38,14 +38,6 @@ func (h *Handlers) InitRoutes() *gin.Engine {
 			payments := accounts.Group("/payments")
 			{
 				payments.POST("/create-payment-intent", h.createPaymentIntent)
-
-				beats := payments.Group("/beats")
-				{
-					beats.POST("/", h.buyBeat)
-					beats.GET("/", h.getAllBoughtBeats)
-					beats.GET("/:id", h.getBoughtBeatById)
-					beats.DELETE("/:id", h.returnBoughtBeat)
-				}
 			}
 
 			playlists := accounts.Group("/playlists")
