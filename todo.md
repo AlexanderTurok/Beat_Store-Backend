@@ -1,2 +1,2 @@
-1. While sign up send email with confirmation
+1. Update tags and price
 2. Remove unnecessary letters when getting created_ad
