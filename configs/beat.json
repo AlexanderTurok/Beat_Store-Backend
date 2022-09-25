@@ -1,7 +1,7 @@
 [
   {
     "name": "Moonlight",
-    "bpm": "96",
+    "bpm": 96,
     "key": "Amaj5",
     "photo_path": "moonlight.jpeg",
     "mp3_path": "moonlight.mp3",
@@ -19,7 +19,7 @@
     }
   }, {
     "name": "Sunshine",
-    "bpm": "120",
+    "bpm": 120,
     "key": "Gm",
     "photo_path": "sunshine.jpeg",
     "mp3_path": "sunshine.mp3",

@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS beat (
   id BIGSERIAL PRIMARY KEY,
   artist_id BIGINT REFERENCES artist (id) ON DELETE CASCADE NOT NULL,
   name TEXT NOT NULL,
-  bpm TEXT NOT NULL,
+  bpm INT NOT NULL,
   key TEXT NOT NULL,
   photo_path TEXT NOT NULL,
   mp3_path TEXT NOT NULL,
@@ -37,9 +37,9 @@ CREATE TABLE IF NOT EXISTS tag (
 
 CREATE TABLE IF NOT EXISTS price (
   id BIGINT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
-  standart FLOAT NOT NULL,
-  premium FLOAT NOT NULL,
-  ultimate FLOAT NOT NULL,
+  standart INT NOT NULL,
+  premium INT NOT NULL,
+  ultimate INT NOT NULL,
   standart_id TEXT NOT NULL UNIQUE,
   premium_id TEXT NOT NULL UNIQUE,
   ultimate_id TEXT NOT NULL UNIQUE,
