@@ -28,20 +28,8 @@ func (r *BeatRepository) Create(artistId int, input model.Beat) (int, error) {
 
 	var beatId int
 	insertBeatQuery := fmt.Sprintf(`INSERT INTO %s (
-			artist_id,
-			name,
-			bpm,
-			key,
-			photo_path,
-			mp3_path,
-			wav_path,
-			genre,
-			mood,
-			standart_price,
-			premium_price,
-			unlimited_price,
-			created_at)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
+			artist_id, name, bpm, key, photo_path, mp3_path, wav_path, genre, mood, created_at)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id`,
 		beatTable,
 	)
 
@@ -55,18 +43,24 @@ func (r *BeatRepository) Create(artistId int, input model.Beat) (int, error) {
 		input.WavPath,
 		input.Genre,
 		input.Mood,
-		input.StandartPrice,
-		input.PremiumPrice,
-		input.UnlimitedPrice,
 		time.Now(),
 	).Scan(&beatId); err != nil {
 		tx.Rollback()
 		return 0, err
 	}
 
-	insertTagQuery := fmt.Sprintf(`INSERT INTO %s (beat_id, tag_name) VALUES ($1, $2)`, tagTable)
+	insertPriceQuery := fmt.Sprintf(`INSERT INTO %s 
+		(id, standart, premium, ultimate, standart_id, premium_id, ultimate_id)
+		VALUES ($1, $2, $3, $4, $5, $6, $7)`, priceTable)
+	if _, err := tx.Exec(insertPriceQuery, beatId, input.Price.Standart,
+		input.Price.Premium, input.Price.Ultimate, input.Price.StandartId,
+		input.Price.PremiumId, input.Price.UltimateId); err != nil {
+		return 0, err
+	}
+
+	insertTagQuery := fmt.Sprintf(`INSERT INTO %s (beat_id, name) VALUES ($1, $2)`, tagTable)
 	for _, tag := range input.Tags {
-		if _, err := tx.Exec(insertTagQuery, beatId, tag.TagName); err != nil {
+		if _, err := tx.Exec(insertTagQuery, beatId, tag.Name); err != nil {
 			tx.Rollback()
 			return 0, err
 		}
@@ -78,7 +72,10 @@ func (r *BeatRepository) Create(artistId int, input model.Beat) (int, error) {
 func (r *BeatRepository) Get(beatId int) (model.Beat, error) {
 	beat := model.Beat{}
 
-	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id WHERE beat.id=$1`, beatTable, tagTable)
+	query := fmt.Sprintf(`SELECT beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+		LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
+		LEFT OUTER JOIN %s ON beat.id = price.id
+		WHERE beat.id=$1`, beatTable, tagTable, priceTable)
 	rows, err := r.db.Query(query, beatId)
 	if err != nil {
 		return model.Beat{}, err
@@ -92,7 +89,9 @@ func (r *BeatRepository) Get(beatId int) (model.Beat, error) {
 func (r *BeatRepository) GetAll() ([]model.Beat, error) {
 	beats := []model.Beat{}
 
-	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id`, beatTable, tagTable)
+	query := fmt.Sprintf(`SELECT beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+		LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
+		LEFT OUTER JOIN %s ON beat.id = price.id`, beatTable, tagTable, priceTable)
 	rows, err := r.db.Query(query)
 	if err != nil {
 		return nil, err
@@ -106,7 +105,10 @@ func (r *BeatRepository) GetAll() ([]model.Beat, error) {
 func (r *BeatRepository) GetAllArtistsBeats(artistId int) ([]model.Beat, error) {
 	beats := []model.Beat{}
 
-	query := fmt.Sprintf(`SELECT beat.*, tag.id AS tag_id, tag.tag_name AS tag_name FROM %s LEFT OUTER JOIN %s ON beat.id = tag.beat_id WHERE beat.artist_id=$1`, beatTable, tagTable)
+	query := fmt.Sprintf(`SELECT beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+	LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
+	LEFT OUTER JOIN %s ON beat.id = price.id
+	WHERE beat.artist_id=$1`, beatTable, tagTable, priceTable)
 	rows, err := r.db.Query(query, artistId)
 	if err != nil {
 		return nil, err
@@ -181,24 +183,6 @@ func createBeatUpdateQuery(beatId int, input model.BeatUpdateInput) (string, []i
 	if input.Mood != nil {
 		setValues = append(setValues, fmt.Sprintf("mood=$%d", argId))
 		args = append(args, *input.Mood)
-		argId++
-	}
-
-	if input.StandartPrice != nil {
-		setValues = append(setValues, fmt.Sprintf("standart_price=$%d", argId))
-		args = append(args, *input.StandartPrice)
-		argId++
-	}
-
-	if input.PremiumPrice != nil {
-		setValues = append(setValues, fmt.Sprintf("premium_price=$%d", argId))
-		args = append(args, *input.PremiumPrice)
-		argId++
-	}
-
-	if input.UnlimitedPrice != nil {
-		setValues = append(setValues, fmt.Sprintf("unlimited_price=$%d", argId))
-		args = append(args, *input.UnlimitedPrice)
 		argId++
 	}
 
