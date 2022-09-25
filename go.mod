@@ -50,7 +50,7 @@ require (
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/joho/godotenv v1.4.0
 	github.com/lib/pq v1.10.6
-	github.com/spf13/viper v1.12.0
-	github.com/stripe/stripe-go/v72 v72.122.0
+	github.com/spf13/viper v1.13.0
+	github.com/stripe/stripe-go/v73 v73.10.0
 	golang.org/x/sys v0.0.0-20220829200755-d48e67d00261 // indirect
 )
