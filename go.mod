@@ -30,6 +30,7 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/stripe/stripe-go v70.15.0+incompatible // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90 // indirect
@@ -50,5 +51,6 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/lib/pq v1.10.6
 	github.com/spf13/viper v1.12.0
+	github.com/stripe/stripe-go/v72 v72.122.0
 	golang.org/x/sys v0.0.0-20220829200755-d48e67d00261 // indirect
 )
