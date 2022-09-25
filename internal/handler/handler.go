@@ -35,12 +35,17 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			accounts.PUT("/", h.updateAccount)
 			accounts.DELETE("/", h.deleteAccount)
 
-			beats := accounts.Group("/beats")
+			payments := accounts.Group("/payments")
 			{
-				beats.POST("/", h.buyBeat)
-				beats.GET("/", h.getAllBoughtBeats)
-				beats.GET("/:id", h.getBoughtBeatById)
-				beats.DELETE("/:id", h.returnBoughtBeat)
+				payments.POST("/create-payment-intent", h.createPaymentIntent)
+
+				beats := payments.Group("/beats")
+				{
+					beats.POST("/", h.buyBeat)
+					beats.GET("/", h.getAllBoughtBeats)
+					beats.GET("/:id", h.getBoughtBeatById)
+					beats.DELETE("/:id", h.returnBoughtBeat)
+				}
 			}
 
 			playlists := accounts.Group("/playlists")
@@ -74,9 +79,9 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			}
 		}
 
-		confirmation := api.Group("/account/confirmation")
+		confirmations := api.Group("/accounts/confirmations")
 		{
-			confirmation.GET("/:username", h.confirmAccount)
+			confirmations.GET("/:username", h.confirmAccount)
 		}
 
 		artists := api.Group("/artists")
