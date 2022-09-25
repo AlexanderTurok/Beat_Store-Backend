@@ -39,7 +39,7 @@ func (h *Handler) signIn(c *gin.Context) {
 		return
 	}
 
-	token, err := h.service.GenerateToken(accountInput.Email, accountInput.Password)
+	token, err := h.service.Account.GenerateToken(accountInput.Email, accountInput.Password)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return

@@ -39,7 +39,7 @@ func (h *Handler) getAllPlaylistsByToken(c *gin.Context) {
 		return
 	}
 
-	playlists, err := h.service.GetAllAccountsPlaylists(accountId)
+	playlists, err := h.service.Playlist.GetAllAccountsPlaylists(accountId)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
