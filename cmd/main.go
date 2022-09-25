@@ -10,6 +10,7 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/pkg/cache"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/email"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/payment"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/postgres"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/server"
 	"github.com/joho/godotenv"
@@ -41,6 +42,7 @@ func main() {
 		logrus.Fatalf("error while starting postgres: %s", err)
 	}
 
+	paymenter := payment.NewPayment(os.Getenv("STRIPE_KEY"))
 	hasher := hash.NewSHA1Hasher(os.Getenv("SALT"))
 	manager := auth.NewManager(os.Getenv("SIGNING_KEY"))
 	cacher := cache.NewMemoryCache()
@@ -50,7 +52,7 @@ func main() {
 	}, cacher)
 
 	repository := repository.NewRepository(db)
-	service := service.NewService(repository, *hasher, *manager, *sender)
+	service := service.NewService(repository, *hasher, *manager, *sender, *paymenter)
 	handler := handler.NewHandler(service, manager)
 
 	server := new(server.Server)
