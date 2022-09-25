@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) createBeat(c *gin.Context) {
+func (h *Handlers) createBeat(c *gin.Context) {
 	artistId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -32,7 +32,7 @@ func (h *Handler) createBeat(c *gin.Context) {
 	})
 }
 
-func (h *Handler) getAllBeatsByToken(c *gin.Context) {
+func (h *Handlers) getAllBeatsByToken(c *gin.Context) {
 	artistId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -48,7 +48,7 @@ func (h *Handler) getAllBeatsByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, beats)
 }
 
-func (h *Handler) updateArtistsBeat(c *gin.Context) {
+func (h *Handlers) updateArtistsBeat(c *gin.Context) {
 	beatId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid id")
@@ -69,7 +69,7 @@ func (h *Handler) updateArtistsBeat(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handler) deleteArtistsBeat(c *gin.Context) {
+func (h *Handlers) deleteArtistsBeat(c *gin.Context) {
 	beatId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid id")

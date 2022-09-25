@@ -1,7 +1,7 @@
 package payment
 
 import (
-	"github.com/stripe/stripe-go/v72"
+	"github.com/stripe/stripe-go/v73"
 )
 
 type Payment struct {

@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) getAllBeats(c *gin.Context) {
+func (h *Handlers) getAllBeats(c *gin.Context) {
 	beats, err := h.service.Beat.GetAll()
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -17,7 +17,7 @@ func (h *Handler) getAllBeats(c *gin.Context) {
 	c.JSON(http.StatusOK, beats)
 }
 
-func (h *Handler) getAllArtistsBeats(c *gin.Context) {
+func (h *Handlers) getAllArtistsBeats(c *gin.Context) {
 	artistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid id")
@@ -33,7 +33,7 @@ func (h *Handler) getAllArtistsBeats(c *gin.Context) {
 	c.JSON(http.StatusOK, beats)
 }
 
-func (h *Handler) getBeatById(c *gin.Context) {
+func (h *Handlers) getBeatById(c *gin.Context) {
 	beatId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid id")

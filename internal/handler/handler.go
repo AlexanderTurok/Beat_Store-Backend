@@ -6,19 +6,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Handler struct {
-	service *service.Service
+type Handlers struct {
+	service *service.Services
 	manager auth.TokenManager
 }
 
-func NewHandler(service *service.Service, manager auth.TokenManager) *Handler {
-	return &Handler{
+func NewHandlers(service *service.Services, manager auth.TokenManager) *Handlers {
+	return &Handlers{
 		service: service,
 		manager: manager,
 	}
 }
 
-func (h *Handler) InitRoutes() *gin.Engine {
+func (h *Handlers) InitRoutes() *gin.Engine {
 	router := gin.New()
 
 	auth := router.Group("/auth")

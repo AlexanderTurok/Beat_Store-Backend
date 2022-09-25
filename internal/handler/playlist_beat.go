@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) addBeatToPlaylist(c *gin.Context) {
+func (h *Handlers) addBeatToPlaylist(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "parameter playlist id is empty")
@@ -28,7 +28,7 @@ func (h *Handler) addBeatToPlaylist(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handler) getAllBeatsFromPlaylistByToken(c *gin.Context) {
+func (h *Handlers) getAllBeatsFromPlaylistByToken(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "parameter playlist id is empty")
@@ -44,7 +44,7 @@ func (h *Handler) getAllBeatsFromPlaylistByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, beats)
 }
 
-func (h *Handler) deleteBeatFromPlaylist(c *gin.Context) {
+func (h *Handlers) deleteBeatFromPlaylist(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "parameter playlist id is empty")

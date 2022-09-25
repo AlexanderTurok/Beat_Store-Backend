@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) getArtistById(c *gin.Context) {
+func (h *Handlers) getArtistById(c *gin.Context) {
 	artistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid artist id")
@@ -23,7 +23,7 @@ func (h *Handler) getArtistById(c *gin.Context) {
 	c.JSON(http.StatusOK, artist)
 }
 
-func (h *Handler) getAllArtists(c *gin.Context) {
+func (h *Handlers) getAllArtists(c *gin.Context) {
 	artists, err := h.service.Artist.GetAll()
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())

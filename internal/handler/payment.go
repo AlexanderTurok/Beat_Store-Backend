@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) createPaymentIntent(c *gin.Context) {
+func (h *Handlers) createPaymentIntent(c *gin.Context) {
 	var input model.PaymentInfo
 	if err := c.BindJSON(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())

@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) getAccountByToken(c *gin.Context) {
+func (h *Handlers) getAccountByToken(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -23,7 +23,7 @@ func (h *Handler) getAccountByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, account)
 }
 
-func (h *Handler) confirmAccount(c *gin.Context) {
+func (h *Handlers) confirmAccount(c *gin.Context) {
 	username := c.Param("username")
 	if username == "" {
 		newErrorResponse(c, http.StatusBadRequest, "invalid confirmation link")
@@ -38,7 +38,7 @@ func (h *Handler) confirmAccount(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handler) updateAccount(c *gin.Context) {
+func (h *Handlers) updateAccount(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -63,7 +63,7 @@ type AccountPassword struct {
 	Password string `json:"password" db:"password_hash"`
 }
 
-func (h *Handler) deleteAccount(c *gin.Context) {
+func (h *Handlers) deleteAccount(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())

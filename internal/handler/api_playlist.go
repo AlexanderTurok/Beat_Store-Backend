@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) getAllAccountsPlaylists(c *gin.Context) {
+func (h *Handlers) getAllAccountsPlaylists(c *gin.Context) {
 	accountId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
@@ -23,7 +23,7 @@ func (h *Handler) getAllAccountsPlaylists(c *gin.Context) {
 	c.JSON(http.StatusOK, playlists)
 }
 
-func (h *Handler) getAllBeatsFromPlaylist(c *gin.Context) {
+func (h *Handlers) getAllBeatsFromPlaylist(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())

@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) signUp(c *gin.Context) {
+func (h *Handlers) signUp(c *gin.Context) {
 	var accountInput model.Account
 
 	if err := c.BindJSON(&accountInput); err != nil {
@@ -31,7 +31,7 @@ type signInInput struct {
 	Password string `json:"password"`
 }
 
-func (h *Handler) signIn(c *gin.Context) {
+func (h *Handlers) signIn(c *gin.Context) {
 	var accountInput signInInput
 
 	if err := c.BindJSON(&accountInput); err != nil {

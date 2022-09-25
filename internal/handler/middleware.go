@@ -13,7 +13,7 @@ const (
 	accountCtx          = "accountId"
 )
 
-func (h *Handler) userIdentity(c *gin.Context) {
+func (h *Handlers) userIdentity(c *gin.Context) {
 	header := c.GetHeader(authorizationHeader)
 
 	if header == "" {

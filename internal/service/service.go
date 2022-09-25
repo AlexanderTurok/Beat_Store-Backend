@@ -48,7 +48,15 @@ type Payment interface {
 	CreatePaymentIntent(input model.PaymentInfo) (payment.PaymentIntent, error)
 }
 
-type Service struct {
+type Dependencies struct {
+	Repositories *repository.Repositories
+	Hasher       hash.SHA1Hasher
+	Manager      auth.Manager
+	Sender       email.Client
+	Paymenter    payment.Payment
+}
+
+type Services struct {
 	Account  Account
 	Artist   Artist
 	Beat     Beat
@@ -56,14 +64,14 @@ type Service struct {
 	Payment  Payment
 }
 
-func NewService(repos *repository.Repository, hasher hash.SHA1Hasher, manager auth.Manager, sender email.Client, paymenter payment.Payment) *Service {
-	accountService := NewAccountService(repos.Account, hasher, manager, NewEmailService(sender))
-	artistService := NewArtistService(repos.Artist, hasher)
-	beatService := NewBeatService(repos.Beat)
-	playlistService := NewPlaylistService(repos.Playlist)
-	paymentService := NewPaymentService(repos.Payment, paymenter)
+func NewServices(d Dependencies) *Services {
+	accountService := NewAccountService(d.Repositories.Account, d.Hasher, d.Manager, NewEmailService(d.Sender))
+	artistService := NewArtistService(d.Repositories.Artist, d.Hasher)
+	beatService := NewBeatService(d.Repositories.Beat)
+	playlistService := NewPlaylistService(d.Repositories.Playlist)
+	paymentService := NewPaymentService(d.Repositories.Payment, d.Paymenter)
 
-	return &Service{
+	return &Services{
 		Account:  accountService,
 		Artist:   artistService,
 		Beat:     beatService,

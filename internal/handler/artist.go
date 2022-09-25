@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) createArtist(c *gin.Context) {
+func (h *Handlers) createArtist(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -21,7 +21,7 @@ func (h *Handler) createArtist(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handler) getArtistByToken(c *gin.Context) {
+func (h *Handlers) getArtistByToken(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -41,7 +41,7 @@ type ArtistPassword struct {
 	Password string `json:"password" db:"password_hash"`
 }
 
-func (h *Handler) deleteArtist(c *gin.Context) {
+func (h *Handlers) deleteArtist(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())

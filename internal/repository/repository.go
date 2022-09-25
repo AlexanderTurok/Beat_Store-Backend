@@ -45,7 +45,7 @@ type Playlist interface {
 type Payment interface {
 }
 
-type Repository struct {
+type Repositories struct {
 	Account  Account
 	Artist   Artist
 	Beat     Beat
@@ -53,8 +53,8 @@ type Repository struct {
 	Payment  Payment
 }
 
-func NewRepository(db *sqlx.DB) *Repository {
-	return &Repository{
+func NewRepositories(db *sqlx.DB) *Repositories {
+	return &Repositories{
 		Account:  NewAccountRepository(db),
 		Artist:   NewArtistRepository(db),
 		Beat:     NewBeatRepository(db),

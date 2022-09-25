@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) createPlaylist(c *gin.Context) {
+func (h *Handlers) createPlaylist(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -32,7 +32,7 @@ func (h *Handler) createPlaylist(c *gin.Context) {
 	})
 }
 
-func (h *Handler) getAllPlaylistsByToken(c *gin.Context) {
+func (h *Handlers) getAllPlaylistsByToken(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -48,7 +48,7 @@ func (h *Handler) getAllPlaylistsByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, playlists)
 }
 
-func (h *Handler) updatePlaylist(c *gin.Context) {
+func (h *Handlers) updatePlaylist(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -69,7 +69,7 @@ func (h *Handler) updatePlaylist(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handler) deleteAccountsPlaylist(c *gin.Context) {
+func (h *Handlers) deleteAccountsPlaylist(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
