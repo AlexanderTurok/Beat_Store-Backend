@@ -25,8 +25,7 @@ func main() {
 		logrus.Fatalf("error while loading enviroment variables: %s", err)
 	}
 
-	// FIXME: handle error
-	if err := initConfig(); err == nil {
+	if err := initConfig(); err != nil {
 		logrus.Fatalf("error while initializing configs: %s", err)
 	}
 
@@ -63,6 +62,7 @@ func main() {
 
 func initConfig() error {
 	viper.AddConfigPath("configs")
-	viper.SetConfigFile("config")
+	viper.SetConfigName("config")
+
 	return viper.ReadInConfig()
 }
