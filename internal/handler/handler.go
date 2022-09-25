@@ -6,19 +6,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Handler struct {
-	service *service.Service
+type Handlers struct {
+	service *service.Services
 	manager auth.TokenManager
 }
 
-func NewHandler(service *service.Service, manager auth.TokenManager) *Handler {
-	return &Handler{
+func NewHandlers(service *service.Services, manager auth.TokenManager) *Handlers {
+	return &Handlers{
 		service: service,
 		manager: manager,
 	}
 }
 
-func (h *Handler) InitRoutes() *gin.Engine {
+func (h *Handlers) InitRoutes() *gin.Engine {
 	router := gin.New()
 
 	auth := router.Group("/auth")
@@ -35,12 +35,9 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			accounts.PUT("/", h.updateAccount)
 			accounts.DELETE("/", h.deleteAccount)
 
-			beats := accounts.Group("/beats")
+			payments := accounts.Group("/payments")
 			{
-				beats.POST("/", h.buyBeat)
-				beats.GET("/", h.getAllBoughtBeats)
-				beats.GET("/:id", h.getBoughtBeatById)
-				beats.DELETE("/:id", h.returnBoughtBeat)
+				payments.POST("/create-payment-intent", h.createPaymentIntent)
 			}
 
 			playlists := accounts.Group("/playlists")
@@ -74,9 +71,9 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			}
 		}
 
-		confirmation := api.Group("/account/confirmation")
+		confirmations := api.Group("/accounts/confirmations")
 		{
-			confirmation.GET("/:username", h.confirmAccount)
+			confirmations.GET("/:username", h.confirmAccount)
 		}
 
 		artists := api.Group("/artists")

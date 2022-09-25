@@ -2,11 +2,12 @@ package handler
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) createArtist(c *gin.Context) {
+func (h *Handlers) createArtist(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -21,7 +22,33 @@ func (h *Handler) createArtist(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handler) getArtistByToken(c *gin.Context) {
+func (h *Handlers) getArtistById(c *gin.Context) {
+	artistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid artist id")
+		return
+	}
+
+	artist, err := h.service.Artist.Get(artistId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, artist)
+}
+
+func (h *Handlers) getAllArtists(c *gin.Context) {
+	artists, err := h.service.Artist.GetAll()
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, artists)
+}
+
+func (h *Handlers) getArtistByToken(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -41,7 +68,7 @@ type ArtistPassword struct {
 	Password string `json:"password" db:"password_hash"`
 }
 
-func (h *Handler) deleteArtist(c *gin.Context) {
+func (h *Handlers) deleteArtist(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())

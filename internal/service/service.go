@@ -6,6 +6,7 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/pkg/auth"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/email"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/payment"
 )
 
 type Account interface {
@@ -44,22 +45,37 @@ type Playlist interface {
 }
 
 type Payment interface {
+	CreatePaymentIntent(input model.PaymentInfo) (payment.PaymentIntent, error)
 }
 
-type Service struct {
-	Account
-	Artist
-	Beat
-	Playlist
-	Payment
+type Dependencies struct {
+	Repositories *repository.Repositories
+	Hasher       hash.SHA1Hasher
+	Manager      auth.Manager
+	Sender       email.Client
+	Paymenter    payment.Payment
 }
 
-func NewService(repos *repository.Repository, hasher hash.SHA1Hasher, manager auth.Manager, sender email.Client) *Service {
-	return &Service{
-		Account:  NewAccountService(repos.Account, hasher, manager, NewEmailService(sender)),
-		Artist:   NewArtistService(repos.Artist, hasher),
-		Beat:     NewBeatService(repos.Beat),
-		Playlist: NewPlaylistService(repos.Playlist),
-		Payment:  NewPaymentService(repos.Payment),
+type Services struct {
+	Account  Account
+	Artist   Artist
+	Beat     Beat
+	Playlist Playlist
+	Payment  Payment
+}
+
+func NewServices(d Dependencies) *Services {
+	accountService := NewAccountService(d.Repositories.Account, d.Hasher, d.Manager, NewEmailService(d.Sender))
+	artistService := NewArtistService(d.Repositories.Artist, d.Hasher)
+	beatService := NewBeatService(d.Repositories.Beat)
+	playlistService := NewPlaylistService(d.Repositories.Playlist)
+	paymentService := NewPaymentService(d.Repositories.Payment, d.Paymenter)
+
+	return &Services{
+		Account:  accountService,
+		Artist:   artistService,
+		Beat:     beatService,
+		Playlist: playlistService,
+		Payment:  paymentService,
 	}
 }

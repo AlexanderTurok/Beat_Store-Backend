@@ -10,6 +10,7 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/pkg/cache"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/email"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/hash"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/payment"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/postgres"
 	"github.com/AlexanderTurok/beat-store-backend/pkg/server"
 	"github.com/joho/godotenv"
@@ -24,8 +25,7 @@ func main() {
 		logrus.Fatalf("error while loading enviroment variables: %s", err)
 	}
 
-	// FIXME: handle error
-	if err := initConfig(); err == nil {
+	if err := initConfig(); err != nil {
 		logrus.Fatalf("error while initializing configs: %s", err)
 	}
 
@@ -41,6 +41,7 @@ func main() {
 		logrus.Fatalf("error while starting postgres: %s", err)
 	}
 
+	paymenter := payment.NewPayment(os.Getenv("STRIPE_KEY"))
 	hasher := hash.NewSHA1Hasher(os.Getenv("SALT"))
 	manager := auth.NewManager(os.Getenv("SIGNING_KEY"))
 	cacher := cache.NewMemoryCache()
@@ -49,18 +50,25 @@ func main() {
 		Secret: os.Getenv("CLIENT_SECRET"),
 	}, cacher)
 
-	repository := repository.NewRepository(db)
-	service := service.NewService(repository, *hasher, *manager, *sender)
-	handler := handler.NewHandler(service, manager)
+	repositories := repository.NewRepositories(db)
+	services := service.NewServices(service.Dependencies{
+		Repositories: repositories,
+		Hasher:       *hasher,
+		Manager:      *manager,
+		Sender:       *sender,
+		Paymenter:    *paymenter,
+	})
+	handlers := handler.NewHandlers(services, manager)
 
 	server := new(server.Server)
-	if err := server.Run("8000", handler.InitRoutes()); err != nil {
+	if err := server.Run(viper.GetString("api.port"), handlers.InitRoutes()); err != nil {
 		logrus.Fatalf("error while running the server: %s", err)
 	}
 }
 
 func initConfig() error {
 	viper.AddConfigPath("configs")
-	viper.SetConfigFile("config")
+	viper.SetConfigName("config")
+
 	return viper.ReadInConfig()
 }

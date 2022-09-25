@@ -26,16 +26,24 @@ CREATE TABLE IF NOT EXISTS beat (
   wav_path TEXT,
   genre TEXT DEFAULT 'All',
   mood TEXT DEFAULT 'All',
-  standart_price TEXT NOT NULL,
-  premium_price TEXT NOT NULL,
-  unlimited_price TEXT NOT NULL,
   created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS tag (
   id BIGSERIAL PRIMARY KEY,
   beat_id BIGINT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
-  tag_name TEXT NOT NULL
+  name TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS price (
+  id BIGINT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
+  standart FLOAT NOT NULL,
+  premium FLOAT NOT NULL,
+  ultimate FLOAT NOT NULL,
+  standart_id TEXT NOT NULL UNIQUE,
+  premium_id TEXT NOT NULL UNIQUE,
+  ultimate_id TEXT NOT NULL UNIQUE,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS account_beat (
@@ -43,7 +51,7 @@ CREATE TABLE IF NOT EXISTS account_beat (
   account_id BIGINT REFERENCES account (id) ON DELETE CASCADE NOT NULL,
   beat_id BIGINT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
   access_status TEXT CHECK (
-    access_status IN('standart', 'premium', 'unlimited')
+    access_status IN('standart', 'premium', 'ultimate')
   ) NOT NULL,
   created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
 );
