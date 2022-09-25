@@ -46,11 +46,11 @@ type Payment interface {
 }
 
 type Repository struct {
-	Account
-	Artist
-	Beat
-	Playlist
-	Payment
+	Account  Account
+	Artist   Artist
+	Beat     Beat
+	Playlist Playlist
+	Payment  Payment
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
