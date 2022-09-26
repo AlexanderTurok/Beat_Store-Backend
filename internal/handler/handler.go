@@ -35,10 +35,10 @@ func (h *Handlers) InitRoutes() *gin.Engine {
 			accounts.PUT("/", h.updateAccount)
 			accounts.DELETE("/", h.deleteAccount)
 
-			payments := accounts.Group("/payments")
-			{
-				payments.POST("/create-payment-intent", h.createPaymentIntent)
-			}
+			// payments := accounts.Group("/payments")
+			// {
+
+			// }
 
 			playlists := accounts.Group("/playlists")
 			{
