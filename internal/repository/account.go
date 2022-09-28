@@ -3,7 +3,6 @@ package repository
 import (
 	"fmt"
 	"strings"
-	"time"
 
 	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/jmoiron/sqlx"
@@ -19,30 +18,11 @@ func NewAccountRepository(db *sqlx.DB) *AccountRepository {
 	}
 }
 
-func (r *AccountRepository) Create(account model.Account) (int, error) {
-	var id int
-	query := fmt.Sprintf("INSERT INTO %s (name, username, email, photo_path, password_hash, created_at) values ($1, $2, $3, $4, $5, $6) RETURNING id", accountTable)
-	row := r.db.QueryRow(query, account.Name, account.Username, account.Email, account.PhotoPath, account.Password, time.Now())
-	if err := row.Scan(&id); err != nil {
-		return 0, err
-	}
-
-	return id, nil
-}
-
 func (r *AccountRepository) Confirm(username string) error {
 	query := fmt.Sprintf("UPDATE %s SET confirmed = true WHERE username = $1", accountTable)
 	_, err := r.db.Exec(query, username)
 
 	return err
-}
-
-func (r *AccountRepository) GetId(email, password string) (int, error) {
-	var id int
-	query := fmt.Sprintf("SELECT id FROM %s WHERE email=$1 AND password_hash=$2", accountTable)
-	err := r.db.Get(&id, query, email, password)
-
-	return id, err
 }
 
 func (r *AccountRepository) Get(accountId int) (model.Account, error) {
