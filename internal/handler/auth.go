@@ -15,13 +15,13 @@ func (h *Handlers) signUp(c *gin.Context) {
 		return
 	}
 
-	id, err := h.service.Account.Create(accountInput)
+	id, err := h.service.Auth.CreateAccount(accountInput)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	c.JSON(http.StatusOK, map[string]interface{}{
+	c.JSON(http.StatusCreated, map[string]interface{}{
 		"id": id,
 	})
 }
@@ -39,7 +39,7 @@ func (h *Handlers) signIn(c *gin.Context) {
 		return
 	}
 
-	token, err := h.service.Account.GenerateToken(accountInput.Email, accountInput.Password)
+	token, err := h.service.Auth.GenerateToken(accountInput.Email, accountInput.Password)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return

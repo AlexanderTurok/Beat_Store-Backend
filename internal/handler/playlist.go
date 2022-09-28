@@ -27,7 +27,7 @@ func (h *Handlers) createPlaylist(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, map[string]interface{}{
+	c.JSON(http.StatusCreated, map[string]interface{}{
 		"id": playlistId,
 	})
 }
