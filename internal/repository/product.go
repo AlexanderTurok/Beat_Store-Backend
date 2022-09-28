@@ -1,0 +1,15 @@
+package repository
+
+import (
+	"github.com/jmoiron/sqlx"
+)
+
+type ProductRepository struct {
+	db *sqlx.DB
+}
+
+func NewProductRepository(db *sqlx.DB) *ProductRepository {
+	return &ProductRepository{
+		db: db,
+	}
+}
