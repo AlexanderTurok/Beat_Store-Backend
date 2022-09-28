@@ -9,10 +9,13 @@ import (
 	"github.com/AlexanderTurok/beat-store-backend/pkg/payment"
 )
 
-type Account interface {
-	Create(account model.Account) (int, error)
-	Confirm(username string) error
+type Auth interface {
+	CreateAccount(account model.Account) (int, error)
 	GenerateToken(email, password string) (string, error)
+}
+
+type Account interface {
+	Confirm(username string) error
 	Get(accountId int) (model.Account, error)
 	Update(accountId int, input model.AccountUpdateInput) error
 	Delete(accountId int, inputPassword string) error
@@ -23,6 +26,9 @@ type Artist interface {
 	Get(accountId int) (model.Account, error)
 	GetAll() ([]model.Account, error)
 	Delete(accountId int, inputPassword string) error
+}
+
+type Product interface {
 }
 
 type Beat interface {
@@ -44,10 +50,6 @@ type Playlist interface {
 	DeleteBeat(playlistId, beatId int) error
 }
 
-type Payment interface {
-	CreatePaymentIntent(input model.PaymentInfo) (payment.PaymentIntent, error)
-}
-
 type Dependencies struct {
 	Repositories *repository.Repositories
 	Hasher       hash.SHA1Hasher
@@ -57,25 +59,28 @@ type Dependencies struct {
 }
 
 type Services struct {
+	Auth     Auth
 	Account  Account
 	Artist   Artist
+	Product  Product
 	Beat     Beat
 	Playlist Playlist
-	Payment  Payment
 }
 
 func NewServices(d Dependencies) *Services {
-	accountService := NewAccountService(d.Repositories.Account, d.Hasher, d.Manager, NewEmailService(d.Sender))
-	artistService := NewArtistService(d.Repositories.Artist, d.Hasher)
+	authService := NewAuthService(d.Repositories.Auth, &d.Hasher, &d.Manager, NewEmailService(d.Sender))
+	accountService := NewAccountService(d.Repositories.Account, &d.Hasher)
+	artistService := NewArtistService(d.Repositories.Artist, &d.Hasher)
+	productService := NewProductService(d.Repositories.Product)
 	beatService := NewBeatService(d.Repositories.Beat)
 	playlistService := NewPlaylistService(d.Repositories.Playlist)
-	paymentService := NewPaymentService(d.Repositories.Payment, d.Paymenter)
 
 	return &Services{
+		Auth:     authService,
 		Account:  accountService,
 		Artist:   artistService,
+		Product:  productService,
 		Beat:     beatService,
 		Playlist: playlistService,
-		Payment:  paymentService,
 	}
 }

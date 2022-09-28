@@ -5,10 +5,13 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-type Account interface {
+type Auth interface {
 	Create(account model.Account) (int, error)
-	Confirm(username string) error
 	GetId(email, password string) (int, error)
+}
+
+type Account interface {
+	Confirm(username string) error
 	Get(accountId int) (model.Account, error)
 	Update(accountId int, input model.AccountUpdateInput) error
 	GetPasswordHash(accountId int) (string, error)
@@ -21,6 +24,9 @@ type Artist interface {
 	GetAll() ([]model.Account, error)
 	GetPasswordHash(accountId int) (string, error)
 	Delete(accountId int) error
+}
+
+type Product interface {
 }
 
 type Beat interface {
@@ -42,23 +48,22 @@ type Playlist interface {
 	DeleteBeat(playlistId, beatId int) error
 }
 
-type Payment interface {
-}
-
 type Repositories struct {
+	Auth     Auth
 	Account  Account
 	Artist   Artist
+	Product  Product
 	Beat     Beat
 	Playlist Playlist
-	Payment  Payment
 }
 
 func NewRepositories(db *sqlx.DB) *Repositories {
 	return &Repositories{
+		Auth:     NewAuthRepository(db),
 		Account:  NewAccountRepository(db),
 		Artist:   NewArtistRepository(db),
+		Product:  NewProductRepository(db),
 		Beat:     NewBeatRepository(db),
 		Playlist: NewPlaylistRepository(db),
-		Payment:  NewPaymentRepository(db),
 	}
 }
