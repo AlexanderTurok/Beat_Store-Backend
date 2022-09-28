@@ -10,10 +10,10 @@ import (
 
 type ArtistService struct {
 	repos  repository.Artist
-	hasher hash.SHA1Hasher
+	hasher hash.PasswordHasher
 }
 
-func NewArtistService(repos repository.Artist, hasher hash.SHA1Hasher) *ArtistService {
+func NewArtistService(repos repository.Artist, hasher hash.PasswordHasher) *ArtistService {
 	return &ArtistService{
 		repos:  repos,
 		hasher: hasher,

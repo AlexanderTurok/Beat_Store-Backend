@@ -18,7 +18,7 @@ func NewHandlers(service *service.Services, manager auth.TokenManager) *Handlers
 	}
 }
 
-func (h *Handlers) InitRoutes() *gin.Engine {
+func (h *Handlers) InitRouter() *gin.Engine {
 	router := gin.New()
 
 	auth := router.Group("/auth")
@@ -35,64 +35,72 @@ func (h *Handlers) InitRoutes() *gin.Engine {
 			accounts.PUT("/", h.updateAccount)
 			accounts.DELETE("/", h.deleteAccount)
 
-			payments := accounts.Group("/payments")
+			products := accounts.Group("/products")
 			{
-				payments.POST("/create-payment-intent", h.createPaymentIntent)
+				products.POST("/", h.buyProducts)
+				products.GET("/", h.getAllBoughtProducts)
+				products.GET("/:id", h.getBoughtProduct)
+				products.DELETE("/:id", h.returnBoughtProduct)
 			}
 
 			playlists := accounts.Group("/playlists")
 			{
 				playlists.POST("/", h.createPlaylist)
 				playlists.GET("/", h.getAllPlaylistsByToken)
+				playlists.GET("/:id", h.getPlaylistByToken)
 				playlists.PUT("/:id", h.updatePlaylist)
-				playlists.DELETE("/:id", h.deleteAccountsPlaylist)
+				playlists.DELETE("/:id", h.deletePlaylist)
 
 				beats := playlists.Group(":id/beats")
 				{
 					beats.POST("/:beat_id", h.addBeatToPlaylist)
-					beats.GET("/", h.getAllBeatsFromPlaylistByToken)
-					beats.DELETE("/:beat_id", h.deleteBeatFromPlaylist)
+					beats.GET("/", h.getAllBeatsFromPlaylist)
+					beats.GET("/:beat_id", h.getBeatFromPlaylist)
 				}
 			}
 
-			artists := accounts.Group("/artists")
+			artists := api.Group("/artists")
 			{
 				artists.POST("/", h.createArtist)
 				artists.GET("/", h.getArtistByToken)
+				artists.PUT("/", h.updateArtist)
 				artists.DELETE("/", h.deleteArtist)
+
+				products := artists.Group("/products")
+				{
+					products.GET("/", h.getAllProductsByToken)
+					products.GET("/:id", h.getProductByToken)
+					products.PUT("/:id", h.updateProduct)
+					products.DELETE(":id", h.deleteProduct)
+				}
 
 				beats := artists.Group("/beats")
 				{
 					beats.POST("/", h.createBeat)
 					beats.GET("/", h.getAllBeatsByToken)
-					beats.PUT("/:id", h.updateArtistsBeat)
-					beats.DELETE("/:id", h.deleteArtistsBeat)
+					beats.GET("/:id", h.getBeatByToken)
+					beats.PUT("/:id", h.updateBeat)
+					beats.DELETE("/:id", deleteBeat)
 				}
 			}
-		}
-
-		confirmations := api.Group("/accounts/confirmations")
-		{
-			confirmations.GET("/:username", h.confirmAccount)
 		}
 
 		artists := api.Group("/artists")
 		{
 			artists.GET("/", h.getAllArtists)
-			artists.GET("/:id", h.getArtistById)
-		}
-
-		beats := api.Group("/beats")
-		{
-			beats.POST("/:id", h.getBeatById)
-			beats.GET("/", h.getAllBeats)
-			beats.GET("/:id", h.getAllArtistsBeats)
+			artists.GET("/", h.getArtistById)
 		}
 
 		playlists := api.Group("/playlists")
 		{
-			playlists.GET("/:id", h.getAllAccountsPlaylists)
-			playlists.GET("/:id/beats", h.getAllBeatsFromPlaylist)
+			playlists.GET("/", h.getAllPlaylists)
+			playlists.GET("/:id", h.getPlaylistById)
+		}
+
+		beats := api.Group("/beats")
+		{
+			beats.GET("/", h.getAllBeats)
+			beats.GET("/:id", h.getBeatById)
 		}
 	}
 
