@@ -6,7 +6,7 @@ func (h *Handlers) buyProducts(c *gin.Context) {
 
 }
 
-func (h *Handlers) getBoughtProduct(c *gin.Context) {
+func (h *Handlers) getBoughtProductById(c *gin.Context) {
 
 }
 

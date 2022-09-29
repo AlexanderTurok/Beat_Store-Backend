@@ -40,7 +40,7 @@ func (h *Handlers) InitRouter() *gin.Engine {
 			{
 				products.POST("/", h.buyProducts)
 				products.GET("/", h.getAllBoughtProducts)
-				products.GET("/:id", h.getBoughtProduct)
+				products.GET("/:id", h.getBoughtProductById)
 				products.DELETE("/:id", h.returnBoughtProduct)
 			}
 
@@ -61,7 +61,7 @@ func (h *Handlers) InitRouter() *gin.Engine {
 				}
 			}
 
-			artists := api.Group("/artists")
+			artists := accounts.Group("/artists")
 			{
 				artists.POST("/", h.createArtist)
 				artists.GET("/", h.getArtistByToken)
@@ -90,7 +90,7 @@ func (h *Handlers) InitRouter() *gin.Engine {
 		artists := api.Group("/artists")
 		{
 			artists.GET("/", h.getAllArtists)
-			artists.GET("/", h.getArtistById)
+			artists.GET("/:id", h.getArtistById)
 		}
 
 		playlists := api.Group("/playlists")
