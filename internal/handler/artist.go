@@ -64,6 +64,10 @@ func (h *Handlers) getArtistByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, artist)
 }
 
+func (h *Handlers) updateArtist(c *gin.Context) {
+
+}
+
 type ArtistPassword struct {
 	Password string `json:"password" db:"password_hash"`
 }

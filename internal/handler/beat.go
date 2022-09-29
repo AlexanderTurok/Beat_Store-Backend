@@ -32,24 +32,12 @@ func (h *Handlers) createBeat(c *gin.Context) {
 	})
 }
 
-func (h *Handlers) getAllBeats(c *gin.Context) {
-	beats, err := h.service.Beat.GetAll()
-	if err != nil {
-		newErrorResponse(c, http.StatusInternalServerError, err.Error())
-		return
-	}
+func (h *Handlers) getBeatByToken(c *gin.Context) {
 
-	c.JSON(http.StatusOK, beats)
 }
 
-func (h *Handlers) getAllArtistsBeats(c *gin.Context) {
-	artistId, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		newErrorResponse(c, http.StatusBadRequest, "invalid id")
-		return
-	}
-
-	beats, err := h.service.Beat.GetAllArtistsBeats(artistId)
+func (h *Handlers) getAllBeats(c *gin.Context) {
+	beats, err := h.service.Beat.GetAll()
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
@@ -90,7 +78,7 @@ func (h *Handlers) getAllBeatsByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, beats)
 }
 
-func (h *Handlers) updateArtistsBeat(c *gin.Context) {
+func (h *Handlers) updateBeat(c *gin.Context) {
 	beatId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid id")
@@ -111,7 +99,7 @@ func (h *Handlers) updateArtistsBeat(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handlers) deleteArtistsBeat(c *gin.Context) {
+func (h *Handlers) deleteBeat(c *gin.Context) {
 	beatId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid id")
@@ -124,6 +112,10 @@ func (h *Handlers) deleteArtistsBeat(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, statusResponse{"ok"})
+}
+
+func (h *Handlers) getBeatFromPlaylist(c *gin.Context) {
+
 }
 
 func (h *Handlers) getAllBeatsFromPlaylist(c *gin.Context) {
@@ -161,22 +153,6 @@ func (h *Handlers) addBeatToPlaylist(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, statusResponse{"ok"})
-}
-
-func (h *Handlers) getAllBeatsFromPlaylistByToken(c *gin.Context) {
-	playlistId, err := strconv.Atoi(c.Param("id"))
-	if err != nil {
-		newErrorResponse(c, http.StatusBadRequest, "parameter playlist id is empty")
-		return
-	}
-
-	beats, err := h.service.Playlist.GetAllBeats(playlistId)
-	if err != nil {
-		newErrorResponse(c, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	c.JSON(http.StatusOK, beats)
 }
 
 func (h *Handlers) deleteBeatFromPlaylist(c *gin.Context) {

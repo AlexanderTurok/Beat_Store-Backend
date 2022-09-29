@@ -9,7 +9,6 @@ import (
 
 func (h *Handlers) signUp(c *gin.Context) {
 	var accountInput model.Account
-
 	if err := c.BindJSON(&accountInput); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid input body")
 		return
@@ -33,7 +32,6 @@ type signInInput struct {
 
 func (h *Handlers) signIn(c *gin.Context) {
 	var accountInput signInInput
-
 	if err := c.BindJSON(&accountInput); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
