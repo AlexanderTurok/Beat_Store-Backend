@@ -6,6 +6,11 @@ import (
 	"github.com/stripe/stripe-go/v73/accountlink"
 )
 
+type PaymentAccount interface {
+	CreateAccount() (string, error)
+	CreateRegistrationURL(stripeId, refreshURL, returnURL string) (string, error)
+}
+
 func (p *Payment) CreateRegistrationURL(stripeId, refreshURL, returnURL string) (string, error) {
 	linkParams := &stripe.AccountLinkParams{
 		Account:    stripe.String(stripeId),

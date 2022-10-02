@@ -12,10 +12,10 @@ const (
 
 type PaymentService struct {
 	repos     repository.Payment
-	paymenter payment.Payment
+	paymenter payment.PaymentAccount
 }
 
-func NewPaymentService(repos repository.Payment, paymenter payment.Payment) *PaymentService {
+func NewPaymentService(repos repository.Payment, paymenter payment.PaymentAccount) *PaymentService {
 	return &PaymentService{
 		repos:     repos,
 		paymenter: paymenter,

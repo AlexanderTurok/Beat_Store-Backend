@@ -10,10 +10,10 @@ import (
 )
 
 type EmailService struct {
-	sender email.Client
+	sender *email.Client
 }
 
-func NewEmailService(sender email.Client) *EmailService {
+func NewEmailService(sender *email.Client) *EmailService {
 	return &EmailService{
 		sender: sender,
 	}

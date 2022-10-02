@@ -3,13 +3,15 @@ package service
 import (
 	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/AlexanderTurok/beat-store-backend/internal/repository"
+	"github.com/AlexanderTurok/beat-store-backend/pkg/payment"
 )
 
 type ProductService struct {
-	repos repository.Product
+	repos     repository.Product
+	paymenter payment.Product
 }
 
-func NewProductService(repos repository.Product) *ProductService {
+func NewProductService(repos repository.Product, paymenter payment.Product) *ProductService {
 	return &ProductService{
 		repos: repos,
 	}

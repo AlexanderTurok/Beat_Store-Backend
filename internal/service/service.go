@@ -66,10 +66,10 @@ type Playlist interface {
 
 type Dependencies struct {
 	Repositories *repository.Repositories
-	Hasher       hash.SHA1Hasher
-	Manager      auth.Manager
-	Sender       email.Client
-	Paymenter    payment.Payment
+	Hasher       *hash.SHA1Hasher
+	Manager      *auth.Manager
+	Sender       *email.Client
+	Paymenter    *payment.Payment
 }
 
 type Services struct {
@@ -84,12 +84,12 @@ type Services struct {
 }
 
 func NewServices(d Dependencies) *Services {
-	authService := NewAuthService(d.Repositories.Auth, &d.Hasher, &d.Manager)
+	authService := NewAuthService(d.Repositories.Auth, d.Hasher, d.Manager)
 	emailService := NewEmailService(d.Sender)
-	accountService := NewAccountService(d.Repositories.Account, &d.Hasher)
+	accountService := NewAccountService(d.Repositories.Account, d.Hasher)
 	paymentService := NewPaymentService(d.Repositories.Payment, d.Paymenter)
-	artistService := NewArtistService(d.Repositories.Artist, &d.Hasher)
-	productService := NewProductService(d.Repositories.Product)
+	artistService := NewArtistService(d.Repositories.Artist, d.Hasher)
+	productService := NewProductService(d.Repositories.Product, d.Paymenter)
 	beatService := NewBeatService(d.Repositories.Beat)
 	playlistService := NewPlaylistService(d.Repositories.Playlist)
 

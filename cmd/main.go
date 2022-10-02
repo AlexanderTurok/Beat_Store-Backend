@@ -53,10 +53,10 @@ func main() {
 	repositories := repository.NewRepositories(db)
 	services := service.NewServices(service.Dependencies{
 		Repositories: repositories,
-		Hasher:       *hasher,
-		Manager:      *manager,
-		Sender:       *sender,
-		Paymenter:    *paymenter,
+		Hasher:       hasher,
+		Manager:      manager,
+		Sender:       sender,
+		Paymenter:    paymenter,
 	})
 	handlers := handler.NewHandlers(services, manager)
 
