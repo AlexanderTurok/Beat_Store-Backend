@@ -33,8 +33,7 @@ CREATE TABLE IF NOT EXISTS beat (
   mp3_path TEXT NOT NULL,
   wav_path TEXT,
   genre TEXT DEFAULT 'All',
-  mood TEXT DEFAULT 'All',
-  created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+  mood TEXT DEFAULT 'All'
 );
 
 CREATE TABLE IF NOT EXISTS tag (

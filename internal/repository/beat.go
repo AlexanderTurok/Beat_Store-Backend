@@ -3,7 +3,6 @@ package repository
 import (
 	"fmt"
 	"strings"
-	"time"
 
 	model "github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/jackskj/carta"
@@ -28,8 +27,8 @@ func (r *BeatRepository) Create(productId int64, input model.Beat) (int, error) 
 
 	var beatId int
 	insertBeatQuery := fmt.Sprintf(`INSERT INTO %s (
-			product_id, name, bpm, key, photo_path, mp3_path, wav_path, genre, mood, created_at)
-		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id`,
+			product_id, name, bpm, key, photo_path, mp3_path, wav_path, genre, mood)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id`,
 		beatTable,
 	)
 
@@ -43,15 +42,14 @@ func (r *BeatRepository) Create(productId int64, input model.Beat) (int, error) 
 		input.WavPath,
 		input.Genre,
 		input.Mood,
-		time.Now(),
 	).Scan(&beatId); err != nil {
 		tx.Rollback()
 		return 0, err
 	}
 
-	insertPriceQuery := fmt.Sprintf(`INSERT INTO %s 
-		(id, standart, premium, ultimate)
-		VALUES ($1, $2, $3, $4, $5, $6, $7)`, priceTable)
+	insertPriceQuery := fmt.Sprintf(`
+		INSERT INTO %s (id, standart, premium, ultimate)
+		VALUES ($1, $2, $3, $4)`, priceTable)
 	if _, err := tx.Exec(insertPriceQuery, beatId, input.Price.Standart,
 		input.Price.Premium, input.Price.Ultimate); err != nil {
 		return 0, err
@@ -71,10 +69,11 @@ func (r *BeatRepository) Create(productId int64, input model.Beat) (int, error) 
 func (r *BeatRepository) Get(beatId int) (model.Beat, error) {
 	beat := model.Beat{}
 
-	query := fmt.Sprintf(`SELECT beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+	query := fmt.Sprintf(`SELECT product.created_at, beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+		LEFT OUTER JOIN %s ON product.id = beat.product_id
 		LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
 		LEFT OUTER JOIN %s ON beat.id = price.id
-		WHERE beat.id=$1`, beatTable, tagTable, priceTable)
+		WHERE beat.id=$1`, beatTable, productTable, tagTable, priceTable)
 	rows, err := r.db.Query(query, beatId)
 	if err != nil {
 		return model.Beat{}, err
@@ -86,11 +85,12 @@ func (r *BeatRepository) Get(beatId int) (model.Beat, error) {
 }
 
 func (r *BeatRepository) GetAll() ([]model.Beat, error) {
-	beats := []model.Beat{}
+	var beats []model.Beat
 
-	query := fmt.Sprintf(`SELECT beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+	query := fmt.Sprintf(`SELECT product.created_at, beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+		LEFT OUTER JOIN %s ON product.id = beat.product_id
 		LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
-		LEFT OUTER JOIN %s ON beat.id = price.id`, beatTable, tagTable, priceTable)
+		LEFT OUTER JOIN %s ON beat.id = price.id`, beatTable, productTable, tagTable, priceTable)
 	rows, err := r.db.Query(query)
 	if err != nil {
 		return nil, err
@@ -104,11 +104,13 @@ func (r *BeatRepository) GetAll() ([]model.Beat, error) {
 func (r *BeatRepository) GetArtistsBeat(beatId, artistId int) (model.Beat, error) {
 	var beat model.Beat
 
-	query := fmt.Sprintf(`SELECT beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
-	LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
-	LEFT OUTER JOIN %s ON beat.id = price.id
-	WHERE beat.id = $1 AND beat.artist_id=$1`, beatTable, tagTable, priceTable)
-	rows, err := r.db.Query(query, artistId)
+	query := fmt.Sprintf(`SELECT product.created_at, beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+		LEFT OUTER JOIN %s ON product.id = beat.product_id
+		LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
+		LEFT OUTER JOIN %s ON beat.id = price.id
+		WHERE beat.id = $1 AND product.artist_id=$2`,
+		beatTable, productTable, tagTable, priceTable)
+	rows, err := r.db.Query(query, beatId, artistId)
 	if err != nil {
 		return beat, err
 	}
@@ -121,10 +123,12 @@ func (r *BeatRepository) GetArtistsBeat(beatId, artistId int) (model.Beat, error
 func (r *BeatRepository) GetAllArtistsBeats(artistId int) ([]model.Beat, error) {
 	var beats []model.Beat
 
-	query := fmt.Sprintf(`SELECT beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
-	LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
-	LEFT OUTER JOIN %s ON beat.id = price.id
-	WHERE beat.artist_id=$1`, beatTable, tagTable, priceTable)
+	query := fmt.Sprintf(`SELECT product.created_at, beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+		LEFT OUTER JOIN %s ON product.id = beat.product_id
+		LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
+		LEFT OUTER JOIN %s ON beat.id = price.id
+		WHERE product.artist_id=$1`,
+		beatTable, productTable, tagTable, priceTable)
 	rows, err := r.db.Query(query, artistId)
 	if err != nil {
 		return nil, err

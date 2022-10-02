@@ -105,8 +105,8 @@ func (h *Handlers) InitRouter() *gin.Engine {
 		{
 			beats.GET("/", h.getAllBeats)
 			beats.GET("/:id", h.getBeatById)
-			playlists.GET("/playlits/:playlist_id", h.getAllBeatsFromPlaylist)
-			playlists.GET(":id/playlists/:playlist_id", h.getBeatFromPlaylist)
+			beats.GET("/playlists/:playlist_id", h.getAllBeatsFromPlaylist)
+			beats.GET(":id/playlists/:playlist_id", h.getBeatFromPlaylist)
 		}
 	}
 

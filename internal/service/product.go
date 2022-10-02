@@ -24,7 +24,7 @@ func (s *ProductService) Create(artistId int) (int64, error) {
 		return 0, err
 	}
 
-	if err := s.paymenter.CreatePrice(); err != nil {
+	if err := s.paymenter.CreatePrice(stripeId); err != nil {
 		return 0, err
 	}
 

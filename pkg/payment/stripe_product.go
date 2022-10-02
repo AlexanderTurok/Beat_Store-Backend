@@ -8,7 +8,7 @@ import (
 
 type Product interface {
 	CreateProduct() (string, error)
-	CreatePrice() error
+	CreatePrice(stripeId string) error
 }
 
 func (p *Payment) CreateProduct() (string, error) {
@@ -28,9 +28,9 @@ func (p *Payment) CreateProduct() (string, error) {
 	return result.ID, err
 }
 
-func (p *Payment) CreatePrice() error {
+func (p *Payment) CreatePrice(stripeId string) error {
 	params := &stripe.PriceParams{
-		Product:    stripe.String("{{PRODUCT_ID}}"),
+		Product:    stripe.String(stripeId),
 		UnitAmount: stripe.Int64(1000),
 		Currency:   stripe.String(string(stripe.CurrencyUSD)),
 		Recurring: &stripe.PriceRecurringParams{
