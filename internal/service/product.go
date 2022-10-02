@@ -13,11 +13,14 @@ type ProductService struct {
 
 func NewProductService(repos repository.Product, paymenter payment.Product) *ProductService {
 	return &ProductService{
-		repos: repos,
+		repos:     repos,
+		paymenter: paymenter,
 	}
 }
 
 func (s *ProductService) Create(input model.Beat) (string, error) {
+	s.paymenter.CreateProduct()
+	s.paymenter.CreatePrice()
 	return "", nil
 }
 
