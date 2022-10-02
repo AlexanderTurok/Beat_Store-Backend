@@ -6,26 +6,23 @@ import (
 	"github.com/stripe/stripe-go/v73/accountlink"
 )
 
-func (p *Payment) CreateSellerRegistrationURL(refreshURL, returnURL string) (*stripe.AccountLink, error) {
-	account, err := p.createAccount()
-	if err == nil {
-		linkParams := &stripe.AccountLinkParams{
-			Account:    stripe.String(account.ID),
-			RefreshURL: stripe.String("https://example.com/reauth"),
-			ReturnURL:  stripe.String("https://example.com/return"),
-			Type:       stripe.String("account_onboarding"),
-		}
-
-		return accountlink.New(linkParams)
+func (p *Payment) CreateRegistrationURL(stripeId, refreshURL, returnURL string) (string, error) {
+	linkParams := &stripe.AccountLinkParams{
+		Account:    stripe.String(stripeId),
+		Type:       stripe.String("account_onboarding"),
+		RefreshURL: stripe.String(refreshURL),
+		ReturnURL:  stripe.String(returnURL),
 	}
+	link, err := accountlink.New(linkParams)
 
-	return nil, err
+	return link.URL, err
 }
 
-func (p *Payment) createAccount() (*stripe.Account, error) {
+func (p *Payment) CreateAccount() (string, error) {
 	accountParams := &stripe.AccountParams{
 		Type: stripe.String(string(stripe.AccountTypeExpress)),
 	}
+	account, err := account.New(accountParams)
 
-	return account.New(accountParams)
+	return account.ID, err
 }

@@ -50,11 +50,10 @@ func (r *BeatRepository) Create(artistId int, input model.Beat) (int, error) {
 	}
 
 	insertPriceQuery := fmt.Sprintf(`INSERT INTO %s 
-		(id, standart, premium, ultimate, standart_id, premium_id, ultimate_id)
+		(id, standart, premium, ultimate)
 		VALUES ($1, $2, $3, $4, $5, $6, $7)`, priceTable)
 	if _, err := tx.Exec(insertPriceQuery, beatId, input.Price.Standart,
-		input.Price.Premium, input.Price.Ultimate, input.Price.StandartId,
-		input.Price.PremiumId, input.Price.UltimateId); err != nil {
+		input.Price.Premium, input.Price.Ultimate); err != nil {
 		return 0, err
 	}
 
@@ -102,8 +101,25 @@ func (r *BeatRepository) GetAll() ([]model.Beat, error) {
 	return beats, err
 }
 
+func (r *BeatRepository) GetArtistsBeat(beatId, artistId int) (model.Beat, error) {
+	var beat model.Beat
+
+	query := fmt.Sprintf(`SELECT beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
+	LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
+	LEFT OUTER JOIN %s ON beat.id = price.id
+	WHERE beat.id = $1 AND beat.artist_id=$1`, beatTable, tagTable, priceTable)
+	rows, err := r.db.Query(query, artistId)
+	if err != nil {
+		return beat, err
+	}
+
+	err = carta.Map(rows, &beat)
+
+	return beat, err
+}
+
 func (r *BeatRepository) GetAllArtistsBeats(artistId int) ([]model.Beat, error) {
-	beats := []model.Beat{}
+	var beats []model.Beat
 
 	query := fmt.Sprintf(`SELECT beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
 	LEFT OUTER JOIN %s ON beat.id = tag.beat_id 

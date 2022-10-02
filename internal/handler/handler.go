@@ -97,24 +97,16 @@ func (h *Handlers) InitRouter() *gin.Engine {
 		{
 			playlists.GET("/", h.getAllPlaylists)
 			playlists.GET("/:id", h.getPlaylistById)
-
-			accounts := playlists.Group("/accounts")
-			{
-				accounts.GET(":id/:account_id", h.getAccountsPlaylist)
-				accounts.GET("/:account_id", h.getAllAccountsPlaylists)
-			}
+			playlists.GET(":id/accounts/:account_id", h.getAccountsPlaylist)
+			playlists.GET("/accounts/:account_id", h.getAllAccountsPlaylists)
 		}
 
 		beats := api.Group("/beats")
 		{
 			beats.GET("/", h.getAllBeats)
 			beats.GET("/:id", h.getBeatById)
-
-			playlists := beats.Group("/playlists")
-			{
-				playlists.GET("/:playlist_id", h.getAllBeatsFromPlaylist)
-				playlists.GET(":id/:playlist_id", h.getBeatFromPlaylist)
-			}
+			playlists.GET("/playlits/:playlist_id", h.getAllBeatsFromPlaylist)
+			playlists.GET(":id/playlists/:playlist_id", h.getBeatFromPlaylist)
 		}
 	}
 

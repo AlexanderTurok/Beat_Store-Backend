@@ -11,28 +11,19 @@ type AuthService struct {
 	repos   repository.Auth
 	hasher  hash.PasswordHasher
 	manager auth.TokenManager
-	sender  *EmailService
 }
 
-func NewAuthService(repos repository.Auth, hasher hash.PasswordHasher, manager auth.TokenManager, sender *EmailService) *AuthService {
+func NewAuthService(repos repository.Auth, hasher hash.PasswordHasher, manager auth.TokenManager) *AuthService {
 	return &AuthService{
 		repos:   repos,
 		hasher:  hasher,
 		manager: manager,
-		sender:  sender,
 	}
 }
 
 func (s *AuthService) CreateAccount(account model.Account) (int, error) {
 	account.Password = s.hasher.Hash(account.Password)
-	id, err := s.repos.Create(account)
-	if err != nil {
-		return 0, err
-	}
-
-	err = s.sender.SendVerificationEmail(account)
-
-	return id, err
+	return s.repos.Create(account)
 }
 
 func (s *AuthService) GenerateToken(email, password string) (string, error) {

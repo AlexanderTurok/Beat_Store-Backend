@@ -20,6 +20,11 @@ func (h *Handlers) signUp(c *gin.Context) {
 		return
 	}
 
+	if err := h.service.Email.SendVerificationEmail(accountInput); err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
 	c.JSON(http.StatusCreated, map[string]interface{}{
 		"id": id,
 	})

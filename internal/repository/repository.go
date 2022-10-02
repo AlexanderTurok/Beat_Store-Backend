@@ -26,6 +26,10 @@ type Artist interface {
 	Delete(accountId int) error
 }
 
+type Payment interface {
+	CreatePaymentAccount(accountId int, stripeId string) error
+}
+
 type Product interface {
 }
 
@@ -33,6 +37,7 @@ type Beat interface {
 	Create(artistId int, input model.Beat) (int, error)
 	Get(beatId int) (model.Beat, error)
 	GetAll() ([]model.Beat, error)
+	GetArtistsBeat(beatId, artistId int) (model.Beat, error)
 	GetAllArtistsBeats(artistId int) ([]model.Beat, error)
 	Update(beatId int, input model.BeatUpdateInput) error
 	Delete(beatId int) error
@@ -52,6 +57,7 @@ type Repositories struct {
 	Auth     Auth
 	Account  Account
 	Artist   Artist
+	Payment  Payment
 	Product  Product
 	Beat     Beat
 	Playlist Playlist
@@ -62,6 +68,7 @@ func NewRepositories(db *sqlx.DB) *Repositories {
 		Auth:     NewAuthRepository(db),
 		Account:  NewAccountRepository(db),
 		Artist:   NewArtistRepository(db),
+		Payment:  NewPaymentRepository(db),
 		Product:  NewProductRepository(db),
 		Beat:     NewBeatRepository(db),
 		Playlist: NewPlaylistRepository(db),
