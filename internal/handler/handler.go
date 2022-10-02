@@ -91,6 +91,8 @@ func (h *Handlers) InitRouter() *gin.Engine {
 		{
 			artists.GET("/", h.getAllArtists)
 			artists.GET("/:id", h.getArtistById)
+			artists.GET(":id/beats/", h.getAllArtistsBeats)
+			artists.GET(":id/beats/:beat_id", h.getArtistsBeatById)
 		}
 
 		playlists := api.Group("/playlists")

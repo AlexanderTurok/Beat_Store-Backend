@@ -75,19 +75,48 @@ func (r *PlaylistRepository) AddBeat(playlistId, beatId int) error {
 	return err
 }
 
+func (r *PlaylistRepository) GetBeat(playlistId, beatId int) (model.Beat, error) {
+	var beat model.Beat
+
+	query := fmt.Sprintf(`
+	SELECT 
+		product.created_at
+		beat.*, 
+		tag.id AS tag_id, 
+		tag.tag_name AS tag_name 
+	FROM %s 
+		LEFT OUTER JOIN %s ON beat.product_id = product.id
+		LEFT OUTER JOIN %s ON playlist_beat.beat_id = beat.id
+		LEFT OUTER JOIN %s ON beat.id = tag.beat_id
+		LEFT OUTER JOIN %s ON beat.id = price.id
+	WHERE playlist_beat.playlist_id = $1 AND beat.id = $2`,
+		playlistBeatTable, productTable, beatTable, tagTable, priceTable)
+	rows, err := r.db.Query(query, playlistId, beatId)
+	if err != nil {
+		return model.Beat{}, err
+	}
+
+	err = carta.Map(rows, &beat)
+
+	return beat, err
+}
+
 func (r *PlaylistRepository) GetAllBeats(playlistId int) ([]model.Beat, error) {
 	beats := []model.Beat{}
 
 	query := fmt.Sprintf(`
 	SELECT 
+		product.created_at
 		beat.*, 
 		tag.id AS tag_id, 
 		tag.tag_name AS tag_name 
 	FROM %s 
-	LEFT OUTER JOIN %s ON playlist_beat.beat_id = beat.id
-	LEFT OUTER JOIN %s ON beat.id = tag.beat_id
+		LEFT OUTER JOIN %s ON beat.product_id = product.id
+		LEFT OUTER JOIN %s ON playlist_beat.beat_id = beat.id
+		LEFT OUTER JOIN %s ON beat.id = tag.beat_id
+		LEFT OUTER JOIN %s ON beat.id = price.id
 	WHERE playlist_beat.playlist_id = $1`,
-		playlistBeatTable, beatTable, tagTable)
+		playlistBeatTable, productTable, beatTable, tagTable, priceTable)
 	rows, err := r.db.Query(query, playlistId)
 	if err != nil {
 		return nil, err

@@ -25,38 +25,19 @@ func (r *ArtistRepository) Create(accountId int) error {
 	return err
 }
 
-func (r *ArtistRepository) Get(accountId int) (model.Account, error) {
-	var artist model.Account
+func (r *ArtistRepository) Get(accountId int) (model.Artist, error) {
+	var artist model.Artist
 
-	query := fmt.Sprintf(`
-		SELECT 
-			artist.created_at,
-			account.name,
-			account.username, 
-			account.email, 
-			account.photo_path
-		FROM %s 
-		JOIN %s ON account.id = artist.id
-		WHERE account.id=$1`, artistTable, accountTable,
-	)
+	query := fmt.Sprintf(`SELECT * FROM %s WHERE id=$1`, artistTable)
 	err := r.db.Get(&artist, query, accountId)
 
 	return artist, err
 }
 
-func (r *ArtistRepository) GetAll() ([]model.Account, error) {
-	var artists []model.Account
+func (r *ArtistRepository) GetAll() ([]model.Artist, error) {
+	var artists []model.Artist
 
-	query := fmt.Sprintf(`
-		SELECT 
-			artist.created_at,
-			account.name,
-			account.username, 
-			account.email, 
-			account.photo_path
-		FROM %s 
-		JOIN %s ON account.id = artist.id`, artistTable, accountTable,
-	)
+	query := fmt.Sprintf(`SELECT * FROM %s`, artistTable)
 	err := r.db.Select(&artists, query)
 
 	return artists, err

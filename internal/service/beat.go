@@ -27,8 +27,8 @@ func (s *BeatService) GetAll() ([]model.Beat, error) {
 	return s.repos.GetAll()
 }
 
-func (s *BeatService) GetArtistsBeat(beatId, artistId int) (model.Beat, error) {
-	return s.repos.GetArtistsBeat(beatId, artistId)
+func (s *BeatService) GetArtistsBeat(artistId, beatId int) (model.Beat, error) {
+	return s.repos.GetArtistsBeat(artistId, beatId)
 }
 
 func (s *BeatService) GetAllArtistsBeats(artistId int) ([]model.Beat, error) {

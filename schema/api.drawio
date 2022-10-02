@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="2Ipb0TKC3gZOCcmrfdG8" name="Page-1">
-        <mxGraphModel dx="3995" dy="15700" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3800" pageHeight="3800" math="0" shadow="0">
+        <mxGraphModel dx="1540" dy="13910" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3800" pageHeight="3800" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -89,19 +89,19 @@
                     <mxGeometry x="55" y="-8636" width="64" height="169" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-43" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="136" y="-8312" width="180" height="55" as="geometry"/>
+                    <mxGeometry x="136" y="-8319" width="180" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-44" value="/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="333.29999999999995" y="-8312" width="194.7" height="55" as="geometry"/>
+                    <mxGeometry x="333.29999999999995" y="-8319" width="194.7" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-45" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="136" y="-8243" width="180" height="55" as="geometry"/>
+                    <mxGeometry x="136" y="-8250" width="180" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-46" value="/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="333.29999999999995" y="-8243" width="295.7" height="55" as="geometry"/>
+                    <mxGeometry x="333.29999999999995" y="-8250" width="295.7" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-47" value="api" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
-                    <mxGeometry x="50" y="-8300.5" width="72" height="95" as="geometry"/>
+                    <mxGeometry x="50" y="-8307.5" width="72" height="95" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-59" value="product" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=98;verticalAlign=top;fontStyle=0" parent="1" vertex="1">
                     <mxGeometry x="2954.12" y="-10752" width="531.75" height="152" as="geometry"/>
@@ -248,19 +248,19 @@
                     <mxGeometry x="50" y="-9036.5" width="72" height="95" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-144" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="141" y="-8052.5" width="180" height="55" as="geometry"/>
+                    <mxGeometry x="141" y="-7913.5" width="180" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-145" value=":id/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="338.3" y="-8052.5" width="267.7" height="55" as="geometry"/>
+                    <mxGeometry x="338.3" y="-7913.5" width="267.7" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-146" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="141" y="-7983.5" width="180" height="55" as="geometry"/>
+                    <mxGeometry x="141" y="-7844.5" width="180" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-147" value=":id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="338.3" y="-7983.5" width="513.7" height="55" as="geometry"/>
+                    <mxGeometry x="338.3" y="-7844.5" width="513.7" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-148" value="playlist" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=50;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
-                    <mxGeometry x="52" y="-8109" width="70" height="249" as="geometry"/>
+                    <mxGeometry x="52" y="-7970" width="70" height="249" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-149" value="signUp" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="620" y="-11113" width="260.7" height="55" as="geometry"/>
@@ -362,25 +362,25 @@
                     <mxGeometry x="762.5" y="-8436" width="303.5" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-192" value="getAllBeats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="550.5" y="-8312" width="319.5" height="55" as="geometry"/>
+                    <mxGeometry x="550.5" y="-8319" width="319.5" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-193" value="getBeatById" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="647" y="-8243" width="319.5" height="55" as="geometry"/>
+                    <mxGeometry x="647" y="-8250" width="319.5" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-194" value="getAllBeatsFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="621.5" y="-8052.5" width="653" height="55" as="geometry"/>
+                    <mxGeometry x="621.5" y="-7913.5" width="653" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-195" value="getBeatFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="870" y="-7983.5" width="509" height="55" as="geometry"/>
+                    <mxGeometry x="870" y="-7844.5" width="509" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-197" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="142" y="-8121.5" width="180" height="55" as="geometry"/>
+                    <mxGeometry x="142" y="-7982.5" width="180" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-198" value=":id/beats/beat_id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="339.3" y="-8121.5" width="607.7" height="55" as="geometry"/>
+                    <mxGeometry x="339.3" y="-7982.5" width="607.7" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-199" value="addBeatToPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="972" y="-8121.5" width="490" height="55" as="geometry"/>
+                    <mxGeometry x="972" y="-7982.5" width="490" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-201" value="https://beat-store/auth/sign-up" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="898" y="-11113" width="882" height="55" as="geometry"/>
@@ -431,19 +431,19 @@
                     <mxGeometry x="1190" y="-8576" width="1457" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-235" value="https://beat-store/v1/api/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="985" y="-8243" width="1001.5" height="55" as="geometry"/>
+                    <mxGeometry x="985" y="-8250" width="1001.5" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-236" value="https://beat-store/v1/api/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="893" y="-8312" width="1001.5" height="55" as="geometry"/>
+                    <mxGeometry x="893" y="-8319" width="1001.5" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-237" value="https://beat-store/api/accounts/playlists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="1479" y="-8121.5" width="1701" height="55" as="geometry"/>
+                    <mxGeometry x="1479" y="-7982.5" width="1701" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-238" value="https://beat-store/api/accounts/playlists/:id/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="1290.5" y="-8052.5" width="1433" height="55" as="geometry"/>
+                    <mxGeometry x="1290.5" y="-7913.5" width="1433" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="7m1PmItbiETfe_UGkCJ4-239" value="https://beat-store/api/accounts/playlists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="1397" y="-7983.5" width="1710" height="55" as="geometry"/>
+                    <mxGeometry x="1397" y="-7844.5" width="1710" height="55" as="geometry"/>
                 </mxCell>
                 <mxCell id="2" value="https://beat-store/api/accounts/artists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="1229" y="-10555.5" width="1111" height="55" as="geometry"/>
@@ -490,83 +490,110 @@
                 <mxCell id="23" value="https://beat-store/v1/api/accounts/artists/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="1082" y="-8436" width="1457" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="24" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="24" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="146" y="-10946" width="180" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="/accounts/:username" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="25" value="/accounts/:username" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="343.3" y="-10946" width="558.7" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="confirmAccount" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="26" value="confirmAccount" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="921.3" y="-10946" width="366.7" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="https://beat-store/api/accounts/:username" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="28" value="https://beat-store/api/accounts/:username" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="1307" y="-10946" width="1152" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="29" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="139" y="-8884" width="180" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" value="/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="30" value="/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="336.3" y="-8884" width="598.7" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="31" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="139" y="-8815" width="180" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="32" value="/:id/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="32" value="/:id/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="336.3" y="-8815" width="715.7" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="pl" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" vertex="1" parent="1">
+                <mxCell id="33" value="pl" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
                     <mxGeometry x="50" y="-8850.5" width="64" height="59" as="geometry"/>
                 </mxCell>
-                <mxCell id="34" value="getAllAccountsPlaylists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="34" value="getAllAccountsPlaylists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="963" y="-8883" width="659" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="35" value="getAccountsPlaylistById" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="35" value="getAccountsPlaylistById" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="1072.5" y="-8814" width="666" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="36" value="https://beat-store/v1/api/playlists/:id/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="36" value="https://beat-store/v1/api/playlists/:id/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="1757.5" y="-8814" width="1686.5" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="37" value="https://beat-store/v1/api/playlists/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                <mxCell id="37" value="https://beat-store/v1/api/playlists/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="1644" y="-8883" width="1566" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="delete" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="142" y="-7907" width="180" height="55" as="geometry"/>
+                <mxCell id="39" value="delete" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="142" y="-7768" width="180" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" value=":id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="339.3" y="-7907" width="513.7" height="55" as="geometry"/>
+                <mxCell id="40" value=":id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="339.3" y="-7768" width="513.7" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="41" value="deleteBeatFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="871" y="-7907" width="653" height="55" as="geometry"/>
+                <mxCell id="41" value="deleteBeatFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="871" y="-7768" width="653" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="42" value="https://beat-store/api/accounts/playlists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="1537" y="-7907" width="1710" height="55" as="geometry"/>
+                <mxCell id="42" value="https://beat-store/api/accounts/playlists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1537" y="-7768" width="1710" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="136" y="-7802" width="180" height="55" as="geometry"/>
+                <mxCell id="43" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="136" y="-7663" width="180" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="44" value="/beats/playlists/:playlist_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="333.3" y="-7802" width="816.7" height="55" as="geometry"/>
+                <mxCell id="44" value="/beats/playlists/:playlist_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="333.3" y="-7663" width="816.7" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="47" value="beat" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" vertex="1" parent="1">
-                    <mxGeometry x="54" y="-7799.5" width="64" height="114" as="geometry"/>
+                <mxCell id="47" value="beat" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="54" y="-7660.5" width="64" height="114" as="geometry"/>
                 </mxCell>
-                <mxCell id="48" value="getAllBeatsFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="1168" y="-7802" width="660" height="55" as="geometry"/>
+                <mxCell id="48" value="getAllBeatsFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1168" y="-7663" width="660" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="51" value="https://beat-store/v1/api/beats/playlists/:playlist_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="1844" y="-7802" width="1515" height="55" as="geometry"/>
+                <mxCell id="51" value="https://beat-store/v1/api/beats/playlists/:playlist_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1844" y="-7663" width="1515" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="132" y="-7721" width="180" height="55" as="geometry"/>
+                <mxCell id="52" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="132" y="-7582" width="180" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="/beats/:id/playlists/:playlist_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="329.3" y="-7721" width="930.7" height="55" as="geometry"/>
+                <mxCell id="53" value="/beats/:id/playlists/:playlist_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="329.3" y="-7582" width="930.7" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="54" value="getBeatFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="1275" y="-7721" width="527" height="55" as="geometry"/>
+                <mxCell id="54" value="getBeatFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1275" y="-7582" width="527" height="55" as="geometry"/>
                 </mxCell>
-                <mxCell id="55" value="https://beat-store/v1/api/beats/:id/playlists/:playlist_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="1817" y="-7721" width="1613" height="55" as="geometry"/>
+                <mxCell id="55" value="https://beat-store/v1/api/beats/:id/playlists/:playlist_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1817" y="-7582" width="1613" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="136" y="-8168" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="/artists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="333.3" y="-8168" width="757.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="artist" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=34;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" vertex="1" parent="1">
+                    <mxGeometry x="65" y="-8171.5" width="51" height="129" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="getArtistsBeatById" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1102.5" y="-8168" width="519.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="https://beat-store/v1/api/artists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1633" y="-8168" width="1459" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="136" y="-8097.5" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="/artists/:id/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="333.3" y="-8097.5" width="513.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="getAllArtistsBeats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="859.5" y="-8097.5" width="519.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="https://beat-store/v1/api/artists/:id/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1392" y="-8099" width="1212" height="55" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

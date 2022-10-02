@@ -24,11 +24,11 @@ func (s *ArtistService) Create(accountId int) error {
 	return s.repos.Create(accountId)
 }
 
-func (s *ArtistService) Get(accountId int) (model.Account, error) {
+func (s *ArtistService) Get(accountId int) (model.Artist, error) {
 	return s.repos.Get(accountId)
 }
 
-func (s *ArtistService) GetAll() ([]model.Account, error) {
+func (s *ArtistService) GetAll() ([]model.Artist, error) {
 	return s.repos.GetAll()
 }
 

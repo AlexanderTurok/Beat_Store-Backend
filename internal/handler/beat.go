@@ -84,6 +84,44 @@ func (h *Handlers) getAllBeatsByToken(c *gin.Context) {
 	c.JSON(http.StatusOK, beats)
 }
 
+func (h *Handlers) getAllArtistsBeats(c *gin.Context) {
+	artistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "parameter artist id is empty")
+		return
+	}
+
+	beats, err := h.service.Beat.GetAllArtistsBeats(artistId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beats)
+}
+
+func (h *Handlers) getArtistsBeatById(c *gin.Context) {
+	artistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "parameter artist id is empty")
+		return
+	}
+
+	beatId, err := strconv.Atoi(c.Param("beat_id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "parameter beat id is empty")
+		return
+	}
+
+	beat, err := h.service.Beat.GetArtistsBeat(artistId, beatId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beat)
+}
+
 func (h *Handlers) updateBeat(c *gin.Context) {
 	beatId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -121,19 +159,37 @@ func (h *Handlers) deleteBeat(c *gin.Context) {
 }
 
 func (h *Handlers) getBeatFromPlaylist(c *gin.Context) {
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "parameter playlist id is empty")
+		return
+	}
 
+	beatId, err := strconv.Atoi(c.Param("beat_id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "parameter beat id is empty")
+		return
+	}
+
+	beat, err := h.service.Playlist.GetBeat(playlistId, beatId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beat)
 }
 
 func (h *Handlers) getAllBeatsFromPlaylist(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		newErrorResponse(c, http.StatusBadRequest, "parameter playlist id is empty")
 		return
 	}
 
 	beats, err := h.service.Playlist.GetAllBeats(playlistId)
 	if err != nil {
-		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		newErrorResponse(c, http.StatusInternalServerError, "parameter beat id is empty")
 		return
 	}
 

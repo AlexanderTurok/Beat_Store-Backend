@@ -27,8 +27,8 @@ type Email interface {
 
 type Artist interface {
 	Create(accountId int) error
-	Get(accountId int) (model.Account, error)
-	GetAll() ([]model.Account, error)
+	Get(accountId int) (model.Artist, error)
+	GetAll() ([]model.Artist, error)
 	Delete(accountId int, inputPassword string) error
 }
 
@@ -48,7 +48,7 @@ type Beat interface {
 	Create(artistId int64, input model.Beat) (int, error)
 	Get(beatId int) (model.Beat, error)
 	GetAll() ([]model.Beat, error)
-	GetArtistsBeat(beatId, artistId int) (model.Beat, error)
+	GetArtistsBeat(artistId, beatId int) (model.Beat, error)
 	GetAllArtistsBeats(artistId int) ([]model.Beat, error)
 	Update(beatId int, input model.BeatUpdateInput) error
 	Delete(beatId int) error
@@ -60,6 +60,7 @@ type Playlist interface {
 	Update(playlistId int, input model.PlaylistUpdateInput) error
 	Delete(playlistId int) error
 	AddBeat(playlistId, beatId int) error
+	GetBeat(playlistId, beatId int) (model.Beat, error)
 	GetAllBeats(playlistId int) ([]model.Beat, error)
 	DeleteBeat(playlistId, beatId int) error
 }

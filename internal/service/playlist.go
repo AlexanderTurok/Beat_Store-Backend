@@ -39,6 +39,10 @@ func (s *PlaylistService) AddBeat(playlistId, beatId int) error {
 	return s.repos.AddBeat(playlistId, beatId)
 }
 
+func (s *PlaylistService) GetBeat(playlistId, beatId int) (model.Beat, error) {
+	return s.repos.GetBeat(playlistId, beatId)
+}
+
 func (s *PlaylistService) GetAllBeats(playlistId int) ([]model.Beat, error) {
 	return s.repos.GetAllBeats(playlistId)
 }
