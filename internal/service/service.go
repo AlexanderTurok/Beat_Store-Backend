@@ -55,12 +55,17 @@ type Beat interface {
 
 type Playlist interface {
 	Create(productId int, input model.Playlist) (int, error)
+	Get(playlistId int) (model.Playlist, error)
+	GetAll() ([]model.Playlist, error)
+	GetAccountsPlaylist(accountId, playlistId int) (model.Playlist, error)
 	GetAllAccountsPlaylists(accountId int) ([]model.Playlist, error)
 	Update(playlistId int, input model.PlaylistUpdateInput) error
 	Delete(playlistId int) error
 	AddBeat(playlistId, beatId int) error
 	GetBeat(playlistId, beatId int) (model.Beat, error)
 	GetAllBeats(playlistId int) ([]model.Beat, error)
+	GetBeatFromAccountsPlaylists(accountId, playlistId, beatId int) (model.Beat, error)
+	GetAllBeatsFromAccountsPlaylists(accountId, playlistId int) ([]model.Beat, error)
 	DeleteBeat(playlistId, beatId int) error
 }
 

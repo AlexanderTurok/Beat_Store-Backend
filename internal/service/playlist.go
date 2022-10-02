@@ -19,6 +19,18 @@ func (s *PlaylistService) Create(accountId int, input model.Playlist) (int, erro
 	return s.repos.Create(accountId, input)
 }
 
+func (s *PlaylistService) Get(playlistId int) (model.Playlist, error) {
+	return s.repos.Get(playlistId)
+}
+
+func (s *PlaylistService) GetAll() ([]model.Playlist, error) {
+	return s.repos.GetAll()
+}
+
+func (s *PlaylistService) GetAccountsPlaylist(accountId, playlistId int) (model.Playlist, error) {
+	return s.repos.GetAccountsPlaylist(accountId, playlistId)
+}
+
 func (s *PlaylistService) GetAllAccountsPlaylists(accountId int) ([]model.Playlist, error) {
 	return s.repos.GetAllAccountsPlaylists(accountId)
 }
@@ -45,6 +57,14 @@ func (s *PlaylistService) GetBeat(playlistId, beatId int) (model.Beat, error) {
 
 func (s *PlaylistService) GetAllBeats(playlistId int) ([]model.Beat, error) {
 	return s.repos.GetAllBeats(playlistId)
+}
+
+func (s *PlaylistService) GetBeatFromAccountsPlaylists(accountId, playlistId, beatId int) (model.Beat, error) {
+	return s.repos.GetBeatFromAccountsPlaylists(accountId, playlistId, beatId)
+}
+
+func (s *PlaylistService) GetAllBeatsFromAccountsPlaylists(accountId, playlistId int) ([]model.Beat, error) {
+	return s.repos.GetAllBeatsFromAccountsPlaylists(accountId, playlistId)
 }
 
 func (s *PlaylistService) DeleteBeat(playlistId, beatId int) error {

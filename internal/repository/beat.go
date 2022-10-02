@@ -101,14 +101,14 @@ func (r *BeatRepository) GetAll() ([]model.Beat, error) {
 	return beats, err
 }
 
-func (r *BeatRepository) GetArtistsBeat(beatId, artistId int) (model.Beat, error) {
+func (r *BeatRepository) GetArtistsBeat(artistId, beatId int) (model.Beat, error) {
 	var beat model.Beat
 
 	query := fmt.Sprintf(`SELECT product.created_at, beat.*, price.*, tag.id AS tag_id, tag.name AS tag_name FROM %s 
 		LEFT OUTER JOIN %s ON product.id = beat.product_id
 		LEFT OUTER JOIN %s ON beat.id = tag.beat_id 
 		LEFT OUTER JOIN %s ON beat.id = price.id
-		WHERE beat.id = $1 AND product.artist_id=$2`,
+		WHERE beat.id=$1 AND product.artist_id=$2`,
 		beatTable, productTable, tagTable, priceTable)
 	rows, err := r.db.Query(query, beatId, artistId)
 	if err != nil {

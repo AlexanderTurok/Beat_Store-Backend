@@ -1,1 +1,574 @@
-<mxfile host="Electron" modified="2022-10-02T18:41:32.736Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.3.0 Chrome/104.0.5112.114 Electron/20.1.3 Safari/537.36" etag="V_JwFXuMicPd0YynSr7t" version="20.3.0" type="device"><diagram id="2Ipb0TKC3gZOCcmrfdG8" name="Page-1">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</diagram></mxfile>
+<mxfile host="65bd71144e">
+    <diagram id="2Ipb0TKC3gZOCcmrfdG8" name="Page-1">
+        <mxGraphModel dx="4740" dy="14120" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3700" pageHeight="3700" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-2" value="&lt;font style=&quot;font-size: 98px;&quot;&gt;entities&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=98;fontStyle=0;rounded=1;glass=0;strokeColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="2843.38" y="-10968" width="498" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-3" value="beat" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=98;verticalAlign=bottom;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="2894.37" y="-10221" width="406.25" height="108" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-4" value="account" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=98;verticalAlign=bottom;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="2869.88" y="-10804" width="445" height="101" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-5" value="&lt;font style=&quot;font-size: 100px;&quot;&gt;BEAT STORE API&amp;nbsp;&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fontSize=100;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="190" y="-11034" width="1435" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-6" value="playlist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=98;verticalAlign=top;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="2824" y="-10555" width="532.5" height="149" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-7" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="130" y="-10800" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-8" value="/sign-up" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="327.29999999999995" y="-10800" width="260.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-9" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="130" y="-10731" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-10" value="/sign-in" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="327.29999999999995" y="-10731" width="258.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-13" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="130" y="-10560" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-14" value="/accounts/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="327.29999999999995" y="-10560" width="416.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-15" value="put" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="130" y="-10489" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-16" value="/accounts/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="327.29999999999995" y="-10489" width="415.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-17" value="delete" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="130" y="-10420" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-18" value="/accounts/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="327.29999999999995" y="-10420" width="417.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-19" value="auth" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="-10798" width="72" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-20" value="api" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="-10543" width="72" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-32" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="122" y="-8494" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-33" value="/beats/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="319.29999999999995" y="-8494" width="335.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-34" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="122" y="-8425" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-35" value="/beats/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="319.29999999999995" y="-8425" width="409.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-36" value="put" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="122" y="-8354" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-37" value="/beats/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="319.29999999999995" y="-8354" width="411.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-38" value="delete" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="122" y="-8285" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-39" value="/beats/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="319.29999999999995" y="-8285" width="411.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-40" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="120" y="-8562" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-41" value="/beats/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="317.29999999999995" y="-8562" width="338.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-42" value="artist" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="-8485" width="64" height="169" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-43" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="121" y="-8168" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-44" value="/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="318.29999999999995" y="-8168" width="194.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-45" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="121" y="-8099" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-46" value="/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="318.29999999999995" y="-8099" width="295.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-47" value="api" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="-8156.5" width="72" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-59" value="product" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=98;verticalAlign=top;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="2829" y="-10387" width="531.75" height="152" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-60" value="artist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=98;verticalAlign=bottom;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="2882.32" y="-10688" width="414.87" height="114" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-63" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="127" y="-10241" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-64" value="/artists/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="324.29999999999995" y="-10241" width="392.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-67" value="delete" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="127" y="-10168" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-68" value="/artists/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="324.29999999999995" y="-10168" width="391.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-69" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="127" y="-10312" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-70" value="/artists/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="324.29999999999995" y="-10312" width="388.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-71" value="account" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="43" y="-10311.5" width="64" height="197" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-72" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="117" y="-9891" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-73" value="/products/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="314.29999999999995" y="-9891" width="402.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-74" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="117" y="-9822" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-75" value="/products/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="314.29999999999995" y="-9822" width="491.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-78" value="delete" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="117" y="-9750" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-79" value="/products/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="314.29999999999995" y="-9750" width="492.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-82" value="artist" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="-9879" width="64" height="169" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-94" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="128" y="-10070" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-95" value="/artists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="325.29999999999995" y="-10070" width="248.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-96" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="128" y="-10001" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-97" value="/artists/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="325.29999999999995" y="-10001" width="345.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-98" value="api" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="-10056" width="72" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-104" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="128" y="-9568" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-105" value="/products/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="325.29999999999995" y="-9568" width="412.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-106" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="128" y="-9495" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-107" value="/products/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="325.29999999999995" y="-9495" width="485.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-108" value="account" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="-9601" width="72" height="205" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-109" value="delete" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="130" y="-9419" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-110" value="/products/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="327.29999999999995" y="-9419" width="486.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-128" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="134" y="-9224" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-129" value="/playlists/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="331.29999999999995" y="-9224" width="445.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-130" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="134" y="-9155" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-131" value="/playlists/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="331.29999999999995" y="-9155" width="519.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-132" value="put" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="134" y="-9084" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-133" value="/playlists/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="331.29999999999995" y="-9084" width="518.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-134" value="delete" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="134" y="-9015" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-135" value="/playlists/:id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="331.29999999999995" y="-9015" width="516.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-136" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="132" y="-9292" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-137" value="/playlists/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="329.29999999999995" y="-9292" width="449.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-138" value="account" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="41" y="-9265" width="72" height="205" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-139" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="128" y="-8900" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-140" value="/playlists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="325.29999999999995" y="-8900" width="301.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-141" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="128" y="-8831" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-142" value="/playlists/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="325.29999999999995" y="-8831" width="398.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-143" value="api" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="-8885.5" width="72" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-144" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="126" y="-7762.5" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-145" value=":id/beats/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="323.3" y="-7762.5" width="409.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-146" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="126" y="-7693.5" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-147" value=":id/beats/:beat_id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="323.3" y="-7693.5" width="626.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-148" value="playlist" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=50;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="37" y="-7746" width="70" height="249" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-149" value="signUp" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="605" y="-10798" width="260.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-150" value="signIn" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="605" y="-10734" width="260.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-151" value="getAccountByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="761" y="-10560" width="496" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-152" value="updateAccount" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="761" y="-10489" width="389" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-153" value="deleteAccount" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="761" y="-10420" width="389" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-156" value="createArtist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="735" y="-10312" width="351" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-157" value="getArtistByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="734" y="-10241" width="462" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-159" value="deleteArtist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="739" y="-10168" width="353" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-160" value="getAllArtists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="591" y="-10070" width="380" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-161" value="getArtistById" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="688" y="-10001" width="378" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-163" value="getAllProductsByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="740" y="-9891" width="619" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-164" value="getProductByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="823" y="-9822" width="496" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-166" value="deleteProduct" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="823" y="-9750" width="383" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-168" value="getAllBoughtProductsByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="760" y="-9568" width="763" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-169" value="getBoughtProductByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="828" y="-9493" width="648" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-170" value="returnBoughtProduct" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="835.5" y="-9419" width="549.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-172" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="130" y="-9645" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-173" value="/products/:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="333" y="-9645" width="412.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-174" value="buyProducts" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="769" y="-9645" width="328" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-175" value="createPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="797" y="-9292" width="407.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-176" value="getAllPlaylistsByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="794" y="-9224" width="632" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-178" value="getPlaylistByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="868" y="-9155" width="523" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-179" value="updatePlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="868" y="-9084" width="412" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-180" value="deletePlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="865.7" y="-9015" width="412" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-182" value="getAllPlaylists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="649" y="-8900" width="433" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-183" value="getPlaylistById" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="741" y="-8831" width="435" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-187" value="createBeat" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="673.9999999999998" y="-8562" width="303.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-188" value="getAllBeatsByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="674" y="-8494" width="521" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-189" value="getBeatByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="747" y="-8425" width="410" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-190" value="updateBeat" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="747.5" y="-8354" width="303.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-191" value="deleteBeat" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="747.5" y="-8285" width="303.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-192" value="getAllBeats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="535.5" y="-8168" width="319.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-193" value="getBeatById" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="632" y="-8099" width="319.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-194" value="getAllBeatsFromPlaylistByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="747.5" y="-7762.5" width="839.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-195" value="getBeatFromPlaylistByToken" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="967" y="-7693.5" width="746" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-197" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="127" y="-7831.5" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-198" value=":id/beats/beat_id:jwt" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="324.3" y="-7831.5" width="607.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-199" value="addBeatToPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="957" y="-7831.5" width="490" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-201" value="https://beat-store/auth/sign-up" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="883" y="-10798" width="882" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-202" value="https://beat-store/auth/sign-in" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="883" y="-10734" width="884" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-203" value="https://beat-store/api/accounts" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1274" y="-10559" width="883" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-208" value="https://beat-store/api/accounts/artists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1106" y="-10313" width="1117" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-214" value="https://beat-store/api/accounts/artists/products" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1379" y="-9892" width="1332" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-221" value="https://beat-store/api/accounts/products" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="-9645" width="1143" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-223" value="https://beat-store/v1/api/accounts/playlists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1223" y="-9292" width="1235" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-224" value="https://beat-store/v1/api/accounts/playlists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1443" y="-9224" width="1235" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-225" value="https://beat-store/v1/api/accounts/playlists/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1408" y="-9155" width="1384" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-226" value="https://beat-store/v1/api/accounts/playlists/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1296" y="-9084" width="1384" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-227" value="https://beat-store/v1/api/accounts/playlists/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1296" y="-9013" width="1384" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-228" value="https://beat-store/v1/api/playlists/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1201" y="-8831" width="1098" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-229" value="https://beat-store/v1/api/playlists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1110" y="-8900" width="989" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-230" value="https://beat-store/v1/api/accounts/artists/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="995" y="-8562" width="1353" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-231" value="https://beat-store/v1/api/accounts/artists/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1213" y="-8494" width="1364" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-232" value="https://beat-store/v1/api/accounts/artists/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1175" y="-8425" width="1457" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-235" value="https://beat-store/v1/api/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="970" y="-8099" width="1001.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-236" value="https://beat-store/v1/api/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="878" y="-8168" width="1001.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-237" value="https://beat-store/api/accounts/playlists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1464" y="-7831.5" width="1701" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-238" value="https://beat-store/api/accounts/playlists/:id/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1598" y="-7762.5" width="1433" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="7m1PmItbiETfe_UGkCJ4-239" value="https://beat-store/api/accounts/playlists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1730.75" y="-7693.5" width="1710" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="https://beat-store/api/accounts/artists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1214" y="-10240.5" width="1111" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="https://beat-store/api/artists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="988" y="-10070" width="841" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="https://beat-store/api/artists/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1086" y="-10001" width="952" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="https://beat-store/api/accounts" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1167.5" y="-10489" width="880.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="https://beat-store/api/accounts" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1167" y="-10420" width="878" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="https://beat-store/api/accounts/products" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1535" y="-9568" width="1143" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="https://beat-store/api/accounts/products/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1493" y="-9493" width="1248" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="https://beat-store/api/accounts/products/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1407" y="-9419" width="1241" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="https://beat-store/api/accounts/artists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1109" y="-10169" width="1111" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="https://beat-store/api/accounts/artists/products/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1336" y="-9822" width="1449" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="https://beat-store/api/accounts/artists/products/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1222" y="-9750" width="1449" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="https://beat-store/v1/api/accounts/artists/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1067" y="-8354" width="1457" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="https://beat-store/v1/api/accounts/artists/beats/:id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1067" y="-8285" width="1457" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="post" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="131" y="-10631" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="/confirm-accounts/:username" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="328.3" y="-10631" width="754.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="confirmAccount" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1106" y="-10631" width="366.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="https://beat-store/api/aonfirm-accounts/:username" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1489" y="-10633" width="1344" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="124" y="-8733" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="321.3" y="-8733" width="598.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="124" y="-8664" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="/:id/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="321.3" y="-8664" width="715.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="pl" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=45;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="35" y="-8699.5" width="64" height="59" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="getAllAccountsPlaylists" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="948" y="-8732" width="659" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="getAccountsPlaylistById" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1057.5" y="-8663" width="666" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="https://beat-store/v1/api/playlists/:id/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1742.5" y="-8663" width="1686.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="https://beat-store/v1/api/playlists/accounts/:account_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1629" y="-8732" width="1566" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="delete" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="127" y="-7617" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value=":id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="324.3" y="-7617" width="513.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="deleteBeatFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="856" y="-7617" width="653" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="https://beat-store/api/accounts/playlists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1522" y="-7617" width="1710" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="121" y="-8017" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="/artists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="318.3" y="-8017" width="757.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="artist" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;sketch=1;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;imageHeight=24;imageWidth=28;arcSize=12;fontSize=34;fontStyle=1;rounded=1;glass=0;strokeColor=default;direction=south;horizontal=0;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="-8020.5" width="51" height="129" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="getArtistsBeatById" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1087.5" y="-8017" width="519.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="https://beat-store/v1/api/artists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1618" y="-8017" width="1459" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="121" y="-7946.5" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="/artists/:id/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="318.3" y="-7946.5" width="513.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="getAllArtistsBeats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="844.5" y="-7946.5" width="519.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="https://beat-store/v1/api/artists/:id/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1377" y="-7948" width="1212" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="126" y="-7535" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value=":id/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="323.3" y="-7535" width="264.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="get" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;horizontal=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="126" y="-7466" width="180" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value=":id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="323.3" y="-7466" width="519.7" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="getAllBeatsFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="603.5" y="-7535" width="657.5" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="getBeatFromPlaylist" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="856" y="-7468" width="556" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="https://beat-store/api/playlists/:id/beats" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1277.7" y="-7535" width="1186" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" value="https://beat-store/api/playlists/:id/beats/:beat_id" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;sketch=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Space Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DSpace%2BMono;fontSize=45;verticalAlign=bottom;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1426" y="-7468" width="1710" height="55" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

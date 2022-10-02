@@ -39,7 +39,25 @@ func (h *Handlers) createBeat(c *gin.Context) {
 }
 
 func (h *Handlers) getBeatByToken(c *gin.Context) {
+	artistId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	beatId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid beat id")
+		return
+	}
+
+	beat, err := h.service.Beat.GetArtistsBeat(artistId, beatId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beat)
 }
 
 func (h *Handlers) getAllBeats(c *gin.Context) {
@@ -180,6 +198,56 @@ func (h *Handlers) getBeatFromPlaylist(c *gin.Context) {
 	c.JSON(http.StatusOK, beat)
 }
 
+func (h *Handlers) getAllBeatsFromPlaylistByToken(c *gin.Context) {
+	accountId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "parameter playlist id is empty")
+		return
+	}
+
+	beats, err := h.service.Playlist.GetAllBeatsFromAccountsPlaylists(accountId, playlistId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beats)
+}
+
+func (h *Handlers) getBeatFromPlaylistByToken(c *gin.Context) {
+	accountId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "parameter playlist id is empty")
+		return
+	}
+
+	beatId, err := strconv.Atoi(c.Param("beat_id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "parameter beat id is empty")
+		return
+	}
+
+	beat, err := h.service.Playlist.GetBeatFromAccountsPlaylists(accountId, playlistId, beatId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, beat)
+}
+
 func (h *Handlers) getAllBeatsFromPlaylist(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -189,7 +257,7 @@ func (h *Handlers) getAllBeatsFromPlaylist(c *gin.Context) {
 
 	beats, err := h.service.Playlist.GetAllBeats(playlistId)
 	if err != nil {
-		newErrorResponse(c, http.StatusInternalServerError, "parameter beat id is empty")
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
 

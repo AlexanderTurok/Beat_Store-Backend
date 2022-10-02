@@ -19,7 +19,7 @@ func NewAccountRepository(db *sqlx.DB) *AccountRepository {
 }
 
 func (r *AccountRepository) Confirm(username string) error {
-	query := fmt.Sprintf("UPDATE %s SET confirmed = true WHERE username = $1", accountTable)
+	query := fmt.Sprintf("UPDATE %s SET confirmed=true WHERE username=$1", accountTable)
 	_, err := r.db.Exec(query, username)
 
 	return err
@@ -28,7 +28,7 @@ func (r *AccountRepository) Confirm(username string) error {
 func (r *AccountRepository) Get(accountId int) (model.Account, error) {
 	var account model.Account
 
-	query := fmt.Sprintf("SELECT name, username, email, photo_path, created_at FROM %s WHERE id=$1", accountTable)
+	query := fmt.Sprintf("SELECT name, username, email, photo_path, confirmed, created_at FROM %s WHERE id=$1", accountTable)
 	err := r.db.Get(&account, query, accountId)
 
 	return account, err
@@ -43,6 +43,7 @@ func (r *AccountRepository) Update(accountId int, input model.AccountUpdateInput
 
 func (r *AccountRepository) GetPasswordHash(accountId int) (string, error) {
 	var passwordHash string
+
 	query := fmt.Sprintf("SELECT password_hash FROM %s WHERE id=$1", accountTable)
 	err := r.db.Get(&passwordHash, query, accountId)
 

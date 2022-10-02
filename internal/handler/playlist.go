@@ -33,7 +33,25 @@ func (h *Handlers) createPlaylist(c *gin.Context) {
 }
 
 func (h *Handlers) getPlaylistByToken(c *gin.Context) {
+	accountId, err := getAccountId(c)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "invalid playlist id")
+		return
+	}
+
+	playlist, err := h.service.Playlist.GetAccountsPlaylist(accountId, playlistId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, playlist)
 }
 
 func (h *Handlers) getAllPlaylistsByToken(c *gin.Context) {
@@ -88,22 +106,59 @@ func (h *Handlers) deletePlaylist(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handlers) getAccountsPlaylist(c *gin.Context) {
-
-}
-
 func (h *Handlers) getPlaylistById(c *gin.Context) {
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "invalid playlist id")
+		return
+	}
+
+	playlist, err := h.service.Playlist.Get(playlistId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, playlist)
 
 }
 
 func (h *Handlers) getAllPlaylists(c *gin.Context) {
+	playlists, err := h.service.Playlist.GetAll()
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	c.JSON(http.StatusOK, playlists)
+}
+
+func (h *Handlers) getAccountsPlaylist(c *gin.Context) {
+	accountId, err := strconv.Atoi(c.Param("account_id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid account id")
+		return
+	}
+
+	playlistId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		newErrorResponse(c, http.StatusBadRequest, "invalid playlist id")
+		return
+	}
+
+	playlist, err := h.service.Playlist.GetAccountsPlaylist(accountId, playlistId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, playlist)
 }
 
 func (h *Handlers) getAllAccountsPlaylists(c *gin.Context) {
-	accountId, err := strconv.Atoi(c.Param("id"))
+	accountId, err := strconv.Atoi(c.Param("account_id"))
 	if err != nil {
-		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		newErrorResponse(c, http.StatusBadRequest, "invalid account id")
 		return
 	}
 

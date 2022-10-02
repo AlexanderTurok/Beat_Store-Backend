@@ -31,7 +31,6 @@ func (h *Handlers) InitRouter() *gin.Engine {
 	{
 		accounts := api.Group("/accounts", h.userIdentity)
 		{
-			accounts.POST("/:username", h.confirmAccount)
 			accounts.GET("/", h.getAccountByToken)
 			accounts.PUT("/", h.updateAccount)
 			accounts.DELETE("/", h.deleteAccount)
@@ -52,14 +51,16 @@ func (h *Handlers) InitRouter() *gin.Engine {
 				playlists.PUT("/:id", h.updatePlaylist)
 				playlists.DELETE("/:id", h.deletePlaylist)
 
-				beats := playlists.Group(":id/beats")
+				beats := playlists.Group("/:id/beats")
 				{
 					beats.POST("/:beat_id", h.addBeatToPlaylist)
-					beats.GET("/", h.getAllBeatsFromPlaylist)
-					beats.GET("/:beat_id", h.getBeatFromPlaylist)
+					beats.GET("/", h.getAllBeatsFromPlaylistByToken)
+					beats.GET("/:beat_id", h.getBeatFromPlaylistByToken)
 					beats.DELETE("/:beat_id", h.deleteBeatFromPlaylist)
 				}
 			}
+
+			api.GET("/confirm-accounts/:username", h.confirmAccount)
 
 			artists := accounts.Group("/artists")
 			{
@@ -71,7 +72,7 @@ func (h *Handlers) InitRouter() *gin.Engine {
 				{
 					products.GET("/", h.getAllProductsByToken)
 					products.GET("/:id", h.getProductByToken)
-					products.DELETE(":id", h.deleteProduct)
+					products.DELETE("/:id", h.deleteProduct)
 				}
 
 				beats := artists.Group("/beats")
@@ -90,8 +91,8 @@ func (h *Handlers) InitRouter() *gin.Engine {
 			artists.GET("/", h.getAllArtists)
 			artists.GET("/:id", h.getArtistById)
 
-			artists.GET(":id/beats/", h.getAllArtistsBeats)
-			artists.GET(":id/beats/:beat_id", h.getArtistsBeatById)
+			artists.GET("/:id/beats/", h.getAllArtistsBeats)
+			artists.GET("/:id/beats/:beat_id", h.getArtistsBeatById)
 		}
 
 		playlists := api.Group("/playlists")
@@ -99,11 +100,11 @@ func (h *Handlers) InitRouter() *gin.Engine {
 			playlists.GET("/", h.getAllPlaylists)
 			playlists.GET("/:id", h.getPlaylistById)
 
-			playlists.GET(":id/accounts/:account_id", h.getAccountsPlaylist)
+			playlists.GET("/:id/accounts/:account_id", h.getAccountsPlaylist)
 			playlists.GET("/accounts/:account_id", h.getAllAccountsPlaylists)
 
-			playlists.GET("/:id/beats", h.getBeatFromPlaylist)
-			playlists.GET("/:id/beats/:beat_id", h.getAllBeatsFromPlaylist)
+			playlists.GET("/:id/beats", h.getAllBeatsFromPlaylist)
+			playlists.GET("/:id/beats/:beat_id", h.getBeatFromPlaylist)
 		}
 
 		beats := api.Group("/beats")

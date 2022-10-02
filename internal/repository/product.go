@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/AlexanderTurok/beat-store-backend/internal/model"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -19,10 +18,10 @@ func NewProductRepository(db *sqlx.DB) *ProductRepository {
 }
 
 func (r *ProductRepository) Create(artistId int, stripeId string) (int64, error) {
-	var product model.Product
+	var productId int64
 
 	query := fmt.Sprintf(`INSERT INTO %s (artist_id, stripe_id, created_at) VALUES ($1, $2, $3) RETURNING id`, productTable)
-	err := r.db.Get(&product, query, artistId, stripeId, time.Now())
+	err := r.db.Get(&productId, query, artistId, stripeId, time.Now())
 
-	return product.Id, err
+	return productId, err
 }
