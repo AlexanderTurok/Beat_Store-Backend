@@ -6,11 +6,11 @@ func (h *Handlers) buyProducts(c *gin.Context) {
 
 }
 
-func (h *Handlers) getBoughtProductById(c *gin.Context) {
+func (h *Handlers) getBoughtProductByToken(c *gin.Context) {
 
 }
 
-func (h *Handlers) getAllBoughtProducts(c *gin.Context) {
+func (h *Handlers) getAllBoughtProductsByToken(c *gin.Context) {
 
 }
 
@@ -23,10 +23,6 @@ func (h *Handlers) getProductByToken(c *gin.Context) {
 }
 
 func (h *Handlers) getAllProductsByToken(c *gin.Context) {
-
-}
-
-func (h *Handlers) updateProduct(c *gin.Context) {
 
 }
 

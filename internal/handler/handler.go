@@ -39,8 +39,8 @@ func (h *Handlers) InitRouter() *gin.Engine {
 			products := accounts.Group("/products")
 			{
 				products.POST("/", h.buyProducts)
-				products.GET("/", h.getAllBoughtProducts)
-				products.GET("/:id", h.getBoughtProductById)
+				products.GET("/", h.getAllBoughtProductsByToken)
+				products.GET("/:id", h.getBoughtProductByToken)
 				products.DELETE("/:id", h.returnBoughtProduct)
 			}
 
@@ -71,7 +71,6 @@ func (h *Handlers) InitRouter() *gin.Engine {
 				{
 					products.GET("/", h.getAllProductsByToken)
 					products.GET("/:id", h.getProductByToken)
-					products.PUT("/:id", h.updateProduct)
 					products.DELETE(":id", h.deleteProduct)
 				}
 
@@ -90,6 +89,7 @@ func (h *Handlers) InitRouter() *gin.Engine {
 		{
 			artists.GET("/", h.getAllArtists)
 			artists.GET("/:id", h.getArtistById)
+
 			artists.GET(":id/beats/", h.getAllArtistsBeats)
 			artists.GET(":id/beats/:beat_id", h.getArtistsBeatById)
 		}
@@ -98,16 +98,18 @@ func (h *Handlers) InitRouter() *gin.Engine {
 		{
 			playlists.GET("/", h.getAllPlaylists)
 			playlists.GET("/:id", h.getPlaylistById)
+
 			playlists.GET(":id/accounts/:account_id", h.getAccountsPlaylist)
 			playlists.GET("/accounts/:account_id", h.getAllAccountsPlaylists)
+
+			playlists.GET("/:id/beats", h.getBeatFromPlaylist)
+			playlists.GET("/:id/beats/:beat_id", h.getAllBeatsFromPlaylist)
 		}
 
 		beats := api.Group("/beats")
 		{
 			beats.GET("/", h.getAllBeats)
 			beats.GET("/:id", h.getBeatById)
-			beats.GET("/playlists/:playlist_id", h.getAllBeatsFromPlaylist)
-			beats.GET(":id/playlists/:playlist_id", h.getBeatFromPlaylist)
 		}
 	}
 
