@@ -65,7 +65,6 @@ func (h *Handlers) InitRouter() *gin.Engine {
 			{
 				artists.POST("/", h.createArtist)
 				artists.GET("/", h.getArtistByToken)
-				artists.PUT("/", h.updateArtist)
 				artists.DELETE("/", h.deleteArtist)
 
 				products := artists.Group("/products")

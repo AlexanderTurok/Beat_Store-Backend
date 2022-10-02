@@ -34,7 +34,3 @@ func (s *PaymentService) CreatePaymentAccount(accountId int) (string, error) {
 
 	return s.paymenter.CreateRegistrationURL(stripeId, refreshURL, returnURL)
 }
-
-func (s *PaymentService) DeletePaymentAccount(accountId int) (string, error) {
-	return "", nil
-}

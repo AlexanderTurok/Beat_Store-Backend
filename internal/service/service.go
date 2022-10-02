@@ -34,7 +34,6 @@ type Artist interface {
 
 type Payment interface {
 	CreatePaymentAccount(accountId int) (string, error)
-	DeletePaymentAccount(accountId int) (string, error)
 }
 
 type Product interface {
