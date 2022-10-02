@@ -20,7 +20,7 @@ func NewBeatRepository(db *sqlx.DB) *BeatRepository {
 	}
 }
 
-func (r *BeatRepository) Create(artistId int, input model.Beat) (int, error) {
+func (r *BeatRepository) Create(productId int64, input model.Beat) (int, error) {
 	tx, err := r.db.Begin()
 	if err != nil {
 		return 0, err
@@ -28,13 +28,13 @@ func (r *BeatRepository) Create(artistId int, input model.Beat) (int, error) {
 
 	var beatId int
 	insertBeatQuery := fmt.Sprintf(`INSERT INTO %s (
-			artist_id, name, bpm, key, photo_path, mp3_path, wav_path, genre, mood, created_at)
+			product_id, name, bpm, key, photo_path, mp3_path, wav_path, genre, mood, created_at)
 		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id`,
 		beatTable,
 	)
 
 	if err := tx.QueryRow(insertBeatQuery,
-		artistId,
+		productId,
 		input.Name,
 		input.Bpm,
 		input.Key,

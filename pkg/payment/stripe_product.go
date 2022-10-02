@@ -7,11 +7,11 @@ import (
 )
 
 type Product interface {
-	CreateProduct() error
+	CreateProduct() (string, error)
 	CreatePrice() error
 }
 
-func (p *Payment) CreateProduct() error {
+func (p *Payment) CreateProduct() (string, error) {
 	params := &stripe.ProductParams{
 		Name: stripe.String("Basic Dashboard"),
 		DefaultPriceData: &stripe.ProductDefaultPriceDataParams{
@@ -23,9 +23,9 @@ func (p *Payment) CreateProduct() error {
 		},
 	}
 	params.AddExpand("default_price")
-	_, err := product.New(params)
+	result, err := product.New(params)
 
-	return err
+	return result.ID, err
 }
 
 func (p *Payment) CreatePrice() error {

@@ -21,7 +21,13 @@ func (h *Handlers) createBeat(c *gin.Context) {
 		return
 	}
 
-	id, err := h.service.Beat.Create(artistId, input)
+	productId, err := h.service.Product.Create(artistId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	id, err := h.service.Beat.Create(productId, input)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return

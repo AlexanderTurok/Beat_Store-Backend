@@ -5,8 +5,10 @@ const (
 	accountTable = "account"
 	artistTable  = "artist"
 
-	accountBeatTable     = "account_beat"
+	accountProductTable  = "account_product"
 	accountPlaylistTable = " account_playlist"
+
+	productTable = "product"
 
 	playlistBeatTable = "playlist_beat"
 	playlistTable     = "playlist"

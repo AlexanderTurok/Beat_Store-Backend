@@ -18,10 +18,17 @@ func NewProductService(repos repository.Product, paymenter payment.Product) *Pro
 	}
 }
 
-func (s *ProductService) Create(input model.Beat) (string, error) {
-	s.paymenter.CreateProduct()
-	s.paymenter.CreatePrice()
-	return "", nil
+func (s *ProductService) Create(artistId int) (int64, error) {
+	stripeId, err := s.paymenter.CreateProduct()
+	if err != nil {
+		return 0, err
+	}
+
+	if err := s.paymenter.CreatePrice(); err != nil {
+		return 0, err
+	}
+
+	return s.repos.Create(artistId, stripeId)
 }
 
 func (s *ProductService) Get(productId string) (model.Product, error) {

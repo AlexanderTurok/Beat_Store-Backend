@@ -31,10 +31,11 @@ type Payment interface {
 }
 
 type Product interface {
+	Create(artistId int, stripeId string) (int64, error)
 }
 
 type Beat interface {
-	Create(artistId int, input model.Beat) (int, error)
+	Create(productId int64, input model.Beat) (int, error)
 	Get(beatId int) (model.Beat, error)
 	GetAll() ([]model.Beat, error)
 	GetArtistsBeat(beatId, artistId int) (model.Beat, error)

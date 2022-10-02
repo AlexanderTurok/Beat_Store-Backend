@@ -38,14 +38,14 @@ type Payment interface {
 }
 
 type Product interface {
-	Create(input model.Beat) (string, error)
+	Create(artistId int) (int64, error)
 	Get(productId string) (model.Product, error)
 	GetAll(productId string) ([]model.Product, error)
 	Delete(productId string) error
 }
 
 type Beat interface {
-	Create(artistId int, input model.Beat) (int, error)
+	Create(artistId int64, input model.Beat) (int, error)
 	Get(beatId int) (model.Beat, error)
 	GetAll() ([]model.Beat, error)
 	GetArtistsBeat(beatId, artistId int) (model.Beat, error)
@@ -55,7 +55,7 @@ type Beat interface {
 }
 
 type Playlist interface {
-	Create(accountId int, input model.Playlist) (int, error)
+	Create(productId int, input model.Playlist) (int, error)
 	GetAllAccountsPlaylists(accountId int) ([]model.Playlist, error)
 	Update(playlistId int, input model.PlaylistUpdateInput) error
 	Delete(playlistId int) error

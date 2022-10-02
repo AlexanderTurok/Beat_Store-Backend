@@ -15,7 +15,7 @@ func NewBeatService(repos repository.Beat) *BeatService {
 	}
 }
 
-func (s *BeatService) Create(artistId int, input model.Beat) (int, error) {
+func (s *BeatService) Create(artistId int64, input model.Beat) (int, error) {
 	return s.repos.Create(artistId, input)
 }
 
