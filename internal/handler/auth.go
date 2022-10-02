@@ -9,7 +9,6 @@ import (
 
 func (h *Handlers) signUp(c *gin.Context) {
 	var accountInput model.Account
-
 	if err := c.BindJSON(&accountInput); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, "invalid input body")
 		return
@@ -17,6 +16,11 @@ func (h *Handlers) signUp(c *gin.Context) {
 
 	id, err := h.service.Auth.CreateAccount(accountInput)
 	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	if err := h.service.Email.SendVerificationEmail(accountInput); err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
@@ -33,7 +37,6 @@ type signInInput struct {
 
 func (h *Handlers) signIn(c *gin.Context) {
 	var accountInput signInInput
-
 	if err := c.BindJSON(&accountInput); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return

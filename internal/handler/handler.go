@@ -31,6 +31,7 @@ func (h *Handlers) InitRouter() *gin.Engine {
 	{
 		accounts := api.Group("/accounts", h.userIdentity)
 		{
+			accounts.POST("/:username", h.confirmAccount)
 			accounts.GET("/", h.getAccountByToken)
 			accounts.PUT("/", h.updateAccount)
 			accounts.DELETE("/", h.deleteAccount)
@@ -39,7 +40,7 @@ func (h *Handlers) InitRouter() *gin.Engine {
 			{
 				products.POST("/", h.buyProducts)
 				products.GET("/", h.getAllBoughtProducts)
-				products.GET("/:id", h.getBoughtProduct)
+				products.GET("/:id", h.getBoughtProductById)
 				products.DELETE("/:id", h.returnBoughtProduct)
 			}
 
@@ -56,10 +57,11 @@ func (h *Handlers) InitRouter() *gin.Engine {
 					beats.POST("/:beat_id", h.addBeatToPlaylist)
 					beats.GET("/", h.getAllBeatsFromPlaylist)
 					beats.GET("/:beat_id", h.getBeatFromPlaylist)
+					beats.DELETE("/:beat_id", h.deleteBeatFromPlaylist)
 				}
 			}
 
-			artists := api.Group("/artists")
+			artists := accounts.Group("/artists")
 			{
 				artists.POST("/", h.createArtist)
 				artists.GET("/", h.getArtistByToken)
@@ -80,7 +82,7 @@ func (h *Handlers) InitRouter() *gin.Engine {
 					beats.GET("/", h.getAllBeatsByToken)
 					beats.GET("/:id", h.getBeatByToken)
 					beats.PUT("/:id", h.updateBeat)
-					beats.DELETE("/:id", deleteBeat)
+					beats.DELETE("/:id", h.deleteBeat)
 				}
 			}
 		}
@@ -88,19 +90,23 @@ func (h *Handlers) InitRouter() *gin.Engine {
 		artists := api.Group("/artists")
 		{
 			artists.GET("/", h.getAllArtists)
-			artists.GET("/", h.getArtistById)
+			artists.GET("/:id", h.getArtistById)
 		}
 
 		playlists := api.Group("/playlists")
 		{
 			playlists.GET("/", h.getAllPlaylists)
 			playlists.GET("/:id", h.getPlaylistById)
+			playlists.GET(":id/accounts/:account_id", h.getAccountsPlaylist)
+			playlists.GET("/accounts/:account_id", h.getAllAccountsPlaylists)
 		}
 
 		beats := api.Group("/beats")
 		{
 			beats.GET("/", h.getAllBeats)
 			beats.GET("/:id", h.getBeatById)
+			playlists.GET("/playlits/:playlist_id", h.getAllBeatsFromPlaylist)
+			playlists.GET(":id/playlists/:playlist_id", h.getBeatFromPlaylist)
 		}
 	}
 

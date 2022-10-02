@@ -19,7 +19,14 @@ func (h *Handlers) createArtist(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, statusResponse{"ok"})
+	url, err := h.service.Payment.CreatePaymentAccount(accountId)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	// c.Redirect(http.StatusFound, url)
+	c.JSON(http.StatusOK, statusResponse{url})
 }
 
 func (h *Handlers) getArtistById(c *gin.Context) {
@@ -62,6 +69,14 @@ func (h *Handlers) getArtistByToken(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, artist)
+}
+
+type UpdateArtist struct {
+	StripeId string
+}
+
+func (h *Handlers) updateArtist(c *gin.Context) {
+
 }
 
 type ArtistPassword struct {

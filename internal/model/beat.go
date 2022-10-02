@@ -7,7 +7,7 @@ import (
 
 type Beat struct {
 	Id        int64     `json:"id"              db:"id"`
-	ArtistId  int64     `json:"artist_id"       db:"artist_id"`
+	ProductId int64     `json:"product_id"      db:"product_id"`
 	Name      string    `json:"name"            db:"name"        binding:"required"`
 	Bpm       int64     `json:"bpm"             db:"bpm"         binding:"required"`
 	Key       string    `json:"key"             db:"key"         binding:"required"`
@@ -16,23 +16,20 @@ type Beat struct {
 	WavPath   string    `json:"wav_path"        db:"wav_path"`
 	Genre     string    `json:"genre"           db:"genre"`
 	Mood      string    `json:"mood"            db:"mood"`
-	Tags      []Tag     `json:"tags"                             binding:"required"`
+	Tags      []Tag     `json:"tags"`
 	Price     Price     `json:"price"`
 	CreatedAt time.Time `json:"created_at"      db:"created_at"`
 }
 
 type Tag struct {
 	Id   int64  `json:"id"   db:"tag_id"`
-	Name string `json:"name" db:"tag_name"   binding:"required"`
+	Name string `json:"name" db:"tag_name" binding:"required"`
 }
 
 type Price struct {
-	Standart   int64  `json:"standart"    db:"standart"    binding:"required"`
-	Premium    int64  `json:"premium"     db:"premium"     binding:"required"`
-	Ultimate   int64  `json:"ultimate"    db:"ultimate"    binding:"required"`
-	StandartId string `json:"standart_id" db:"standart_id" binding:"required"`
-	PremiumId  string `json:"premium_id"  db:"premium_id"  binding:"required"`
-	UltimateId string `json:"ultimate_id" db:"ultimate_id" binding:"required"`
+	Standart int64 `json:"standart"    db:"standart"    binding:"required"`
+	Premium  int64 `json:"premium"     db:"premium"     binding:"required"`
+	Ultimate int64 `json:"ultimate"    db:"ultimate"    binding:"required"`
 }
 
 type BeatUpdateInput struct {
@@ -51,12 +48,9 @@ type TagUpdateInput struct {
 }
 
 type PriceUpdateInput struct {
-	Standart   *int64  `json:"standart"`
-	Premium    *int64  `json:"premium"`
-	Ultimate   *int64  `json:"ultimate"`
-	StandartId *string `json:"standart_id"`
-	PremiumId  *string `json:"premium_id"`
-	UltimateId *string `json:"ultimate_id"`
+	Standart *int64 `json:"standart"`
+	Premium  *int64 `json:"premium"`
+	Ultimate *int64 `json:"ultimate"`
 }
 
 func (b *BeatUpdateInput) Validate() error {

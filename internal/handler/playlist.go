@@ -32,6 +32,10 @@ func (h *Handlers) createPlaylist(c *gin.Context) {
 	})
 }
 
+func (h *Handlers) getPlaylistByToken(c *gin.Context) {
+
+}
+
 func (h *Handlers) getAllPlaylistsByToken(c *gin.Context) {
 	accountId, err := getAccountId(c)
 	if err != nil {
@@ -69,7 +73,7 @@ func (h *Handlers) updatePlaylist(c *gin.Context) {
 	c.JSON(http.StatusOK, statusResponse{"ok"})
 }
 
-func (h *Handlers) deleteAccountsPlaylist(c *gin.Context) {
+func (h *Handlers) deletePlaylist(c *gin.Context) {
 	playlistId, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
@@ -82,6 +86,18 @@ func (h *Handlers) deleteAccountsPlaylist(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, statusResponse{"ok"})
+}
+
+func (h *Handlers) getAccountsPlaylist(c *gin.Context) {
+
+}
+
+func (h *Handlers) getPlaylistById(c *gin.Context) {
+
+}
+
+func (h *Handlers) getAllPlaylists(c *gin.Context) {
+
 }
 
 func (h *Handlers) getAllAccountsPlaylists(c *gin.Context) {

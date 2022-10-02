@@ -11,13 +11,21 @@ CREATE TABLE IF NOT EXISTS account (
 
 CREATE TABLE IF NOT EXISTS artist (
   id BIGINT REFERENCES account (id) ON DELETE CASCADE UNIQUE NOT NULL,
+  stripe_id TEXT UNIQUE,
   created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
   PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS product (
+  id BIGSERIAL PRIMARY KEY,
+  artist_id BIGINT REFERENCES artist (id) ON DELETE CASCADE,
+  stripe_id TEXT UNIQUE,
+  created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS beat (
   id BIGSERIAL PRIMARY KEY,
-  artist_id BIGINT REFERENCES artist (id) ON DELETE CASCADE NOT NULL,
+  product_id BIGINT REFERENCES product (id) ON DELETE CASCADE NOT NULL UNIQUE,
   name TEXT NOT NULL,
   bpm INT NOT NULL,
   key TEXT NOT NULL,
@@ -40,16 +48,13 @@ CREATE TABLE IF NOT EXISTS price (
   standart INT NOT NULL,
   premium INT NOT NULL,
   ultimate INT NOT NULL,
-  standart_id TEXT NOT NULL UNIQUE,
-  premium_id TEXT NOT NULL UNIQUE,
-  ultimate_id TEXT NOT NULL UNIQUE,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS account_beat (
+CREATE TABLE IF NOT EXISTS account_product (
   id BIGSERIAL PRIMARY KEY,
   account_id BIGINT REFERENCES account (id) ON DELETE CASCADE NOT NULL,
-  beat_id BIGINT REFERENCES beat (id) ON DELETE CASCADE NOT NULL,
+  product_id BIGINT REFERENCES product (id) ON DELETE CASCADE NOT NULL,
   access_status TEXT CHECK (
     access_status IN('standart', 'premium', 'ultimate')
   ) NOT NULL,

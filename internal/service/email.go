@@ -10,10 +10,10 @@ import (
 )
 
 type EmailService struct {
-	sender email.Client
+	sender *email.Client
 }
 
-func NewEmailService(sender email.Client) *EmailService {
+func NewEmailService(sender *email.Client) *EmailService {
 	return &EmailService{
 		sender: sender,
 	}
@@ -45,5 +45,5 @@ func (s *EmailService) SendVerificationEmail(input model.Account) error {
 
 func (s *EmailService) createVerificationLink(value string) string {
 	domain := os.Getenv("DOMAIN")
-	return fmt.Sprintf("%s/api/account/confirmation/%s", domain, value)
+	return fmt.Sprintf("%s/api/accounts/%s", domain, value)
 }
