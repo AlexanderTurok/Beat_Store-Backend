@@ -25,8 +25,7 @@ func (h *Handlers) createArtist(c *gin.Context) {
 		return
 	}
 
-	// c.Redirect(http.StatusFound, url)
-	c.JSON(http.StatusOK, statusResponse{url})
+	c.Redirect(http.StatusFound, url)
 }
 
 func (h *Handlers) getArtistById(c *gin.Context) {
