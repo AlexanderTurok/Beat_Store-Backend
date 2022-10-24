@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  app:
+    container_name: golang_container
+    environment:
+      - DOMAIN=https://a966-108-234-219-218.ngrok.io
+      - DB_Password=postgres
+      - SALT=afbib824gr88cba9nc293rfefha0j0jh7hbz0kbtnus
+      - SIGNING_KEY=cn8338bcansi7564829cnsudvbib47924uybc
+      - STRIPE_KEY=sk_test_51LhiXwFWMYmHUH3O34wGjO4NMiHXEA7pCvTSWcfp0HOzNQeJwYrUG6Bz3r5B66v1gK3pi1v7QCZGk6kTHxtIlVxv00y0tydYM7
+      - CLIENT_ID=2665b51938ce5e67394c518e7ef877ba
+      - CLIENT_SECRET=536d1d69ce638b6f88bd2bd2ff346096
+      - VERIFICATION_LIST_ID=458221
+    tty: true
+    build: .
+    ports:
+      - 8000:8000
+    restart: on-failure
+    volumes:
+      - .:/app
+    depends_on:
+      - postgresdb
+    networks:
+      - learning
+
+  postgresdb:
+    image: postgres:alpine
+    container_name: postgres_container
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - learning
+
+# Networks to be created to facilitate communication between containers
+networks:
+  learning:
+    driver: bridge
